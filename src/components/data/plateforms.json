@@ -1,0 +1,49 @@
+[
+  {
+    "id": 6,
+    "abbreviation": "PC",
+    "alternative_name": "mswin",
+    "category": 4,
+    "created_at": 1297555200,
+    "name": "PC (Microsoft Windows)",
+    "platform_logo": 203,
+    "slug": "win",
+    "updated_at": 1470009600,
+    "url": "https://www.igdb.com/platforms/win",
+    "versions": [1, 13, 14, 15, 124],
+    "websites": [2]
+  },
+  {
+    "id": 48,
+    "abbreviation": "PS4",
+    "alternative_name": "PS4",
+    "category": 1,
+    "created_at": 1326499200,
+    "generation": 8,
+    "name": "PlayStation 4",
+    "platform_logo": 231,
+    "product_family": 1,
+    "slug": "ps4--1",
+    "summary": "The PlayStation 4 system opens the door to an incredible journey through immersive new gaming worlds and a deeply connected gaming community. PS4 puts gamers first with an astounding launch line-up and over 180 games in development. Play amazing top-tier blockbusters and innovative indie hits on PS4. Developer inspired, gamer focused.",
+    "updated_at": 1433116800,
+    "url": "https://www.igdb.com/platforms/ps4--1",
+    "versions": [17, 178, 179],
+    "websites": [11]
+  },
+  {
+    "id": 49,
+    "abbreviation": "XONE",
+    "alternative_name": "Xbone",
+    "category": 1,
+    "created_at": 1326499200,
+    "generation": 8,
+    "name": "Xbox One",
+    "product_family": 2,
+    "slug": "xboxone",
+    "summary": "Welcome to a new generation of games and entertainment. Where games push the boundaries of realism. And television obeys your every command. Where listening to music while playing a game is a snap. And you can jump from TV to movies to music to a game in an instant. Where your experience is custom tailored to you. And the entertainment you love is all in one place. Welcome to the all-in-one, Xbox One",
+    "updated_at": 1429920000,
+    "url": "https://www.igdb.com/platforms/xboxone",
+    "versions": [78, 180, 185, 188],
+    "websites": [12]
+  }
+]
