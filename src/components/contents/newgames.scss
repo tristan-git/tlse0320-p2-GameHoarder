@@ -1,4 +1,15 @@
 .new-games {
-  .exemple {
+  /////////////////////////
+  // Layout common style
+  /////////////////////////
+  .grid-cards-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+
+  .grid-cards-display div {
+    background: royalblue;
+    padding: 15px;
   }
 }
