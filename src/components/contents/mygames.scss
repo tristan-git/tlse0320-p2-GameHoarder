@@ -1,4 +1,17 @@
 .my-games {
-  .exemple {
+  margin-bottom: 60px;
+
+  /////////////////////////
+  // Layout cards
+  /////////////////////////
+  .grid-cards-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+
+  .grid-cards-display div {
+    background: rebeccapurple;
+    padding: 15px;
   }
 }

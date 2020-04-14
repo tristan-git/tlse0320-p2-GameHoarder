@@ -4,8 +4,25 @@ import MyGameCard from './MyGameCard';
 
 const ListMyGameCards = () => {
   return (
-    <div>
-      <MyGameCard />
+    <div className="grid-cards-display">
+      <div>
+        <MyGameCard />
+      </div>
+      <div>
+        <MyGameCard />
+      </div>
+      <div>
+        <MyGameCard />
+      </div>
+      <div>
+        <MyGameCard />
+      </div>
+      <div>
+        <MyGameCard />
+      </div>
+      <div>
+        <MyGameCard />
+      </div>
     </div>
   );
 };
