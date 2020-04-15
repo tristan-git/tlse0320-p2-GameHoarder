@@ -11,9 +11,7 @@ import './App.scss';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = { valueInputFilter: '' };
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -22,12 +20,15 @@ class App extends React.Component {
   }
 
   render() {
+    const { valueInputFilter } = this.state;
+    const { handleChange } = this;
+
     return (
       <div className="App">
         <Header />
         <section id="content">
-          <MyGames value={this.state.valueInputFilter} handleChange={this.handleChange} />
-          <NewGames value={this.state.valueInputFilter} handleChange={this.handleChange} />
+          <MyGames value={valueInputFilter} handleChange={handleChange} />
+          <NewGames value={valueInputFilter} handleChange={handleChange} />
         </section>
         <Footer />
         <MobileNav />
