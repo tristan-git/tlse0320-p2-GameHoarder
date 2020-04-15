@@ -6,22 +6,19 @@ class MyGameCard extends React.Component {
     super(props);
     this.name = 'name';
     this.url = 'url';
-    this.popularity = 'popularity';
-    this.rating = 'rating';
   }
 
   render() {
     return (
-      <section className="MyGameCard">
-        <span>
+      <section className="Card">
+        <div className="header">
           <h3>{this.props.name}</h3>
-        </span>
-        <img alt={this.props.name} style={{ backgroundImage: `url(${this.props.url})` }} />
-        <div>
-          <span>
-            <p>Popularité {this.props.popularity}</p>
-            <p>Notation {this.props.rating}</p>
-          </span>
+          <p>BIN</p>
+        </div>
+        <div className="image" style={{ backgroundImage: `url(${this.props.url})` }} />
+        <div className="footer">
+          <p>NOTATION</p>
+          <p>FILTER</p>
         </div>
       </section>
     );
