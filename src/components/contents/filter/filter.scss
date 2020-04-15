@@ -1,0 +1,12 @@
+.filter-container {
+  display: flex;
+  align-items: center;
+
+  .input-filter {
+    input {
+      border: solid 2px black;
+      height: 55px;
+      background-color: transparent;
+    }
+  }
+}

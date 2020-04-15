@@ -3,15 +3,18 @@ import React from 'react';
 import NewGameCard from './NewGameCard';
 import games from '../../data/games.json';
 
-const displayNewGameCards = () =>
-  games.map(game => (
-    <div>
-      <NewGameCard {...game} />
-    </div>
-  ));
+const ListNewGameCards = props => {
+  const { value } = props;
+  const displayNewGameCards = value =>
+    games
+      .filter(game => game.name.includes(value))
+      .map(game => (
+        <div>
+          <NewGameCard {...game} />
+        </div>
+      ));
 
-const ListNewGameCards = () => {
-  return <div className="grid-cards-display">{displayNewGameCards()}</div>;
+  return <div className="grid-cards-display">{displayNewGameCards(value)}</div>;
 };
 
 //  ListNewGameCards.propTypes = {
