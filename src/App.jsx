@@ -1,12 +1,12 @@
 import React from 'react';
-
+import './App.scss';
 import Header from './components/header/Header';
 import MyGames from './components/contents/MyGames';
 import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';
 import MobileNav from './components/mobile-nav/MobileNav';
-
-import './App.scss';
+import Title from './components/contents/title/Title';
+import GetGames from './components/data/getCardData/GetCardData';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,7 +26,10 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <section id="content">
+          <GetGames />
+          <Title title="Ma bibliothèque " span="de jeux" />
           <MyGames value={this.state.valueInputFilter} handleChange={this.handleChange} />
+          <Title title="Ajouter des " span="jeux" />
           <NewGames value={this.state.valueInputFilter} handleChange={this.handleChange} />
         </section>
         <Footer />

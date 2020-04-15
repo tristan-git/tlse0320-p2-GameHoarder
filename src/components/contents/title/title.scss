@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  .span {
+    font-weight: lighter;
+  }
+}
+.underlineTitle {
+  width: 100px;
+  height: 8px;
+  margin: 5px 0 25px 0;
+  background-color: blue;
+}
