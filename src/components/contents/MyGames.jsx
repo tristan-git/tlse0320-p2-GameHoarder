@@ -4,11 +4,12 @@ import ListMyGameCards from './my-games/ListMyGameCards';
 import Filters from './filter/Filters';
 import './mygames.scss';
 
-const MyGames = () => {
+const MyGames = props => {
+  const { value, handleChange } = props;
   return (
     <div className="my-games">
-      <Filters />
-      <ListMyGameCards />
+      <Filters value={value} handleChange={handleChange} />
+      <ListMyGameCards value={value} />
     </div>
   );
 };

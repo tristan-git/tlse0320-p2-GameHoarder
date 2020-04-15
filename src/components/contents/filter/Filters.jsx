@@ -10,7 +10,6 @@ function Filters(props) {
       <div className="input-filter">
         <input value={value} onChange={handleChange} />
       </div>
-      {/* <div>valeur value input recherche = {value}</div> */}
     </div>
   );
 }

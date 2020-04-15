@@ -4,27 +4,15 @@ import ListNewGameCards from './my-games/ListNewGameCards';
 import Filters from './filter/Filters';
 import './newgames.scss';
 
-class NewGames extends React.Component {
-  constructor(props) {
-    super(props);
+function NewGames(props) {
+  const { value, handleChange } = props;
 
-    this.state = { valueInputFilter: '' };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ valueInputFilter: event.target.value });
-  }
-
-  render() {
-    return (
-      <div className="new-games">
-        <Filters value={this.state.valueInputFilter} handleChange={this.handleChange} />
-        <ListNewGameCards value={this.state.valueInputFilter} />
-      </div>
-    );
-  }
+  return (
+    <div className="new-games">
+      <Filters value={value} handleChange={handleChange} />
+      <ListNewGameCards value={value} />
+    </div>
+  );
 }
 
 // NewGames.propTypes = {};

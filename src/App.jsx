@@ -8,18 +8,32 @@ import MobileNav from './components/mobile-nav/MobileNav';
 
 import './App.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <section id="content">
-        <MyGames />
-        <NewGames />
-      </section>
-      <Footer />
-      <MobileNav />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { valueInputFilter: '' };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ valueInputFilter: event.target.value });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <section id="content">
+          <MyGames value={this.state.valueInputFilter} handleChange={this.handleChange} />
+          <NewGames value={this.state.valueInputFilter} handleChange={this.handleChange} />
+        </section>
+        <Footer />
+        <MobileNav />
+      </div>
+    );
+  }
 }
 
 export default App;
