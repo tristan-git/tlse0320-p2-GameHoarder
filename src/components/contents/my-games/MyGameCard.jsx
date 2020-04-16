@@ -27,6 +27,7 @@
 // export default MyGameCard;
 
 import React from 'react';
+// import StarRating from './StarRating';
 // import PropTypes from 'prop-types'
 
 class MyGameCard extends React.Component {
@@ -58,8 +59,15 @@ class MyGameCard extends React.Component {
         </div>
         <div className="image" style={{ backgroundImage: `url(${urlImg})` }} />
         <div className="footer">
-          <p>NOTATION</p>
           <p onClick={this.getDataGame}>STATUTS</p>
+
+          {/* <StarRating /> */}
+          <select name="statuts" className="statuts">
+            <option value="Statuts">STATUTS</option>
+            <option value="Pas commencé">Pas commencé</option>
+            <option value="En cours">En cours</option>
+            <option value="Terminé">Terminé</option>
+          </select>
         </div>
       </section>
     );
