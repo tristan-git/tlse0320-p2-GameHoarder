@@ -9,7 +9,48 @@
   }
 
   .grid-cards-display div {
-    background: royalblue;
-    padding: 15px;
+    background: white;
+    padding: 5px;
+  }
+
+  .Card {
+    display: flex;
+    box-shadow: 10px 5px 5px grey;
+  }
+
+  .ImageCard {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+
+  .ImageGame {
+    width: 100%;
+  }
+
+  .GameInfo {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+  }
+
+  .GameName {
+    width: 100%;
+  }
+
+  .GameSupport {
+    width: 100%;
+  }
+
+  .GameRating {
+    width: 100%;
+  }
+
+  .ButtonAddLibrary {
+    width: 100%;
+  }
+
+  .ButtonAddWishlist {
+    flex-direction: row-reverse;
   }
 }
