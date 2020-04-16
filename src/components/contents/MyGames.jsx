@@ -7,7 +7,7 @@ import './mygames.scss';
 const MyGames = ({ value, handleChange }) => {
   return (
     <div className="my-games">
-      <Filters value={value} handleChange={handleChange} location={'mygameInputValue'} />
+      <Filters value={value} handleChange={handleChange} location="mygameInputValue" />
       <ListMyGameCards value={value} />
     </div>
   );
@@ -15,7 +15,6 @@ const MyGames = ({ value, handleChange }) => {
 
 MyGames.propTypes = {
   value: PropTypes.string.isRequired,
-  inputNameSearch: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired
 };
 
