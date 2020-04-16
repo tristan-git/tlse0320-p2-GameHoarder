@@ -18,7 +18,7 @@ class MyGameCard extends React.Component {
         <div className="image" style={{ backgroundImage: `url(${this.props.url})` }} />
         <div className="footer">
           <p>NOTATION</p>
-          <p>FILTER</p>
+          <p>STATUTS</p>
         </div>
       </section>
     );
