@@ -11,26 +11,31 @@ import GetGames from './components/data/getCardData/GetCardData';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = { valueInputFilter: '' };
-
+    this.state = { mygameInputValue: null };
+    this.state = { newgameInputValue: null };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ valueInputFilter: event.target.value });
+    const valueToChange = event.target.value;
+    const inputSearchInputValue = event.target.name;
+    this.setState({ [inputSearchInputValue]: valueToChange });
   }
 
   render() {
+    const { mygameInputValue } = this.state;
+    const { newgameInputValue } = this.state;
+    const { handleChange } = this;
+
     return (
       <div className="App">
         <Header />
         <section id="content">
           <GetGames />
           <Title title="Ma bibliothèque " span="de jeux" />
-          <MyGames value={this.state.valueInputFilter} handleChange={this.handleChange} />
+          <MyGames value={mygameInputValue} handleChange={handleChange} />
           <Title title="Ajouter des " span="jeux" />
-          <NewGames value={this.state.valueInputFilter} handleChange={this.handleChange} />
+          <NewGames value={newgameInputValue} handleChange={handleChange} />
         </section>
         <Footer />
         <MobileNav />
