@@ -1,5 +1,5 @@
 import React from 'react';
-import StarRating from './components/StarRating';
+import './MyGameCard.scss';
 // import PropTypes from 'prop-types'
 
 class MyGameCard extends React.Component {
@@ -18,6 +18,17 @@ class MyGameCard extends React.Component {
     localStorage.setItem(title, JSON.stringify(values));
   }
 
+  getRemoveGame(event) {
+    const getDataNode = event.target.parentNode.parentNode;
+    const imgUrl = getDataNode.children[1].style.cssText;
+    const title = getDataNode.children[0].children[0].innerText;
+    const values = {
+      title: title,
+      img: imgUrl
+    };
+    localStorage.removeItem(title, JSON.stringify(values));
+  }
+
   render() {
     const urlImg = this.props.url.substring(23, this.props.url.length - 3);
 
@@ -27,13 +38,14 @@ class MyGameCard extends React.Component {
       <section className="Card">
         <div className="header">
           <h3>{this.props.name}</h3>
-          <p>SUPPRIMER</p>
+          <button onClick={this.getRemoveGame} className="close-btn" type="submit">
+            X
+          </button>
         </div>
         <div className="image" style={{ backgroundImage: `url(${urlImg})` }} />
         <div className="footer">
           <p onClick={this.getDataGame}>STATUTS</p>
 
-          {/* <StarRating /> */}
           <select name="statuts" className="statuts">
             <option value="Statuts">STATUTS</option>
             <option value="Pas commencé">Pas commencé</option>
