@@ -1,5 +1,5 @@
 import React from 'react';
-import StarRating from './StarRating';
+import StarRating from './components/StarRating';
 // import PropTypes from 'prop-types'
 
 class MyGameCard extends React.Component {
