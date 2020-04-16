@@ -7,7 +7,7 @@ function Filters({ value, handleChange, location }) {
   return (
     <div className="filter-container">
       <div className="input-filter">
-        <input value={value} onChange={handleChange} name={location} />
+        <input value={value} onChange={handleChange} name={location} placeholder="ma recherche" />
       </div>
     </div>
   );

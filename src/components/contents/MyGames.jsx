@@ -4,11 +4,10 @@ import ListMyGameCards from './my-games/ListMyGameCards';
 import Filters from './filter/Filters';
 import './mygames.scss';
 
-const MyGames = props => {
-  const { value, handleChange } = props;
+const MyGames = ({ value, handleChange }) => {
   return (
     <div className="my-games">
-      <Filters value={value} handleChange={handleChange} location={'my-game'} />
+      <Filters value={value} handleChange={handleChange} location={'mygameInputValue'} />
       <ListMyGameCards value={value} />
     </div>
   );
@@ -16,6 +15,7 @@ const MyGames = props => {
 
 MyGames.propTypes = {
   value: PropTypes.string.isRequired,
+  inputNameSearch: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired
 };
 
