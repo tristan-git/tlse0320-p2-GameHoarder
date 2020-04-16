@@ -55,7 +55,7 @@ class MyGameCard extends React.Component {
       <section className="Card">
         <div className="header">
           <h3>{this.props.name}</h3>
-          <p>BIN</p>
+          <p>SUPPRIMER</p>
         </div>
         <div className="image" style={{ backgroundImage: `url(${urlImg})` }} />
         <div className="footer">

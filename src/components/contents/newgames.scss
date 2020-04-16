@@ -6,10 +6,14 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
+    .header {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .grid-cards-display div {
-    background: royalblue;
+    background: white;
     padding: 15px;
   }
 }
