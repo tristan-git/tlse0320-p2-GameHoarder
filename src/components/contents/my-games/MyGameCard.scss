@@ -2,12 +2,10 @@
   max-width: 100%;
   position: relative;
   z-index: 1;
-  background-color: blue;
+  background-color: var(--primary-color);
   border: none;
-  padding: 0.1em 1em;
   color: #fff;
   border-radius: 3px;
   text-transform: uppercase;
-  box-shadow: 3px 3px 9px #aaa;
   cursor: pointer;
 }

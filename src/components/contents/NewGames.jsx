@@ -7,7 +7,7 @@ import './newgames.scss';
 function NewGames({ value, handleChange }) {
   return (
     <div className="new-games">
-      <Filters value={value} handleChange={handleChange} location={'newgameInputValue'} />
+      <Filters value={value} handleChange={handleChange} location="newgameInputValue" />
       <ListNewGameCards value={value} />
     </div>
   );
