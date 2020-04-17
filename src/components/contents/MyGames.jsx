@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ListMyGameCards from './my-games/ListMyGameCards';
 import Filters from './filter/Filters';
+/* import StarRating from './components/StarRating'; */
 import './mygames.scss';
 
 const MyGames = ({ value, handleChange }) => {
   return (
     <div className="my-games">
-      <Filters value={value} handleChange={handleChange} location={'mygameInputValue'} />
+      <Filters value={value} handleChange={handleChange} location="mygameInputValue" />
       <ListMyGameCards value={value} />
     </div>
   );
@@ -15,7 +16,6 @@ const MyGames = ({ value, handleChange }) => {
 
 MyGames.propTypes = {
   value: PropTypes.string.isRequired,
-  inputNameSearch: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired
 };
 

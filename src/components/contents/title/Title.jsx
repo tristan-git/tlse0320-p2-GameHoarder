@@ -26,6 +26,6 @@ export default class Title extends React.Component {
 }
 
 Title.propTypes = {
-  title: PropTypes.element.isRequired,
-  span: PropTypes.element.isRequired
+  title: PropTypes.string.isRequired,
+  span: PropTypes.string.isRequired
 };

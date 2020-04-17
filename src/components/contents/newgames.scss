@@ -6,10 +6,34 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
+    .header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .image {
+      height: 50px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
   }
 
   .grid-cards-display div {
-    background: royalblue;
+    background: white;
     padding: 15px;
   }
+}
+.add-btn {
+  max-width: 100%;
+  position: relative;
+  z-index: 1;
+  background-color: blue;
+  border: none;
+  padding: 0.1em 1em;
+  color: #fff;
+  border-radius: 3px;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 9px #aaa;
+  cursor: pointer;
 }

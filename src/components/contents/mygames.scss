@@ -21,6 +21,7 @@
     flex-direction: column;
     background: white;
     border-radius: 5px;
+    box-shadow: #0000001c 0px 0px 10px 3px;
   }
 
   .header,
@@ -28,17 +29,11 @@
     display: flex;
     justify-content: space-between;
     padding: 15px;
-    height: 40px;
+    align-items: center;
   }
 
   .header h3 {
     font-size: 16px;
-  }
-
-  .header h3,
-  .header p,
-  .footer p {
-    padding: 15px;
   }
 
   .image {
@@ -46,5 +41,23 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+  }
+
+  .statuts {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4px;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+  }
+
+  input[type='radio'] {
+    display: none;
+  }
+
+  .star {
+    cursor: pointer;
+    transition: color 200ms;
   }
 }
