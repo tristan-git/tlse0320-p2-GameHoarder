@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const icons = {
   starEmpty:
@@ -10,8 +11,12 @@ const icons = {
 
 const Icon = props => (
   <svg width="22" height="22" viewBox="0 0 1024 1024">
-    <path d={icons[props.icon]}></path>
+    <path d={[icons.starFull]} />
   </svg>
 );
+
+Icon.propTypes = {
+  icon: PropTypes.string.isRequired
+};
 
 export default Icon;
