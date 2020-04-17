@@ -11,25 +11,18 @@ export default class GetGames extends React.Component {
   }
 
   componentDidMount() {
-    axios({
-      url: 'https://api-v3.igdb.com/games/',
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-        'user-key': 'a24e579741a0cdba8423e33cf6267698'
-      },
-      data: 'fields'
-    })
-      .then(res => res.data)
+    axios
+      .post('https://api-v3.igdb.com/games')
+      .then(res => {
+        return { games: res.data };
+      })
       .then(res => this.setState({ games: res }))
       .catch(err => console.log(err));
   }
 
   render() {
     const { games } = this.state;
+    console.log(games);
     return (
       <div>
         <p>

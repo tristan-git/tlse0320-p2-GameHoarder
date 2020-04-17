@@ -68,6 +68,10 @@
     display: none;
   }
 
+  .Stars {
+    display: flex;
+  }
+
   .star {
     cursor: pointer;
     transition: color 200ms;

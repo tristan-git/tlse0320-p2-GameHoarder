@@ -1,6 +1,8 @@
+/* eslint-disable no-useless-constructor */
 import React from 'react';
 import './MyGameCard.scss';
 import PropTypes from 'prop-types';
+import StarRating from './StarRating';
 
 class MyGameCard extends React.Component {
   constructor(props) {
@@ -19,9 +21,7 @@ class MyGameCard extends React.Component {
   }
 
   render() {
-    const { url } = this.props;
-    const { name } = this.props;
-
+    const { url, name } = this.props;
     const urlImg = url.substring(23, url.length - 3);
 
     return (
@@ -34,7 +34,7 @@ class MyGameCard extends React.Component {
         </div>
         <div className="image" style={{ backgroundImage: `url(${urlImg})` }} />
         <div className="footer">
-          <p>NOTE</p>
+          <StarRating className="Stars" />
 
           <select name="statuts" className="statuts">
             <option value="Statuts">STATUTS</option>
@@ -52,5 +52,4 @@ MyGameCard.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired
 };
-
 export default MyGameCard;
