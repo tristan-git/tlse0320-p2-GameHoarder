@@ -5,8 +5,8 @@ const StarRating = () => {
   const [rating, setRating] = useState(1);
 
   return (
-    <div>
-      {[...Array(3)].map((star, i) => {
+    <div className="Stars">
+      {[...Array(5)].map((star, i) => {
         const ratingValue = i + 1;
         return (
           // eslint-disable-next-line jsx-a11y/label-has-associated-control
@@ -20,7 +20,7 @@ const StarRating = () => {
             <Icon
               icon="star-empty"
               className="star"
-              image={ratingValue < rating ? 'icons.star-empty' : 'icons.star-full'}
+              image={ratingValue < rating ? 'icons.starEmpty' : 'icons.starFull'}
             />
           </label>
         );
