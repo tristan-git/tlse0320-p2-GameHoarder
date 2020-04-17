@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 import MyGameCard from './MyGameCard';
 
 const ListMyGameCards = ({ value }) => {
+  if (localStorage.length === 0) {
+    return (
+      <div className="alert">
+        Vous n'avez pas encore de jeux dans votre bibliothèque,
+        <span>vous pouvez en ajouter ici</span>
+      </div>
+    );
+  }
+
   const displayMyGameCard2 = value =>
     new Array(localStorage.length).fill().map((data, i) => (
       <div>

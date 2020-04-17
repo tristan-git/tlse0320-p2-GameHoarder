@@ -10,12 +10,18 @@ class NewGameCard extends React.Component {
 
   getDataGame(event) {
     const getDataNode = event.target.parentNode.parentNode;
-    const img = getDataNode.children[1].style.cssText;
-    const title = getDataNode.children[0].children[0].innerText;
+    const img = getDataNode.children[0].style.cssText;
+    const title = getDataNode.children[1].children[0].children[0].innerText;
+
+    console.log(img);
+    console.log(title);
+
     const values = {
       title,
       img
     };
+
+    console.log(values);
     localStorage.setItem(title, JSON.stringify(values));
   }
 
@@ -34,7 +40,7 @@ class NewGameCard extends React.Component {
           <p className="GameSupport">Game support</p>
           <div className="GameRating">Game Rating</div>
           <div className="ButtonAddLibrary" onClick={this.getDataGame}>
-            Add to library
+            Ajouter à ma bibliothèque
           </div>
         </div>
       </div>
