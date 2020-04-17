@@ -1,5 +1,6 @@
+/* eslint-disable no-useless-constructor */
 import React from 'react';
-import StarRating from './components/StarRating';
+import StarRating from './StarRating';
 // import PropTypes from 'prop-types'
 
 class MyGameCard extends React.Component {
@@ -12,7 +13,7 @@ class MyGameCard extends React.Component {
     const imgUrl = getDataNode.children[1].style.cssText;
     const title = getDataNode.children[0].children[0].innerText;
     const values = {
-      title: title,
+      title,
       img: imgUrl
     };
     localStorage.setItem(title, JSON.stringify(values));
@@ -31,9 +32,8 @@ class MyGameCard extends React.Component {
         </div>
         <div className="image" style={{ backgroundImage: `url(${urlImg})` }} />
         <div className="footer">
+          <StarRating />
           <p onClick={this.getDataGame}>STATUTS</p>
-
-          {/* <StarRating /> */}
           <select name="statuts" className="statuts">
             <option value="Statuts">STATUTS</option>
             <option value="Pas commencé">Pas commencé</option>

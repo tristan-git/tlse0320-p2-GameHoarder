@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MyGameCard from './MyGameCard';
-import games from '../../data/games.json';
+// import games from '../../data/games.json';
 
 const ListMyGameCards = ({ value }) => {
   // const displayMyGameCard = value =>
