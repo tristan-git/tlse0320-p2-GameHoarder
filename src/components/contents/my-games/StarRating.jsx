@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import Icon from './Icon';
 
 const StarRating = () => {
-  const [rating, setRating] = useState(1);
-
+  const [rating, setRating] = useState(null);
   return (
     <div className="Stars">
-      {[...Array(5)].map((star, i) => {
+      {[...Array(5)].map((icons, i) => {
         const ratingValue = i + 1;
         return (
           // eslint-disable-next-line jsx-a11y/label-has-associated-control
@@ -18,10 +17,10 @@ const StarRating = () => {
               onClick={() => setRating(ratingValue)}
             />
             <Icon
-              icon="star-empty"
-              className="star"
-              image={ratingValue < rating ? 'icons.starEmpty' : 'icons.starFull'}
+              icon={ratingValue < rating ? 'icons.fullStar' : 'icons.emptyStar'}
+              className="emptyStar"
             />
+            {/* <IconFull className="fullStar" onClick={} /> */}
           </label>
         );
       })}
