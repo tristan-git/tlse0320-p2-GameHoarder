@@ -6,6 +6,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
+
     .header {
       display: flex;
       justify-content: space-between;
@@ -19,20 +20,22 @@
     }
   }
 
-  .grid-cards-display div {
-    background: blue;
-  }
+  // .grid-cards-display div {
+  //   background: blue;
+  // }
 
   .Card {
     display: flex;
     padding: 10px;
     color: white;
+    background-color: var(--primary-color);
+    border-radius: 5px;
     //box-shadow: 10px 5px 5px grey;
   }
 
   .ImageCard {
     height: 100px;
-    width: 100px;
+    min-width: 100px;
     margin-right: 10px;
     background-size: cover;
     background-position: center;
@@ -69,7 +72,7 @@
   }
 
   .ButtonAddLibrary {
-    width: 100%;
+    cursor: pointer;
   }
 
   /*.ButtonAddWishlist {
