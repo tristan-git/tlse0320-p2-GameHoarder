@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React from 'react';
+import axios from 'axios';
 
-class GetGames extends React.Component {
+export default class GetGames extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,34 +9,35 @@ class GetGames extends React.Component {
     };
     this.componentDidMount = this.componentDidMount.bind(this);
   }
+
   componentDidMount() {
-    const API_KEY = 'e98a7b482e71cbb9d2b90309b365e3b4';
     axios({
-      url: 'https://api-v3.igdb.com/games',
-      method: 'POST',
+      url: 'https://api-v3.igdb.com/games/',
+      method: 'GET',
       headers: {
         Accept: 'application/json',
-        'user-key': API_KEY
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+        'user-key': 'a24e579741a0cdba8423e33cf6267698'
       },
-      data: 'fields id,name;limit 10'
+      data: 'fields'
     })
-      .then(response => response.data)
+      .then(res => res.data)
       .then(res => this.setState({ games: res }))
-
-      .catch(err => {
-        console.error(err + 'erreur');
-      });
+      .catch(err => console.log(err));
   }
+
   render() {
+    const { games } = this.state;
     return (
       <div>
         <p>
-          {this.state.game
-            ? this.state.game.map(game => <li key={game.id}>{game.name}</li>)
-            : 'erreur'}
+          {games.length > 0
+            ? games.map(game => <li key={game.id}>{game.name}</li>)
+            : 'erreur requête api'}
         </p>
       </div>
     );
   }
 }
-export default GetGames;
