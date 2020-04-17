@@ -24,18 +24,20 @@ class NewGameCard extends React.Component {
     const { url } = this.props;
 
     return (
-      <section className="Card">
-        <div className="header">
-          <h3>{name}</h3>
-          <p>note</p>
+      <div className="Card">
+        <div className="ImageCard" style={{ backgroundImage: `url(${url})` }} />
+        <div className="GameInfo">
+          <div className="GameInfoTitle">
+            <h3 className="GameName">{name}</h3>
+            <div className="ButtonAddWishlist">Wishlist</div>
+          </div>
+          <p className="GameSupport">Game support</p>
+          <div className="GameRating">Game Rating</div>
+          <div className="ButtonAddLibrary" onClick={this.getDataGame}>
+            Add to library
+          </div>
         </div>
-        <div className="image" style={{ backgroundImage: `url(${url})` }} />
-        <div className="footer">
-          <button className="add-btn" type="submit" onClick={this.getDataGame}>
-            Ajouter à ma bibliothèque
-          </button>
-        </div>
-      </section>
+      </div>
     );
   }
 }
