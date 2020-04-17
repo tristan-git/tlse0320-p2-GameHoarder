@@ -27,7 +27,9 @@ class NewGameCard extends React.Component {
         </div>
         <div className="image" style={{ backgroundImage: `url(${this.props.url})` }} />
         <div className="footer">
-          <button onClick={this.getDataGame}>Ajouter à ma bibliothèque</button>
+          <button className="add-btn" type="submit" onClick={this.getDataGame}>
+            Ajouter à ma bibliothèque
+          </button>
         </div>
       </section>
     );
