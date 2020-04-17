@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React from 'react';
 
 const icons = {
@@ -9,8 +10,7 @@ const icons = {
 
 const Icon = props => (
   <svg width="22" height="22" viewBox="0 0 1024 1024">
-    // eslint-disable-next-line react/destructuring-assignment
-    <path d={icons.starEmpty} />
+    <path d={icons[props.icon]}></path>
   </svg>
 );
 
