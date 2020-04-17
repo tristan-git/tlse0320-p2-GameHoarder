@@ -34,7 +34,7 @@ class MyGameCard extends React.Component {
         </div>
         <div className="image" style={{ backgroundImage: `url(${urlImg})` }} />
         <div className="footer">
-          <StarRating />
+          <StarRating className="Stars" />
 
           <select name="statuts" className="statuts">
             <option value="Statuts">STATUTS</option>

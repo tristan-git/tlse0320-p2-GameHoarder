@@ -20,7 +20,7 @@ const StarRating = () => {
             <Icon
               icon="star-empty"
               className="star"
-              image={ratingValue < rating ? 'star-empty' : 'star-full'}
+              image={ratingValue < rating ? 'icons.star-empty' : 'icons.star-full'}
             />
           </label>
         );
