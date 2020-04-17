@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-constructor */
 import React from 'react';
-// import PropTypes from 'prop-types'
+// import StarRating from './StarRating';
+import PropTypes from 'prop-types';
 
 class NewGameCard extends React.Component {
   constructor(props) {
@@ -9,28 +10,39 @@ class NewGameCard extends React.Component {
 
   getDataGame(event) {
     const getDataNode = event.target.parentNode.parentNode;
-    const imgUrl = getDataNode.children[1].style.cssText;
+    const img = getDataNode.children[1].style.cssText;
     const title = getDataNode.children[0].children[0].innerText;
     const values = {
-      title: title,
-      img: imgUrl
+      title,
+      img
     };
     localStorage.setItem(title, JSON.stringify(values));
   }
 
   render() {
+    const { name } = this.props;
+    const { url } = this.props;
+
     return (
       <section className="Card">
         <div className="header">
-          <h3>{this.props.name}</h3>
-          <p>BIN</p>
+          <h3>{name}</h3>
+          <p>note</p>
         </div>
-        <div className="image" style={{ backgroundImage: `url(${this.props.url})` }} />
+        <div className="image" style={{ backgroundImage: `url(${url})` }} />
         <div className="footer">
-          <button onClick={this.getDataGame}>Ajouter à ma bibliothèque</button>
+          <button className="add-btn" type="submit" onClick={this.getDataGame}>
+            Ajouter à ma bibliothèque
+          </button>
         </div>
       </section>
     );
   }
 }
+
+NewGameCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
+};
+
 export default NewGameCard;

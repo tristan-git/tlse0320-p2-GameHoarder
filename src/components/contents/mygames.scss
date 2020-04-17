@@ -44,10 +44,12 @@
   }
 
   .statuts {
-    background-color: blue;
-    width: 25%;
+    background-color: var(--primary-color);
+    color: white;
     padding: 4px;
     border-radius: 5px;
+    border: none;
+    height: 30px;
   }
 
   input[type='radio'] {
