@@ -9,29 +9,40 @@
   }
 
   .grid-cards-display div {
-    background: white;
-    padding: 5px;
+    background: blue;
   }
 
   .Card {
     display: flex;
-    box-shadow: 10px 5px 5px grey;
+    padding: 10px;
+    color: white;
+    //box-shadow: 10px 5px 5px grey;
   }
 
   .ImageCard {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-  }
-
-  .ImageGame {
-    width: 100%;
+    height: 100px;
+    width: 100px;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .GameInfo {
     display: flex;
-    flex-flow: column nowrap;
-    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    .GameInfoTitle {
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
   }
 
   .GameName {
@@ -50,7 +61,7 @@
     width: 100%;
   }
 
-  .ButtonAddWishlist {
-    flex-direction: row-reverse;
-  }
+  /*.ButtonAddWishlist {
+    width: 100%;
+  }*/
 }
