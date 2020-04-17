@@ -16,10 +16,7 @@ const StarRating = () => {
               value={ratingValue}
               onClick={() => setRating(ratingValue)}
             />
-            <Icon
-              icon={ratingValue < rating ? 'icons.fullStar' : 'icons.emptyStar'}
-              className="emptyStar"
-            />
+            <Icon />
             {/* <IconFull className="fullStar" onClick={} /> */}
           </label>
         );
