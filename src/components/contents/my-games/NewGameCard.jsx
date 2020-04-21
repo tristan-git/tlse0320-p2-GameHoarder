@@ -1,6 +1,4 @@
-/* eslint-disable no-useless-constructor */
 import React from 'react';
-// import StarRating from './StarRating';
 import PropTypes from 'prop-types';
 
 class NewGameCard extends React.Component {
