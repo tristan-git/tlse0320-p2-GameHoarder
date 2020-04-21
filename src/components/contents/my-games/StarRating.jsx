@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React /* , { useState } */ from 'react';
 import Icon from './Icon';
 
 const StarRating = () => {
-  const [rating, setRating] = useState(null);
+  // const [rating, setRating] = useState(null);
   return (
     <div className="Stars">
       {[...Array(5)].map((icons, i) => {
@@ -14,7 +14,7 @@ const StarRating = () => {
               type="radio"
               name="rating"
               value={ratingValue}
-              onClick={() => setRating(ratingValue)}
+              /* onClick={()=> setRating(ratingValue)} */
             />
             <Icon />
             {/* <IconFull className="fullStar" onClick={} /> */}
