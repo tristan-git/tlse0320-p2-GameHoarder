@@ -20,17 +20,12 @@
     }
   }
 
-  // .grid-cards-display div {
-  //   background: blue;
-  // }
-
   .Card {
     display: flex;
     padding: 10px;
     color: white;
     background-color: var(--primary-color);
     border-radius: 5px;
-    //box-shadow: 10px 5px 5px grey;
   }
 
   .ImageCard {
@@ -74,10 +69,6 @@
   .ButtonAddLibrary {
     cursor: pointer;
   }
-
-  /*.ButtonAddWishlist {
-    width: 100%;
-  }*/
 }
 .add-btn {
   max-width: 100%;

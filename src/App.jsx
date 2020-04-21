@@ -34,7 +34,6 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <section id="content">
-          <GetGames />
           <Title title="Ma bibliothèque " span="de jeux" />
           <MyGames value={mygameInputValue} handleChange={handleChange} />
           <Title title="Ajouter des " span="jeux" />
