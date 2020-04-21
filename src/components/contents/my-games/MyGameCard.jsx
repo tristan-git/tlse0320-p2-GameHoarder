@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-constructor */
 import React from 'react';
 import './MyGameCard.scss';
 import PropTypes from 'prop-types';
