@@ -2,7 +2,7 @@
 import React from 'react';
 import './MyGameCard.scss';
 import PropTypes from 'prop-types';
-import StarRating from './StarRating';
+// import StarRating from './StarRating';
 
 class MyGameCard extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class MyGameCard extends React.Component {
         </div>
         <div className="image" style={{ backgroundImage: `url(${urlImg})` }} />
         <div className="footer">
-          <StarRating className="Stars" />
+          {/* <StarRating className="Stars" /> */}
 
           <select name="statuts" className="statuts">
             <option value="Statuts">STATUTS</option>
