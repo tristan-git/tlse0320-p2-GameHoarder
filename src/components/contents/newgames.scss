@@ -1,0 +1,85 @@
+.new-games {
+  /////////////////////////
+  // Layout cards
+  /////////////////////////
+  .grid-cards-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .image {
+      height: 50px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+
+  .Card {
+    display: flex;
+    padding: 10px;
+    color: white;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+  }
+
+  .ImageCard {
+    height: 100px;
+    min-width: 100px;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .GameInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    .GameInfoTitle {
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .GameName {
+    width: 100%;
+  }
+
+  .GameSupport {
+    width: 100%;
+  }
+
+  .GameRating {
+    width: 100%;
+  }
+
+  .ButtonAddLibrary {
+    cursor: pointer;
+  }
+}
+.add-btn {
+  max-width: 100%;
+  position: relative;
+  z-index: 1;
+  background-color: blue;
+  border: none;
+  padding: 0.1em 1em;
+  color: #fff;
+  border-radius: 3px;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 9px #aaa;
+  cursor: pointer;
+}

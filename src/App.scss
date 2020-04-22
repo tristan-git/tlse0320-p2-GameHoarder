@@ -1,0 +1,171 @@
+/////////////////////////////////////
+//      COLORS  VARIABLES
+/////////////////////////////////////
+
+:root {
+  --primary-color: #1047f5;
+  --secondary-color: #1047f5;
+  --bg-primary-color: white;
+  --bg-secondary-color: #131212;
+  --alert-color: #e3434a;
+  --sucess-color: #1af563;
+  --yellow-color: #f7b500;
+}
+
+/////////////////////////////////////
+//      RESET STYLES
+/////////////////////////////////////
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+  font-size: 0.8rem;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+  color: black;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+/////////////////////////////////////
+//      LAYOUT
+/////////////////////////////////////
+
+.App {
+  display: grid;
+  grid-template-areas: 'header' 'content' 'footer' 'mobilenav';
+  margin: auto;
+}
+
+#header {
+  grid-area: header;
+  background-color: #ddd;
+  padding: 60px;
+}
+
+#content {
+  grid-area: content;
+  background-color: #efefef;
+  padding: 60px;
+}
+#footer {
+  grid-area: footer;
+  background-color: #696969;
+  padding: 60px;
+}
+
+#mobile-nav {
+  grid-area: mobilenav;
+  background-color: #4c4c4c;
+  padding: 60px;
+}
