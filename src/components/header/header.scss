@@ -64,13 +64,15 @@
       }
       label {
         align-self: center;
+        outline: none;
         select {
-          background-color: rgba($color: #000000, $alpha: 0.9);
           color: white;
-          font-family: 'Roboto', sans-serif;
-          font-size: 20px;
-          position: relative;
+          background-color: #000000;
+          font-size: 16px;
           padding: 5px;
+          font-family: 'Roboto', sans-serif;
+          width: fit-content;
+          cursor: pointer;
         }
       }
     }
