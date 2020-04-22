@@ -1,7 +1,7 @@
 /////////////////////////////////////
 //      COLORS  VARIABLES
 /////////////////////////////////////
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 :root {
   --primary-color: #1047f5;
   --secondary-color: #1047f5;
@@ -97,6 +97,9 @@ video {
 body {
   line-height: 1;
   font-size: 0.8rem;
+  grid-area: header;
+  background-color: #efefef;
+  scroll-behavior: smooth;
 }
 
 article,
@@ -145,12 +148,6 @@ select {
   display: grid;
   grid-template-areas: 'header' 'content' 'footer' 'mobilenav';
   margin: auto;
-}
-
-#header {
-  grid-area: header;
-  background-color: #ddd;
-  padding: 60px;
 }
 
 #content {

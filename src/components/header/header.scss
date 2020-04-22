@@ -1,2 +1,80 @@
-#header {
+.headerContainer {
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(3px);
+  background-position: center;
+  height: 685px;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 88%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 88%);
+  .filter {
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    img {
+      margin-bottom: 25px;
+    }
+    h1 {
+      font-size: 32px;
+      font-family: 'Roboto', sans-serif;
+      color: white;
+    }
+    .infoHeaderContainer {
+      margin-top: 25px;
+      width: 310px;
+      display: flex;
+      .crossContainer {
+        border: solid 2px white;
+        margin-right: 25px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        justify-content: center;
+        .crossLine {
+          background-color: white;
+          width: 40px;
+          height: 5px;
+          transition: all 0.2s ease-in;
+        }
+
+        .crossLine:nth-last-child(1) {
+          transform: rotate(45deg);
+          position: absolute;
+        }
+        .crossLine:nth-last-child(2) {
+          transform: rotate(-45deg);
+          position: absolute;
+        }
+      }
+      .crossContainer:hover .crossLine {
+        background-color: var(--alert-color);
+      }
+      p {
+        color: white;
+        align-self: center;
+        font-size: 40px;
+        margin-right: 25px;
+        user-select: none;
+      }
+      label {
+        align-self: center;
+        outline: none;
+        select {
+          color: white;
+          background-color: #000000;
+          font-size: 16px;
+          padding: 5px;
+          font-family: 'Roboto', sans-serif;
+          width: fit-content;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
