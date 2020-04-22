@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+// work in progress
 export default class GetGames extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +22,6 @@ export default class GetGames extends React.Component {
 
   render() {
     const { games } = this.state;
-    console.log(games);
     return (
       <div>
         <p>
