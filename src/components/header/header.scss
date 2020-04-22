@@ -1,2 +1,55 @@
-#header {
+.HeaderSugg {
+  background-image: url('https://static.lpnt.fr/images/2018/04/18/14525391lpw-14526018-article-jpg_5174276_980x426.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  height: 685px;
+  align-items: center;
+  flex-direction: column;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+  clip-path: polygon(0px 0px, 100% 0px, 99.74% 100%, 2px 80.76%);
+  img {
+    margin-bottom: 25px;
+  }
+  h1 {
+    font-size: 32px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+  }
+  h2 {
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+  }
+  .infoHeaderContainer {
+    width: 300px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .crossContainer {
+      font-size: 16px;
+      color: white;
+      border: solid 3px white;
+      margin: 10px;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      justify-content: center;
+      padding: 10px;
+      .crossLine {
+        background-color: white;
+        width: 40px;
+        height: 5px;
+        position: relative;
+      }
+      .crossLine:nth-last-child(1) {
+        transform: rotate(45deg);
+        position: absolute;
+      }
+    }
+  }
 }

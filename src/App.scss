@@ -147,6 +147,11 @@ select {
   margin: auto;
 }
 
+body {
+  grid-area: header;
+  background-color: #efefef;
+}
+
 #header {
   grid-area: header;
   background-color: #ddd;

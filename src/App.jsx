@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import axios from 'axios';
 import Header from './components/header/Header';
+import HeaderSugg from './components/header/HeaderSugg';
 import MyGames from './components/contents/MyGames';
 import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';
@@ -36,6 +37,7 @@ class App extends React.Component {
         <section id="content">
           <Title title="Ma bibliothèque " span="de jeux" />
           <MyGames value={mygameInputValue} handleChange={handleChange} />
+          <HeaderSugg />
           <Title title="Ajouter des " span="jeux" />
           <NewGames value={newgameInputValue} handleChange={handleChange} />
         </section>
