@@ -21,7 +21,6 @@ class MyGameCard extends React.Component {
 
   render() {
     const { url, name } = this.props;
-    const urlImg = url.substring(23, url.length - 3);
 
     return (
       <section className="Card">
@@ -31,7 +30,7 @@ class MyGameCard extends React.Component {
             X
           </button>
         </div>
-        <div className="image" style={{ backgroundImage: `url(${urlImg})` }} />
+        <div className="image" style={{ backgroundImage: `url(${url})` }} />
         <div className="footer">
           <StarRating className="Stars" />
 
