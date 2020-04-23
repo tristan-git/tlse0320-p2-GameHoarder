@@ -7,11 +7,12 @@ export default class HeaderLib extends React.Component {
     this.state = {
       lastGameImg: null,
       lastGameName: null,
-      lastGameRate: null,
+      lastGameRating: null,
       isGame: true
     };
     this.RemoveGameFromHeader = this.RemoveGameFromHeader.bind(this);
   }
+
   componentDidMount() {
     this.handleLastGameAdded();
   }
@@ -20,10 +21,12 @@ export default class HeaderLib extends React.Component {
     if (this.state.isGame && window.localStorage.length > 0) {
       const key = window.localStorage.key(0);
       const lastGameInfo = JSON.parse(window.localStorage.getItem(key));
+      console.log(lastGameInfo.rating);
       this.setState({
         isGame: true,
         lastGameName: lastGameInfo.title,
-        lastGameImg: lastGameInfo.img.substring(18, lastGameInfo.img.length - 1)
+        lastGameRating: lastGameInfo.rating,
+        lastGameImg: lastGameInfo.img
       });
     } else {
       this.setState({
@@ -42,7 +45,10 @@ export default class HeaderLib extends React.Component {
   render() {
     if (this.state.isGame) {
       return (
-        <div className="headerContainer" style={{ backgroundImage: `${this.state.lastGameImg}` }}>
+        <div
+          className="headerContainer"
+          style={{ backgroundImage: `url(${this.state.lastGameImg})` }}
+        >
           <div className="filter">
             <img src="./img/logo.svg" alt="logo du site" />
             <h1>{this.state.lastGameName}</h1>
@@ -51,7 +57,7 @@ export default class HeaderLib extends React.Component {
                 <div className="crossLine"></div>
                 <div className="crossLine"></div>
               </div>
-              <p>4.5</p>
+              <p>{this.state.lastGameRating / 10 / 2}</p>
               <label htmlFor="gameStatusHeader">
                 <select name="gameStatus" id="gameStatusHeader">
                   <option value="0">statut</option>
