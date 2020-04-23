@@ -29,11 +29,11 @@ class MyGameCard extends React.Component {
       cancelButtonText: 'Annuler'
     }).then(result => {
       if (result.value) {
-        Swal.fire('Supprimé!', 'Votre jeu a été supprimé.', 'succès');
+        Swal.fire('Supprimé!', 'Votre jeu a été supprimé.', 'success');
         localStorage.removeItem(title, JSON.stringify(values));
         setTimeout(function() {
           window.location.reload(true);
-        }, 1000);
+        }, 1500);
       }
     });
   }
