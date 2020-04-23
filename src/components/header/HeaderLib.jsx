@@ -16,14 +16,6 @@ export default class HeaderLib extends React.Component {
     this.handleLastGameAdded();
   }
 
-  componentDidUpdate() {
-    if (window.localStorage.length > 0) {
-      if (this.state.name !== window.localStorage.key(0).title) {
-        this.handleLastGameAdded();
-      }
-    }
-  }
-
   handleLastGameAdded() {
     if (this.state.isGame && window.localStorage.length > 0) {
       const key = window.localStorage.key(0);
