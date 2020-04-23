@@ -20,17 +20,18 @@ class MyGameCard extends React.Component {
       imgUrl
     };
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Etes-vous sûr?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Oui, je supprime!',
+      cancelButtonText: 'Annuler'
     }).then(result => {
       if (result.value) {
-        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        Swal.fire('Supprimé!', 'Votre jeu a été supprimé.', 'succès');
         localStorage.removeItem(title, JSON.stringify(values));
+        window.location.reload();
       }
     });
   }
