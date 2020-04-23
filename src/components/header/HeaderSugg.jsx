@@ -11,28 +11,25 @@ class HeaderSugg extends React.Component {
 
   getSuggGame(event) {
     const getDataNode = event.target.parentNode.parentNode;
-    console.log(getDataNode);
-    const imgUrl = getDataNode.children[1].style.cssText;
     const title = getDataNode.children[0].children[0].innerText;
     const values = {
-      title,
-      imgUrl
+      title
     };
     localStorage.setItem(title, JSON.stringify(values));
   }
 
   render() {
-    const { name } = this.props;
+    const { url, name } = this.props;
     const urlImg = url.substring(23, url.length - 3);
 
     return (
       <div className="HeaderSugg" style={{ backgroundImage: `url(${urlImg})` }}>
         <img src="./img/logo.svg" alt="logo icon" />
-        <div className="infoHeaderContainer">
-          <div className="crossLine">{/* <StarRating /> */}</div>
+        <div className="infoHeaderContainerSugg">
+          <div className="crossLineSugg">{/* <StarRating /> */}</div>
           <h1>Notre suggestion</h1>
           <h2>{name}</h2>
-          <button className="crossContainer" type="button">
+          <button className="crossContainerSugg" type="button" onClick={this.getSuggGame}>
             PLUS
           </button>
         </div>

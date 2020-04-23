@@ -1,5 +1,4 @@
 import React /* , { useState } */ from 'react';
-import Icon from './Icon';
 
 const StarRating = () => {
   // const [rating, setRating] = useState(null);
@@ -16,7 +15,6 @@ const StarRating = () => {
               value={ratingValue}
               /* onClick={()=> setRating(ratingValue)} */
             />
-            <Icon />
             {/* <IconFull className="fullStar" onClick={} /> */}
           </label>
         );
