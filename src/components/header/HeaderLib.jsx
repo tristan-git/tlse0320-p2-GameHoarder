@@ -8,29 +8,31 @@ export default class HeaderLib extends React.Component {
       lastGameImg: null,
       lastGameName: null,
       lastGameRate: null,
-      isGame: false
+      isGame: true
     };
     this.RemoveGameFromHeader = this.RemoveGameFromHeader.bind(this);
-    this.checkIsGameInLibrairy = this.checkIsGameInLibrairy.bind(this);
+  }
+  componentDidMount() {
+    this.handleLastGameAdded();
   }
 
   componentDidUpdate() {
-    if (this.state.lastGameName !== null && window.localStorage.lenght > 0) {
-      if (
-        this.state.lastGameName !== window.localStorage.getItem(window.localStorage.key(0)).title
-      ) {
-        this.checkIsGameInLibrairy();
+    if (window.localStorage.length > 0) {
+      if (this.state.name !== window.localStorage.key(0).title) {
+        this.handleLastGameAdded();
       }
     }
   }
 
-  componentDidMount() {
-    this.checkIsGameInLibrairy();
-  }
-
-  checkIsGameInLibrairy() {
-    if (localStorage.length > 0) {
-      this.handleLastGameAdded();
+  handleLastGameAdded() {
+    if (this.state.isGame && window.localStorage.length > 0) {
+      const key = window.localStorage.key(0);
+      const lastGameInfo = JSON.parse(window.localStorage.getItem(key));
+      this.setState({
+        isGame: true,
+        lastGameName: lastGameInfo.title,
+        lastGameImg: lastGameInfo.img.substring(18, lastGameInfo.img.length - 1)
+      });
     } else {
       this.setState({
         lastGameName: "Ajouter d'abord un jeux",
@@ -40,19 +42,9 @@ export default class HeaderLib extends React.Component {
     }
   }
 
-  handleLastGameAdded() {
-    const key = window.localStorage.key(0);
-    const lastGameInfo = JSON.parse(window.localStorage.getItem(key));
-    this.setState({
-      isGame: true,
-      lastGameName: lastGameInfo.title,
-      lastGameImg: lastGameInfo.img.substring(18, lastGameInfo.img.length - 1)
-    });
-  }
-
   RemoveGameFromHeader() {
     localStorage.removeItem(this.state.lastGameName);
-    this.checkIsGameInLibrairy();
+    this.handleLastGameAdded();
   }
 
   render() {
