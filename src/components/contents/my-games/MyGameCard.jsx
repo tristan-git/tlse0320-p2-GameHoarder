@@ -31,7 +31,9 @@ class MyGameCard extends React.Component {
       if (result.value) {
         Swal.fire('Supprimé!', 'Votre jeu a été supprimé.', 'succès');
         localStorage.removeItem(title, JSON.stringify(values));
-        window.location.reload();
+        setTimeout(function() {
+          window.location.reload(true);
+        }, 1000);
       }
     });
   }
