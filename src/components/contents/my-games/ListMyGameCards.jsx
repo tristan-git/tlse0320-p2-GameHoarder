@@ -22,7 +22,6 @@ const ListMyGameCards = ({ value }) => {
         />
       </div>
     ));
-
   return <div className="grid-cards-display">{displayMyGameCard2()}</div>;
 };
 
