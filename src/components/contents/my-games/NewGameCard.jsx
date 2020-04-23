@@ -21,6 +21,7 @@ class NewGameCard extends React.Component {
 
     console.log(values);
     localStorage.setItem(title, JSON.stringify(values));
+    window.location.reload(true);
   }
 
   render() {

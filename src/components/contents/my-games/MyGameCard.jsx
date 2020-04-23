@@ -1,22 +1,40 @@
 import React from 'react';
 import './MyGameCard.scss';
 import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
 import StarRating from './StarRating';
 
 class MyGameCard extends React.Component {
   constructor(props) {
     super(props);
+    this.getRemoveGame = this.getRemoveGame.bind(this);
   }
 
   getRemoveGame(event) {
-    const getDataNode = event.target.parentNode.parentNode;
-    const imgUrl = getDataNode.children[1].style.cssText;
-    const title = getDataNode.children[0].children[0].innerText;
+    this.getDataNode = event.target.parentNode.parentNode;
+    const imgUrl = this.getDataNode.children[1].style.cssText;
+    const title = this.getDataNode.children[0].children[0].innerText;
     const values = {
       title,
       imgUrl
     };
-    localStorage.removeItem(title, JSON.stringify(values));
+    Swal.fire({
+      title: 'Etes-vous sûr?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, je supprime!',
+      cancelButtonText: 'Annuler'
+    }).then(result => {
+      if (result.value) {
+        Swal.fire('Supprimé!', 'Votre jeu a été supprimé.', 'succès');
+        localStorage.removeItem(title, JSON.stringify(values));
+        setTimeout(function() {
+          window.location.reload(true);
+        }, 1000);
+      }
+    });
   }
 
   render() {
