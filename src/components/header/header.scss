@@ -43,7 +43,6 @@
             height: 5px;
             transition: all 0.2s ease-in;
           }
-
           .crossLine:nth-last-child(1) {
             transform: rotate(45deg);
             position: absolute;
@@ -126,10 +125,6 @@
           width: 40px;
           height: 5px;
           position: relative;
-        }
-        .crossLineSugg:nth-last-child(1) {
-          transform: rotate(45deg);
-          position: absolute;
         }
       }
     }

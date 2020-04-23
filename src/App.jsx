@@ -35,7 +35,6 @@ class App extends React.Component {
       <div className="App">
         <HeaderLib />
         <section id="content">
-          <Title title="Ma bibliothèque " span="de jeux" />
           <MyGames value={mygameInputValue} handleChange={handleChange} />
           <HeaderSugg
             name={JSON.parse(window.localStorage.getItem(localStorage.key(i))).title}
