@@ -11,6 +11,7 @@ class HeaderSugg extends React.Component {
       url: games[3].url,
       name: games[3].name
     };
+    this.handleHeaderChange = this.handleHeaderChange.bind(this);
   }
 
   handleHeaderChange() {
@@ -33,21 +34,21 @@ class HeaderSugg extends React.Component {
 
     return (
       <div className="HeaderSugg" style={{ backgroundImage: `url(${url})` }}>
-        <div className="filter">
-          <img src="./img/logo.svg" alt="logo icon" />
-          <div className="infoHeaderContainerSugg">
-            {/* <p>STARS</p> */}
-            <h1>Notre suggestion</h1>
-            <h2>{name}</h2>
-            <button
-              className="crossContainerSugg"
-              type="button"
-              onClick={this.AddGameToLibrary}
-              style={{ color: 'black' }}
-            >
-              <img src="./img/add.svg" alt="bouton plus" />
-            </button>
-          </div>
+        <img src="./img/logo.svg" alt="logo icon" />
+        {/*         <div className="HeaderStars">
+          <StarRating />
+        </div> */}
+        <div className="infoHeaderContainerSugg">
+          <h1>Notre suggestion</h1>
+          <h2>{name}</h2>
+          <button
+            className="crossContainerSugg"
+            type="button"
+            onClick={this.AddGameToLibrary}
+            style={{ color: 'black' }}
+          >
+            <img src="./img/add.svg" alt="bouton plus" />
+          </button>
         </div>
         {/* fonctionnalité supp */}
       </div>
