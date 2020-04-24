@@ -3,7 +3,7 @@ import React from 'react';
 import './MyGameCard.scss';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
-// import StarRating from './StarRating';
+import StarRating from './StarRating';
 
 class MyGameCard extends React.Component {
   constructor(props) {
