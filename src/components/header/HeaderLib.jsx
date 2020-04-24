@@ -1,5 +1,6 @@
 import React from 'react';
 import './header.scss';
+import Swal from 'sweetalert2';
 
 export default class HeaderLib extends React.Component {
   constructor(props) {
@@ -38,8 +39,30 @@ export default class HeaderLib extends React.Component {
   }
 
   RemoveGameFromHeader() {
-    localStorage.removeItem(this.state.lastGameName);
-    this.handleLastGameAdded();
+    Swal.fire({
+      title: 'Etes-vous sûr?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'var(--primary-color)',
+      cancelButtonColor: 'var(--alert-color)',
+      confirmButtonText: 'Oui, je supprime!',
+      cancelButtonText: 'Annuler'
+    }).then(result => {
+      if (result.value) {
+        Swal.fire({
+          title: 'Supprimé!',
+          text: 'Votre jeu a été supprimé.',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 900
+        });
+        localStorage.removeItem(this.state.lastGameName);
+        this.handleLastGameAdded();
+        setTimeout(function reload() {
+          window.location.reload(true);
+        }, 1000);
+      }
+    });
   }
 
   render() {
