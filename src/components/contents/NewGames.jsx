@@ -10,6 +10,7 @@ function NewGames({ value, handleChange }) {
   return (
     <div className="new-games">
       <div className="container-box">
+        <Title title="Ajouter des " span="jeux" />
         <Filters value={value} handleChange={handleChange} location="newgameInputValue" />
         <ListNewGameCards value={value} />
       </div>
