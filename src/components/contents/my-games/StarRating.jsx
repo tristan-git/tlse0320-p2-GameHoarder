@@ -11,6 +11,7 @@ const StarRating = () => {
           <div>
             <label htmlFor="rating">
               <input
+                className="starInput"
                 type="radio"
                 name="rating"
                 id="rating"

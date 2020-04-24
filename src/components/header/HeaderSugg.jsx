@@ -11,6 +11,7 @@ class HeaderSugg extends React.Component {
       url: games[0].url,
       name: games[0].name
     };
+    this.handleHeaderChange = this.handleHeaderChange.bind(this);
   }
 
   handleHeaderChange() {
@@ -34,8 +35,10 @@ class HeaderSugg extends React.Component {
     return (
       <div className="HeaderSugg" style={{ backgroundImage: `url(${url})` }}>
         <img src="./img/logo.svg" alt="logo icon" />
+        {/*         <div className="HeaderStars">
+          <StarRating />
+        </div> */}
         <div className="infoHeaderContainerSugg">
-          <p>STARS</p>
           <h1>Notre suggestion</h1>
           <h2>{name}</h2>
           <button

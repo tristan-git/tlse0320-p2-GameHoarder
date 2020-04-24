@@ -89,6 +89,16 @@
   flex-direction: column;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
   clip-path: polygon(0px 0px, 100% 0px, 99.74% 100%, 2px 80.76%);
+  .filter {
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
   h1 {
     font-size: 32px;
     font-family: 'Roboto', sans-serif;
@@ -99,6 +109,11 @@
     font-family: 'Roboto', sans-serif;
     color: white;
   }
+  /*   .HeaderStars {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+  } */
   .infoHeaderContainerSugg {
     width: 300px;
     height: 70px;
