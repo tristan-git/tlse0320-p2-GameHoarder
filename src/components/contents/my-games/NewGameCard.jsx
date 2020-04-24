@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-constructor */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -10,13 +11,14 @@ class NewGameCard extends React.Component {
   getDataGame() {
     const img = this.props.url;
     const title = this.props.name;
-    const rating = this.props.rating;
+    const { rating } = this.props;
 
     const values = {
       title,
       img,
       rating
     };
+
     localStorage.setItem(title, JSON.stringify(values));
     window.location.reload(true);
   }
@@ -45,10 +47,10 @@ class NewGameCard extends React.Component {
     );
   }
 }
-
 NewGameCard.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  rating: PropTypes.string.isRequired
 };
 
 export default NewGameCard;

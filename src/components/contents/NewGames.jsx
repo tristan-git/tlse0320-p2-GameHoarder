@@ -4,11 +4,13 @@ import ListNewGameCards from './my-games/ListNewGameCards';
 import ListTopThreeGames from './my-games/ListTopThreeGames';
 import Filters from './filter/Filters';
 import Title from './title/Title';
+import HeaderSugg from '../header/HeaderSugg';
 import './newgames.scss';
 
 function NewGames({ value, handleChange }) {
   return (
     <div className="new-games">
+      <HeaderSugg />
       <div className="container-box">
         <Title title="Ajouter des " span="jeux" />
         <Filters value={value} handleChange={handleChange} location="newgameInputValue" />
