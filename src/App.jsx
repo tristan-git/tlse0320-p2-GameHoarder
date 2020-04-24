@@ -6,7 +6,6 @@ import MyGames from './components/contents/MyGames';
 import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';
 import MobileNav from './components/mobile-nav/MobileNav';
-import GetGames from './components/data/getCardData/GetGames';
 
 axios.defaults.headers.common['user-key'] = 'e98a7b482e71cbb9d2b90309b365e3b4';
 

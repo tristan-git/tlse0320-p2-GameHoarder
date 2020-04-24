@@ -20,7 +20,6 @@ export default class GetGames extends React.Component {
 
   render() {
     const { games } = this.state;
-    console.log(this.state.games);
     return (
       <div>
         <p>
