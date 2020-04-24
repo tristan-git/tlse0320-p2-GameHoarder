@@ -139,6 +139,9 @@
           .group {
             display: flex;
 
+            button {
+              border: none;
+            }
             .wishlist {
               padding: 10px;
               background-color: var(--primary-color);

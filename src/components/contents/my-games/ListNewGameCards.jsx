@@ -6,7 +6,7 @@ import games from '../../data/games.json';
 const ListNewGameCards = ({ value }) => {
   const displayNewGameCards = value =>
     games
-      .filter(game => (value ? game.name.includes(value) : game))
+      .filter(game => (value ? game.name.toUpperCase().includes(value.toUpperCase()) : game))
       .map(game => (
         <div>
           <NewGameCard {...game} key={`new-game-${game.name}`} />

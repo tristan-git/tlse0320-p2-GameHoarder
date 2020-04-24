@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function TopFiveGames(props) {
+function TopThreeGame(props) {
   const { name, url, rating } = props;
 
   const setDatasGameLocalStorage = event => {
     const getDataNode = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
     const img = getDataNode.style.cssText;
     const title = getDataNode.children[0].children[0].children[0].innerText;
-    console.log(title);
     const values = {
       title,
       img
     };
-    localStorage.setItem(title, JSON.stringify(values));
+    window.localStorage.setItem(title, JSON.stringify(values));
   };
 
   const displayRating = () => {
@@ -42,9 +41,7 @@ function TopFiveGames(props) {
     if (rating < 80) {
       return repeatStart(4);
     }
-    if (rating >= 80) {
-      return repeatStart(5);
-    }
+    return repeatStart(5);
   };
 
   return (
@@ -58,9 +55,9 @@ function TopFiveGames(props) {
             <div className="wishlist">
               <img src="/img/svg/wishlist.svg" alt="icon whislist" />
             </div>
-            <div className="add" onClick={setDatasGameLocalStorage}>
+            <button className="add" type="submit" onClick={setDatasGameLocalStorage}>
               <img src="/img/svg/add.svg" alt="icon add" />
-            </div>
+            </button>
           </div>
         </div>
         <div className="footer">{displayRating()}</div>
@@ -69,6 +66,10 @@ function TopFiveGames(props) {
   );
 }
 
-TopFiveGames.propTypes = {};
+TopThreeGame.propTypes = {
+  name: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired
+};
 
-export default TopFiveGames;
+export default TopThreeGame;
