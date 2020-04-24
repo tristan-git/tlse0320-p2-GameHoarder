@@ -1,42 +1,34 @@
 import React, { useState } from 'react';
 
-function StarRating() {
-  const [rating, setRating] = useState(0);
-
+const StarRating = () => {
+  const [rating, setRating] = useState(null);
   return (
     <div className="Stars">
       {[...Array(5)].map(i => {
         /* const star = document.getElementById('star') */
         const ratingValue = i + 1;
         return (
-          // eslint-disable-next-line jsx-a11y/label-has-associated-control
-          <label>
-            <input
-              type="radio"
-              name="rating"
-              value={ratingValue}
-              onClick={() => setRating(ratingValue)}
-            />
-            <img
-              id="star"
-              value="star"
-              src="./img/star-white.svg"
-              alt="empty star"
-              color={ratingValue < rating ? '#ffd700' : '#808080'}
-            />
-          </label>
+          <div>
+            <label htmlFor="rating">
+              <input
+                type="radio"
+                name="rating"
+                id="rating"
+                value={ratingValue}
+                onClick={() => setRating(ratingValue)}
+              />
+              <img
+                className="Stars"
+                src="./img/star-white.svg"
+                alt="white star"
+                color={ratingValue < rating ? '#ffd700' : '#808080'}
+              />
+            </label>
+          </div>
         );
       })}
     </div>
   );
-}
-
-/* function Color(input) {
-    if (parseInt(input.value) > 9) {
-        input.style.backgroundColor = "red";
-    } else {
-        input.style.backgroundColor = "white";
-    }
- } */
+};
 
 export default StarRating;
