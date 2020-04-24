@@ -1,4 +1,4 @@
-import React /* , { useState } */ from 'react';
+import React, { useState } from 'react';
 
 const StarRating = () => {
   // const [rating, setRating] = useState(null);
@@ -7,16 +7,17 @@ const StarRating = () => {
       {[...Array(5)].map((_icons, i) => {
         const ratingValue = i + 1;
         return (
-          // eslint-disable-next-line jsx-a11y/label-has-associated-control
-          <label>
-            <input
-              type="radio"
-              name="rating"
-              value={ratingValue}
-              /* onClick={()=> setRating(ratingValue)} */
-            />
-            {/* <IconFull className="fullStar" onClick={} /> */}
-          </label>
+          <div>
+            <label htmlFor="rating">
+              <input
+                type="radio"
+                name="rating"
+                id="rating"
+                value={ratingValue}
+                onClick={() => setRating(ratingValue)}
+              />
+            </label>
+          </div>
         );
       })}
     </div>
