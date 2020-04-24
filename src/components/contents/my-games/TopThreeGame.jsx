@@ -80,15 +80,18 @@ import PropTypes from 'prop-types';
 function TopThreeGame(props) {
   const { name, url, rating } = props;
 
-  const setDatasGameLocalStorage = event => {
-    const getDataNode = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
-    const img = getDataNode.style.cssText;
-    const title = getDataNode.children[0].children[0].children[0].innerText;
+  const setDatasGameLocalStorage = () => {
+    const img = props.url;
+    const title = props.name;
+    const rating = props.rating;
+
     const values = {
       title,
-      img
+      img,
+      rating
     };
-    window.localStorage.setItem(title, JSON.stringify(values));
+    localStorage.setItem(title, JSON.stringify(values));
+    window.location.reload(true);
   };
 
   const displayRating = () => {
