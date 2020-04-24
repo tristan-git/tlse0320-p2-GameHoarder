@@ -53,7 +53,8 @@ export default class HeaderLib extends React.Component {
           title: 'Supprimé!',
           text: 'Votre jeu a été supprimé.',
           icon: 'success',
-          showConfirmButton: false
+          showConfirmButton: false,
+          timer: 900
         });
         localStorage.removeItem(this.state.lastGameName);
         this.handleLastGameAdded();

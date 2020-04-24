@@ -32,7 +32,8 @@ class MyGameCard extends React.Component {
           title: 'Supprimé!',
           text: 'Votre jeu a été supprimé.',
           icon: 'success',
-          showConfirmButton: false
+          showConfirmButton: false,
+          timer: 900
         });
         localStorage.removeItem(title, JSON.stringify(values));
         setTimeout(function reload() {
