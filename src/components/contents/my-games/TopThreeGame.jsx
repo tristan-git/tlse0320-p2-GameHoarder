@@ -92,45 +92,35 @@ function TopThreeGame(props) {
   };
 
   const displayRating = () => {
-    const starsHtml = () => {
+    const starsHtml = svgPath => {
       return (
         <div>
-          <img src="/img/svg/start-yellow.svg" alt="icon stars" />
+          <img src={`/img/svg/${svgPath}`} alt="icon stars" />
         </div>
       );
     };
-
-    const starsHtmlWhite = () => {
-      return (
-        <div>
-          <img src="/img/svg/white-stars-little.svg" alt="icon stars" />
-        </div>
-      );
-    };
-
-    const repeatStartYellow = nbRepeatYellow => {
-      const nbrepeatArr = [...Array(nbRepeatYellow)];
-      return nbrepeatArr.map(() => starsHtml());
-    };
-
-    const repeatStartWhite = nbRepeatWhite => {
-      const nbrepeatArrWhite = [...Array(nbRepeatWhite)];
-      return nbrepeatArrWhite.map(() => starsHtmlWhite());
+    const repeatStars = nbRepeatYellowStars => {
+      const nbrepeatArr = [...Array(5)];
+      return nbrepeatArr.map((val, i) => {
+        return i + 1 <= nbRepeatYellowStars
+          ? starsHtml('start-yellow.svg')
+          : starsHtml('white-stars-little.svg');
+      });
     };
 
     if (rating <= 20) {
-      return repeatStartYellow(1);
+      return repeatStars(1);
     }
     if (rating < 40) {
-      return repeatStartYellow(1);
+      return repeatStars(2);
     }
     if (rating < 60) {
-      return repeatStartYellow(1);
+      return repeatStars(3);
     }
     if (rating < 80) {
-      return repeatStartYellow(4);
+      return repeatStars(4);
     }
-    return repeatStartYellow(1);
+    return repeatStars(5);
   };
 
   return (
