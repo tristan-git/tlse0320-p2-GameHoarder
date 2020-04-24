@@ -12,17 +12,34 @@ const ListMyGameCards = ({ value }) => {
     );
   }
 
-  const displayMyGameCard2 = value =>
-    new Array(localStorage.length).fill().map((data, i) => (
-      <div>
-        <MyGameCard
-          name={JSON.parse(window.localStorage.getItem(localStorage.key(i))).title}
-          url={JSON.parse(window.localStorage.getItem(localStorage.key(i))).img}
-          key={`my-game-${JSON.parse(window.localStorage.getItem(localStorage.key(i))).title}`}
-        />
-      </div>
-    ));
+  const displayMyGameCard2 = () =>
+    new Array(localStorage.length).fill().map((data, i) => {
+      let test = JSON.parse(window.localStorage.getItem(localStorage.key(i))).title;
 
+      if (value && test.toUpperCase().includes(value.toUpperCase())) {
+        return (
+          <div>
+            <MyGameCard
+              name={JSON.parse(window.localStorage.getItem(localStorage.key(i))).title}
+              url={JSON.parse(window.localStorage.getItem(localStorage.key(i))).img}
+              key={`my-game-${JSON.parse(window.localStorage.getItem(localStorage.key(i))).title}`}
+            />
+          </div>
+        );
+      }
+
+      if (!value) {
+        return (
+          <div>
+            <MyGameCard
+              name={JSON.parse(window.localStorage.getItem(localStorage.key(i))).title}
+              url={JSON.parse(window.localStorage.getItem(localStorage.key(i))).img}
+              key={`my-game-${JSON.parse(window.localStorage.getItem(localStorage.key(i))).title}`}
+            />
+          </div>
+        );
+      }
+    });
   return <div className="grid-cards-display">{displayMyGameCard2()}</div>;
 };
 
