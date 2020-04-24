@@ -22,13 +22,18 @@ class MyGameCard extends React.Component {
       title: 'Etes-vous sûr?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: 'var(--primary-color)',
+      cancelButtonColor: 'var(--alert-color)',
       confirmButtonText: 'Oui, je supprime!',
       cancelButtonText: 'Annuler'
     }).then(result => {
       if (result.value) {
-        Swal.fire('Supprimé!', 'Votre jeu a été supprimé.', 'success');
+        Swal.fire({
+          title: 'Supprimé!',
+          text: 'Votre jeu a été supprimé.',
+          icon: 'success',
+          showConfirmButton: false
+        });
         localStorage.removeItem(title, JSON.stringify(values));
         setTimeout(function reload() {
           window.location.reload(true);
