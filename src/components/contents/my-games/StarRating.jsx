@@ -1,10 +1,12 @@
-import React /* , { useState } */ from 'react';
+import React, { useState } from 'react';
 
-const StarRating = () => {
-  // const [rating, setRating] = useState(null);
+function StarRating() {
+  const [rating, setRating] = useState(0);
+
   return (
     <div className="Stars">
-      {[...Array(5)].map((_icons, i) => {
+      {[...Array(5)].map(i => {
+        /* const star = document.getElementById('star') */
         const ratingValue = i + 1;
         return (
           // eslint-disable-next-line jsx-a11y/label-has-associated-control
@@ -13,14 +15,28 @@ const StarRating = () => {
               type="radio"
               name="rating"
               value={ratingValue}
-              /* onClick={()=> setRating(ratingValue)} */
+              onClick={() => setRating(ratingValue)}
             />
-            {/* <IconFull className="fullStar" onClick={} /> */}
+            <img
+              id="star"
+              value="star"
+              src="./img/star-white.svg"
+              alt="empty star"
+              color={ratingValue < rating ? '#ffd700' : '#808080'}
+            />
           </label>
         );
       })}
     </div>
   );
-};
+}
+
+/* function Color(input) {
+    if (parseInt(input.value) > 9) {
+        input.style.backgroundColor = "red";
+    } else {
+        input.style.backgroundColor = "white";
+    }
+ } */
 
 export default StarRating;
