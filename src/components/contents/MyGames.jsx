@@ -7,7 +7,7 @@ import './mygames.scss';
 
 const MyGames = ({ value, handleChange }) => {
   return (
-    <div className="my-games">
+    <div className="my-games container-box">
       <Filters value={value} handleChange={handleChange} location="mygameInputValue" />
       <ListMyGameCards value={value} />
     </div>
