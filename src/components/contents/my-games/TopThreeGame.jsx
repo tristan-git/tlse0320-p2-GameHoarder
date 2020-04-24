@@ -94,7 +94,7 @@ function TopThreeGame(props) {
     window.location.reload(true);
   };
 
-  const displayRating = () => {
+  function displayRating() {
     const starsHtml = svgPath => {
       return (
         <div>
@@ -124,7 +124,7 @@ function TopThreeGame(props) {
       return repeatStars(4);
     }
     return repeatStars(5);
-  };
+  }
 
   return (
     <div className="card" style={{ backgroundImage: `url('${url}')` }}>

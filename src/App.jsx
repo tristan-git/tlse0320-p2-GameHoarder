@@ -2,7 +2,6 @@ import React from 'react';
 import './App.scss';
 import axios from 'axios';
 import HeaderLib from './components/header/HeaderLib';
-import HeaderSugg from './components/header/HeaderSugg';
 import MyGames from './components/contents/MyGames';
 import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';

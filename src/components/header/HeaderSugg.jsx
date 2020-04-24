@@ -9,23 +9,21 @@ class HeaderSugg extends React.Component {
     super(props);
     this.state = {
       url: games[3].url,
-      name: games[3].name
+      name: games[3].name,
+      rating: games[3].rating
     };
-    this.handleHeaderChange = this.handleHeaderChange.bind(this);
-  }
 
-  handleHeaderChange() {
-    const key = games.key(0);
-    const gameInfo = JSON.parse(window.localStorage.setItem(key));
-    this.setState({
-      url: gameInfo.url,
-      name: gameInfo.name
-    });
+    this.AddGameToLibrary = this.AddGameToLibrary.bind(this);
   }
 
   AddGameToLibrary() {
-    localStorage.setItem({ url: this.state });
-    this.handleHeaderChange();
+    const values = {
+      title: this.state.name,
+      img: this.state.url,
+      rating: this.state.rating
+    };
+    localStorage.setItem(this.state.name, JSON.stringify(values));
+    window.location.reload(true);
   }
 
   render() {
