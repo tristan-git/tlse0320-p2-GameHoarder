@@ -6,7 +6,7 @@ const ListMyGameCards = ({ value }) => {
   if (localStorage.length === 0) {
     return (
       <div className="alert">
-        Vous n`&apos`avez pas encore de jeux dans votre bibliothèque,
+        Vous n&apos;avez pas encore de jeux dans votre bibliothèque,
         <span>vous pouvez en ajouter ici</span>
       </div>
     );
