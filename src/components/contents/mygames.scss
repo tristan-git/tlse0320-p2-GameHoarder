@@ -61,13 +61,4 @@
   input[type='radio'] {
     display: none;
   }
-
-  .Stars {
-    display: flex;
-  }
-
-  .emptyStar {
-    cursor: pointer;
-    transition: color 200ms;
-  }
 }
