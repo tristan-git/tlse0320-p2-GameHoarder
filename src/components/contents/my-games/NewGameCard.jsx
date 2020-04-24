@@ -18,9 +18,8 @@ class NewGameCard extends React.Component {
       title,
       img
     };
-
-    console.log(values);
     localStorage.setItem(title, JSON.stringify(values));
+    window.location.reload(true);
   }
 
   render() {
