@@ -11,54 +11,47 @@ class HeaderSugg extends React.Component {
       url: games[0].url,
       name: games[0].name
     };
-    this.handleHeaderChange = this.handleHeaderChange.bind(this);
-  }
-
-  handleHeaderChange() {
-    const key = games.key(0);
-    const gameInfo = JSON.parse(window.localStorage.setItem(key));
-    this.setState({
-      url: gameInfo.url,
-      name: gameInfo.name
-    });
+    this.AddGameToLibrary = this.AddGameToLibrary.bind(this);
   }
 
   AddGameToLibrary() {
-    localStorage.setItem({ url: this.state });
-    this.handleHeaderChange();
+    const values = {
+      title: this.state.name,
+      img: this.state.url,
+      rating: this.state.rating
+    };
+    localStorage.setItem(this.state.name, JSON.stringify(values));
+    window.location.reload(true);
   }
 
   render() {
     const { url } = this.state;
     const { name } = this.state;
-
     return (
       <div className="HeaderSugg" style={{ backgroundImage: `url(${url})` }}>
-        <img src="./img/logo.svg" alt="logo icon" />
-        {/*         <div className="HeaderStars">
-          <StarRating />
-        </div> */}
-        <div className="infoHeaderContainerSugg">
-          <h1>Notre suggestion</h1>
-          <h2>{name}</h2>
-          <button
-            className="crossContainerSugg"
-            type="button"
-            onClick={this.AddGameToLibrary}
-            style={{ color: 'black' }}
-          >
-            <img src="./img/add.svg" alt="bouton plus" />
-          </button>
+        <div className="filter">
+          <img src="./img/logo.svg" alt="logo icon" />
+          <div className="infoHeaderContainerSugg">
+            {/* <p>STARS</p> */}
+            <h1>Notre suggestion</h1>
+            <h2>{name}</h2>
+            <button
+              className="crossContainerSugg"
+              type="button"
+              onClick={this.AddGameToLibrary}
+              style={{ color: 'black' }}
+            >
+              <img src="./img/add.svg" alt="bouton plus" />
+            </button>
+          </div>
         </div>
         {/* fonctionnalité supp */}
       </div>
     );
   }
 }
-
 /* HeaderSugg.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired
 }; */
-
 export default HeaderSugg;
