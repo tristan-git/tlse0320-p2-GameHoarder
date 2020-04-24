@@ -34,7 +34,6 @@ class App extends React.Component {
         <HeaderLib />
         <section id="content">
           <MyGames value={mygameInputValue} handleChange={handleChange} />
-          <HeaderSugg />
           <NewGames value={newgameInputValue} handleChange={handleChange} />
         </section>
         <Footer />

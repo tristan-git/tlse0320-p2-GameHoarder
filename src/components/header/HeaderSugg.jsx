@@ -8,8 +8,8 @@ class HeaderSugg extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      url: games[0].url,
-      name: games[0].name
+      url: games[3].url,
+      name: games[3].name
     };
   }
 
@@ -33,19 +33,21 @@ class HeaderSugg extends React.Component {
 
     return (
       <div className="HeaderSugg" style={{ backgroundImage: `url(${url})` }}>
-        <img src="./img/logo.svg" alt="logo icon" />
-        <div className="infoHeaderContainerSugg">
-          <p>STARS</p>
-          <h1>Notre suggestion</h1>
-          <h2>{name}</h2>
-          <button
-            className="crossContainerSugg"
-            type="button"
-            onClick={this.AddGameToLibrary}
-            style={{ color: 'black' }}
-          >
-            <img src="./img/add.svg" alt="bouton plus" />
-          </button>
+        <div className="filter">
+          <img src="./img/logo.svg" alt="logo icon" />
+          <div className="infoHeaderContainerSugg">
+            {/* <p>STARS</p> */}
+            <h1>Notre suggestion</h1>
+            <h2>{name}</h2>
+            <button
+              className="crossContainerSugg"
+              type="button"
+              onClick={this.AddGameToLibrary}
+              style={{ color: 'black' }}
+            >
+              <img src="./img/add.svg" alt="bouton plus" />
+            </button>
+          </div>
         </div>
         {/* fonctionnalité supp */}
       </div>
