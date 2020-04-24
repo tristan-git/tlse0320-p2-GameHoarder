@@ -36,7 +36,7 @@ class NewGameCard extends React.Component {
             </div>
           </div>
           <p className="GameSupport">Game support</p>
-          <div className="GameRating">{rating / 10 / 2}</div>
+          <div className="GameRating">{rating / 10 / 2}/5</div>
           <div className="ButtonAddLibrary" onClick={this.getDataGame}>
             <img src="/img/svg/add.svg" alt="icon whislist" /> Ajouter à ma bibliothèque
           </div>

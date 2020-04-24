@@ -80,10 +80,10 @@ export default class HeaderLib extends React.Component {
                 <div className="crossLine"></div>
                 <div className="crossLine"></div>
               </div>
-              <p>{this.state.lastGameRating / 10 / 2}</p>
+              <p>{this.state.lastGameRating / 10 / 2}/5</p>
               <label htmlFor="gameStatusHeader">
                 <select name="gameStatus" id="gameStatusHeader">
-                  <option value="0">statut</option>
+                  <option value="0">statuts</option>
                   <option value="1">pas commencé</option>
                   <option value="2">En cours</option>
                   <option value="3">terminés</option>
