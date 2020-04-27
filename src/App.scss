@@ -156,7 +156,6 @@ select {
 #content {
   grid-area: content;
   background-color: #efefef;
-  padding: 60px;
 }
 #footer {
   grid-area: footer;
@@ -168,4 +167,9 @@ select {
   grid-area: mobilenav;
   background-color: #4c4c4c;
   padding: 60px;
+}
+
+.container-box {
+  max-width: 1080px;
+  margin: auto;
 }
