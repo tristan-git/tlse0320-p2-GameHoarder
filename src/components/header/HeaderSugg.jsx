@@ -1,8 +1,6 @@
 import React from 'react';
 import './header.scss';
-// import PropTypes from 'prop-types';
 import games from '../data/games.json';
-// import StarRating from '../contents/my-games/StarRating';
 
 class HeaderSugg extends React.Component {
   constructor(props) {
@@ -25,14 +23,13 @@ class HeaderSugg extends React.Component {
   }
 
   render() {
-    const { url } = this.state;
-    const { name } = this.state;
+    const { url, name } = this.state;
+
     return (
       <div className="HeaderSugg" style={{ backgroundImage: `url(${url})` }}>
         <div className="filter">
           <img src="./img/logo.svg" alt="logo icon" />
           <div className="infoHeaderContainerSugg">
-            {/* <p>STARS</p> */}
             <h1>Notre suggestion</h1>
             <h2>{name}</h2>
             <button
@@ -45,13 +42,9 @@ class HeaderSugg extends React.Component {
             </button>
           </div>
         </div>
-        {/* fonctionnalité supp */}
       </div>
     );
   }
 }
-/* HeaderSugg.propTypes = {
-  name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired
-}; */
+
 export default HeaderSugg;
