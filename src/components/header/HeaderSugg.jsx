@@ -7,7 +7,8 @@ class HeaderSugg extends React.Component {
     super(props);
     this.state = {
       url: games[0].url,
-      name: games[0].name
+      name: games[0].name,
+      rating: games[0].rating
     };
     this.AddGameToLibrary = this.AddGameToLibrary.bind(this);
   }
