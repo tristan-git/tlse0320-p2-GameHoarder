@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Icon from './Icon';
 
 const StarRating = () => {
   const [rating, setRating] = useState(1);
@@ -17,11 +16,6 @@ const StarRating = () => {
                 id="rating"
                 value={ratingValue}
                 onClick={() => setRating(ratingValue)}
-              />
-              <Icon
-                icon="star-empty"
-                className="star"
-                image={ratingValue < rating ? 'icons.starEmpty' : 'icons.starFull'}
               />
             </label>
           </div>
