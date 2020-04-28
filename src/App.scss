@@ -97,8 +97,6 @@ video {
 body {
   line-height: 1;
   font-size: 0.8rem;
-  grid-area: header;
-  background-color: #efefef;
   scroll-behavior: smooth;
 }
 
@@ -148,6 +146,16 @@ select {
   display: grid;
   grid-template-areas: 'header' 'content' 'footer' 'mobilenav';
   margin: auto;
+}
+
+body {
+  background-color: #efefef;
+}
+
+#header {
+  grid-area: header;
+  background-color: #ddd;
+  padding: 60px;
 }
 
 #content {
