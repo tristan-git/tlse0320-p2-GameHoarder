@@ -1,11 +1,10 @@
 import React from 'react';
 import './MyGameCard.scss';
 import PropTypes from 'prop-types';
-import StarRating from './StarRating';
-
 class MyGameCard extends React.Component {
   constructor(props) {
     super(props);
+    this.getRemoveGame = this.getRemoveGame.bind(this);
   }
 
   getRemoveGame(event) {
@@ -33,8 +32,6 @@ class MyGameCard extends React.Component {
         </div>
         <div className="image" style={{ backgroundImage: `url(${urlImg})` }} />
         <div className="footer">
-          <StarRating className="Stars" />
-
           <select name="statuts" className="statuts">
             <option value="Statuts">STATUTS</option>
             <option value="Pas commencé">Pas commencé</option>

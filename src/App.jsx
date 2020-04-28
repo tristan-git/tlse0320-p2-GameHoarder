@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.scss';
 import axios from 'axios';
-import Header from './components/header/Header';
+import HeaderLib from './components/header/HeaderLib';
+import HeaderSugg from './components/header/HeaderSugg';
 import MyGames from './components/contents/MyGames';
 import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';
 import MobileNav from './components/mobile-nav/MobileNav';
-import Title from './components/contents/title/Title';
-import GetGames from './components/data/getCardData/GetCardData';
+// import GetGames from './components/data/getCardData/GetCardData';
 
 axios.defaults.headers.common['user-key'] = 'e98a7b482e71cbb9d2b90309b365e3b4';
 
@@ -32,11 +32,10 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Header />
+        <HeaderLib />
         <section id="content">
-          <Title title="Ma bibliothèque " span="de jeux" />
           <MyGames value={mygameInputValue} handleChange={handleChange} />
-          <Title title="Ajouter des " span="jeux" />
+          <HeaderSugg />
           <NewGames value={newgameInputValue} handleChange={handleChange} />
         </section>
         <Footer />

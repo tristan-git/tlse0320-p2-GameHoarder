@@ -4,29 +4,25 @@ import PropTypes from 'prop-types';
 class NewGameCard extends React.Component {
   constructor(props) {
     super(props);
+    this.getDataGame = this.getDataGame.bind(this);
   }
 
-  getDataGame(event) {
-    const getDataNode = event.target.parentNode.parentNode;
-    const img = getDataNode.children[0].style.cssText;
-    const title = getDataNode.children[1].children[0].children[0].innerText;
-
-    console.log(img);
-    console.log(title);
+  getDataGame() {
+    const img = this.props.url;
+    const title = this.props.name;
+    const { rating } = this.props;
 
     const values = {
       title,
-      img
+      img,
+      rating
     };
 
-    console.log(values);
     localStorage.setItem(title, JSON.stringify(values));
   }
 
   render() {
-    const { name } = this.props;
-    const { url } = this.props;
-
+    const { rating, name, url } = this.props;
     return (
       <div className="Card">
         <div className="ImageCard" style={{ backgroundImage: `url(${url})` }} />
@@ -36,7 +32,7 @@ class NewGameCard extends React.Component {
             <div className="ButtonAddWishlist">Wishlist</div>
           </div>
           <p className="GameSupport">Game support</p>
-          <div className="GameRating">Game Rating</div>
+          <div className="GameRating">{rating / 10 / 2}</div>
           <div className="ButtonAddLibrary" onClick={this.getDataGame}>
             Ajouter à ma bibliothèque
           </div>
@@ -45,10 +41,10 @@ class NewGameCard extends React.Component {
     );
   }
 }
-
 NewGameCard.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  rating: PropTypes.string.isRequired
 };
 
 export default NewGameCard;

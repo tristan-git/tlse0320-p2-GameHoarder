@@ -13,15 +13,14 @@ export default class GetGames extends React.Component {
   componentDidMount() {
     axios
       .post('https://api-v3.igdb.com/games')
-      .then(res => {
-        return { games: res.data };
-      })
+      .then(res => res.data)
       .then(res => this.setState({ games: res }))
       .catch(err => console.log(err));
   }
 
   render() {
     const { games } = this.state;
+    console.log(this.state.games);
     return (
       <div>
         <p>
