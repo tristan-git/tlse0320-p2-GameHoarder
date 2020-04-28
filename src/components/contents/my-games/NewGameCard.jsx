@@ -10,7 +10,7 @@ class NewGameCard extends React.Component {
   getDataGame() {
     const img = this.props.url;
     const title = this.props.name;
-    const rating = this.props.rating;
+    const { rating } = this.props;
 
     const values = {
       title,
@@ -18,14 +18,11 @@ class NewGameCard extends React.Component {
       rating
     };
 
-    console.log(values);
     localStorage.setItem(title, JSON.stringify(values));
   }
 
   render() {
-    const { name } = this.props;
-    const { url } = this.props;
-    const { rating } = this.props;
+    const { rating, name, url } = this.props;
     return (
       <div className="Card">
         <div className="ImageCard" style={{ backgroundImage: `url(${url})` }} />
@@ -44,10 +41,10 @@ class NewGameCard extends React.Component {
     );
   }
 }
-
 NewGameCard.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  rating: PropTypes.string.isRequired
 };
 
 export default NewGameCard;
