@@ -56,6 +56,10 @@
 
   .GameName {
     width: 100%;
+    max-width: 140px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .GameSupport {
@@ -68,6 +72,11 @@
 
   .ButtonAddLibrary {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: 5px;
+    }
   }
 
   /////////////////////////

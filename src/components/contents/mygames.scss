@@ -40,6 +40,10 @@
 
   .header h3 {
     font-size: 16px;
+    max-width: 250px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .image {

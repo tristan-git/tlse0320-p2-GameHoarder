@@ -29,12 +29,14 @@ class NewGameCard extends React.Component {
         <div className="GameInfo">
           <div className="GameInfoTitle">
             <h3 className="GameName">{name}</h3>
-            <div className="ButtonAddWishlist">Wishlist</div>
+            <div className="ButtonAddWishlist">
+              <img src="/img/svg/wishlist.svg" alt="icon whislist" />
+            </div>
           </div>
           <p className="GameSupport">Game support</p>
           <div className="GameRating">{rating / 10 / 2}</div>
           <div className="ButtonAddLibrary" onClick={this.getDataGame}>
-            Ajouter à ma bibliothèque
+            <img src="/img/svg/add.svg" alt="icon whislist" /> Ajouter à ma bibliothèque
           </div>
         </div>
       </div>
