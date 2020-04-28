@@ -4,10 +4,12 @@ import ListMyGameCards from './my-games/ListMyGameCards';
 import Filters from './filter/Filters';
 
 import './mygames.scss';
+import Title from './title/Title';
 
 const MyGames = ({ value, handleChange }) => {
   return (
     <div className="my-games">
+      <Title title="Ma bibliothèque " span="de jeux" />
       <Filters value={value} handleChange={handleChange} location="mygameInputValue" />
       <ListMyGameCards value={value} />
     </div>
