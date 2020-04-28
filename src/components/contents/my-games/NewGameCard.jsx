@@ -10,7 +10,7 @@ class NewGameCard extends React.Component {
   getDataGame() {
     const img = this.props.url;
     const title = this.props.name;
-    const { rating, name, url } = this.props;
+    const { rating } = this.props;
 
     const values = {
       title,
