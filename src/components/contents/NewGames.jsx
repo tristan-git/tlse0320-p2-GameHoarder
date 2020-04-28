@@ -8,14 +8,17 @@ import './newgames.scss';
 
 function NewGames({ value, handleChange }) {
   return (
-    <div className="new-games" id="newGames">
-      <Title title="Ajouter des " span="jeux" />
-      <Filters value={value} handleChange={handleChange} location="newgameInputValue" />
-      <ListNewGameCards value={value} />
-
+    <div className="new-games">
+      <div className="container-box">
+        <Title title="Ajouter des " span="jeux" />
+        <Filters value={value} handleChange={handleChange} location="newgameInputValue" />
+        <ListNewGameCards value={value} />
+      </div>
       <div className="container-top-five">
-        <Title title="Les jeux " span="du moment" />
-        <ListTopThreeGames />
+        <div className="container-box">
+          <Title title="Les jeux " span="du moment" />
+          <ListTopThreeGames />
+        </div>
       </div>
     </div>
   );
