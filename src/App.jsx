@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import axios from 'axios';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import HeaderLib from './components/header/HeaderLib';
 import HeaderSugg from './components/header/HeaderSugg';
 import MyGames from './components/contents/MyGames';
@@ -31,14 +32,22 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <HeaderLib />
-        <section id="content">
-          <MyGames value={mygameInputValue} handleChange={handleChange} />
-          <HeaderSugg />
-          <NewGames value={newgameInputValue} handleChange={handleChange} />
-        </section>
-        <Footer />
-        <MobileNav />
+        <Router>
+          <section id="content">
+            <Switch>
+              <Route exact path="/">
+                <HeaderLib />
+                <MyGames value={mygameInputValue} handleChange={handleChange} />
+              </Route>
+              <Route exact path="/ajouter-un-jeu">
+                <HeaderSugg />
+                <NewGames value={newgameInputValue} handleChange={handleChange} />
+              </Route>
+            </Switch>
+          </section>
+          <Footer />
+          <MobileNav />
+        </Router>
       </div>
     );
   }
