@@ -1,26 +1,43 @@
 import React from 'react';
 import './MyGameCard.scss';
 import PropTypes from 'prop-types';
+
 class MyGameCard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      url: null,
+      name: null
+    };
     this.getRemoveGame = this.getRemoveGame.bind(this);
   }
 
-  getRemoveGame(event) {
-    const getDataNode = event.target.parentNode.parentNode;
-    const imgUrl = getDataNode.children[1].style.cssText;
-    const title = getDataNode.children[0].children[0].innerText;
+  componentDidMount() {
+    this.setState({
+      url: this.props.data.img,
+      name: this.props.data.title
+    });
+  }
+
+  getRemoveGame() {
+    const { url, name } = this.state;
+    console.log(this.props);
+    const { handleGameDelete, id, rating } = this.props.data;
+    const img = url;
+    const title = name;
     const values = {
+      id,
       title,
-      imgUrl
+      img,
+      rating
     };
-    localStorage.removeItem(title, JSON.stringify(values));
+    handleGameDelete(id);
+    localStorage.removeItem(id, JSON.stringify(values));
   }
 
   render() {
-    const { url, name } = this.props;
-
+    console.log('my game card:' + this.props.data);
+    const { url, name } = this.state;
     return (
       <section className="Card">
         <div className="header">
