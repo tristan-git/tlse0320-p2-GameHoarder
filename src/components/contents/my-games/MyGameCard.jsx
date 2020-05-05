@@ -1,6 +1,7 @@
 import React from 'react';
 import './MyGameCard.scss';
 import PropTypes from 'prop-types';
+
 class MyGameCard extends React.Component {
   constructor(props) {
     super(props);
