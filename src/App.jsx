@@ -9,6 +9,7 @@ import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';
 import MobileNav from './components/mobile-nav/MobileNav';
 import NavDesktop from './components/nav-desktop/NavDesktop';
+import DisplayWishlist from './components/contents/my-games/DisplayWishlist';
 
 axios.defaults.headers.common['user-key'] = 'e98a7b482e71cbb9d2b90309b365e3b4';
 
@@ -105,7 +106,6 @@ class App extends React.Component {
                 <HeaderLib
                   gameToRemove={this.gameToRemove}
                   listGamesLib={this.state.listGamesLib}
-                  gameToRemove={this.gameToRemove}
                 />
                 <MyGames
                   value={mygameInputValue}
