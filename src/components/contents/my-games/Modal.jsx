@@ -7,9 +7,12 @@ export default function Modal({ handleClose, show, children }) {
     <div className={show ? 'modal display-block' : 'modal display-none'}>
       <section className="modal-main">
         {children}
-        <button type="button" onClick={handleClose}>
-          Close
-        </button>
+        <div className="modal-div">
+          <p>Votre jeu a bien été ajouté à votre Wishlist</p>
+          <button className="modal-button" type="button" onClick={handleClose}>
+            Well done
+          </button>
+        </div>
       </section>
     </div>
   );

@@ -11,9 +11,7 @@ class NewGameCard extends React.Component {
       isWishlist: false
     };
     this.getDataGame = this.getDataGame.bind(this);
-    this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
-    this.addGameToWishlist = this.addGameToWishlist.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -54,25 +52,6 @@ class NewGameCard extends React.Component {
   } */
 
   getDataGame() {
-    const { url: img, name: title, rating } = this.props;
-
-    const values = {
-      title,
-      img,
-      rating
-    };
-    localStorage.setItem(title, JSON.stringify(values));
-  }
-
-  handleClick() {
-    this.setState(state => ({
-      isWishlist: !state.isWishlist,
-      show: !state.show
-    }));
-    this.addGameToWishlist();
-  }
-
-  addGameToWishlist() {
     const { url: img, name: title, rating, isWishlist } = this.props;
 
     const values = {
@@ -84,8 +63,12 @@ class NewGameCard extends React.Component {
     localStorage.setItem(title, JSON.stringify(values));
   }
 
-  showModal() {
-    this.setState({ show: true });
+  handleClick() {
+    this.setState(state => ({
+      isWishlist: !state.isWishlist,
+      show: !state.show
+    }));
+    this.getDataGame();
   }
 
   hideModal() {
