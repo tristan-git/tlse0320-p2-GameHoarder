@@ -22,7 +22,7 @@
     position: fixed;
     background: #2929d0;
     width: 30%;
-    height: 30vh;
+    height: 20vh;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -36,10 +36,11 @@
   color: whitesmoke;
   font-size: 20px;
   justify-content: center;
+  margin: 2%;
 }
 
 .modal-div p {
-  margin: 5% auto;
+  margin: 4% auto;
   width: 80%;
   text-align: center;
 }

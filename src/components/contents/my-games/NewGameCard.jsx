@@ -52,15 +52,17 @@ class NewGameCard extends React.Component {
   } */
 
   getDataGame() {
-    const { url: img, name: title, rating, isWishlist } = this.props;
-
+    const { url: img, name: title, rating, handleGamesList, id, isWishlist } = this.props;
     const values = {
+      addingDate: new Date(),
       title,
       img,
       rating,
-      isWishlist
+      isWishlist,
+      id,
+      addToLib: true
     };
-    localStorage.setItem(title, JSON.stringify(values));
+    handleGamesList(values);
   }
 
   handleClick() {
@@ -76,8 +78,7 @@ class NewGameCard extends React.Component {
   }
 
   render() {
-    const { rating, name, url } = this.props;
-    const { show, isWishlist } = this.state;
+    const { rating, name, url, addToLib } = this.props;
     return (
       <div className="Card">
         <div className="ImageCard" style={{ backgroundImage: `url(${url})` }} />
@@ -115,6 +116,15 @@ class NewGameCard extends React.Component {
                 <img src="/img/svg/add.svg" alt="icon library" />
               </button>
             </div>
+          </div>
+          <p className="GameSupport">Game support</p>
+          <div className="GameRating">{rating / 10 / 2}</div>
+          <div className="ButtonAddLibrary" onClick={this.getDataGame}>
+            <img
+              src={addToLib ? '/img/svg/delete-white.svg' : '/img/svg/add.svg'}
+              alt="icon add library"
+            />
+            {addToLib ? 'Déjà dans votre bibliothèque.' : 'Ajouter à votre bibliothèque.'}
           </div>
         </div>
       </div>
