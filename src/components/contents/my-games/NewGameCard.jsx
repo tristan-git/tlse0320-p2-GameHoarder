@@ -13,6 +13,8 @@ class NewGameCard extends React.Component {
     this.getDataGame = this.getDataGame.bind(this);
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.addGameToWishlist = this.addGameToWishlist.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   // getDataGame() {
@@ -42,15 +44,42 @@ class NewGameCard extends React.Component {
   //   }
   // }
 
-  getDataGame(isWhislist) {
+  /*   componentDidUpdate(prevProps) {
+    // Utilisation classique (pensez bien à comparer les props) :
+    if (this.isWishlist !== prevProps.isWishlist) {
+      this.setState({
+        isWishlist: true
+      });
+    }
+  } */
+
+  getDataGame() {
     const { url: img, name: title, rating } = this.props;
 
-    const value = {
+    const values = {
       title,
       img,
-      rating,
-      isWishlist: isWhislist
+      rating
     };
+    localStorage.setItem(title, JSON.stringify(values));
+  }
+
+  handleClick() {
+    this.setState(state => ({
+      isWishlist: !state.isWishlist
+    }));
+    this.addGameToWishlist();
+  }
+
+  addGameToWishlist() {
+    const { url: img, name: title, rating } = this.props;
+
+    const values = {
+      title,
+      img,
+      rating
+    };
+    localStorage.setItem(title, JSON.stringify(values));
   }
 
   showModal() {
@@ -88,14 +117,13 @@ class NewGameCard extends React.Component {
               <button
                 value={isWishlist}
                 type="button"
-                onClick={this.getDataGame('true')}
+                onClick={this.handleClick}
                 style={{
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: 'pointer'
                 }}
               >
-                {/* {isWishlist ? this.getDataGame() : null} */}
                 <img src="/img/svg/wishlist.svg" alt="icon wishlist" />
               </button>
             </div>
@@ -124,7 +152,8 @@ class NewGameCard extends React.Component {
 NewGameCard.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired
+  rating: PropTypes.string.isRequired,
+  isWishlist: PropTypes.string.isRequired
 };
 
 export default NewGameCard;
