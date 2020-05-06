@@ -29,39 +29,39 @@ class App extends React.Component {
     if (window.localStorage.getItem('gamesList')) {
       let gamesList = window.localStorage.getItem('gamesList');
       gamesList = JSON.parse(gamesList);
+      gamesList = gamesList.sort((a, b) => new Date(b.addingDate) - new Date(a.addingDate));
       this.setState({ listGamesLib: gamesList });
-      console.log(`componentDidMount${this.state.listGamesLib}`);
     }
   }
 
   componentDidUpdate() {
-    console.log('compo did up');
-    const { listGamesLib, prevListGamesLib } = this.state;
-    window.localStorage.setItem('gamesList', JSON.stringify(listGamesLib));
-    const gamesList = window.localStorage.getItem('gamesList');
-    console.log(listGamesLib + JSON.parse(window.localStorage.getItem('gamesList')).length);
-    // if (prevListGamesLib.length !== listGamesLib.length) {
-    //   console.log(true)
-    //   this.setState({ prevListGamesLib: listGamesLib });
-    // }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log(`${{ ...prevState }} ${{ ...prevProps }}`);
-    if (prevState.listGamesLib !== this.state.listGamesLib) {
-      this.setState({ prevListGamesLib: prevState.listGamesLib });
+    let { listGamesLib } = this.state;
+    const listGamesLibReverse = listGamesLib.sort(
+      (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
+    );
+    window.localStorage.setItem('gamesList', JSON.stringify(listGamesLibReverse));
+    if (
+      this.state.prevListGamesLib.length !== listGamesLibReverse.length ||
+      this.state.prevListGamesLib === []
+    ) {
+      console.log('setstate');
+      this.setState(prevState => {
+        return {
+          ...prevState,
+          listGamesLib: listGamesLibReverse,
+          prevListGamesLib: listGamesLibReverse
+        };
+      });
     }
   }
 
   handleGamesList(values) {
-    console.log(`handleGamesList before${this.state.listGamesLib}`);
     this.setState(prevState => {
       return {
         ...prevState,
         listGamesLib: [...prevState.listGamesLib, values]
       };
     });
-    console.log(`handleGamesList after${this.state.listGamesLib}`);
   }
 
   gameToRemove(gameToRemove) {
@@ -71,12 +71,11 @@ class App extends React.Component {
       if (gameToRemove === game.title) {
         return newTab.indexOf(game);
       }
+      return undefined;
     });
     index = index.filter(el => el !== undefined);
-    if (index[0] > -1) {
-      newTab.splice(index[0], 1);
-      this.setState({ listGamesLib: newTab });
-    }
+    newTab.splice(index[0], 1);
+    this.setState({ listGamesLib: newTab });
   }
 
   handleChange(event) {

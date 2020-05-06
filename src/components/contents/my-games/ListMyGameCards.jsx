@@ -12,40 +12,27 @@ const ListMyGameCards = ({ value, listGamesLib, gameToRemove }) => {
     );
   }
   const displayMyGameCard2 = () =>
-    listGamesLib
-      .sort((a, b) => new Date(b.addingDate) - new Date(a.addingDate))
-      .map((data, i) => {
-        // const gamesNameLSt = JSON.parse(localStorage.getItem(localStorage.key(i))).title;
+    listGamesLib.map((data, i) => {
+      const gamesNameLSt = data.title;
 
-        // if (value && gamesNameLSt.toUpperCase().includes(value.toUpperCase())) {
+      if (value && gamesNameLSt.toUpperCase().includes(value.toUpperCase())) {
         return (
           <div>
-            <MyGameCard
-              data={data}
-              key={i}
-              gameToRemove={gameToRemove}
-              listGamesLib={listGamesLib}
-            />
+            <MyGameCard data={data} key={i} gameToRemove={gameToRemove} />
           </div>
         );
-      });
+      }
+
+      if (!value) {
+        return (
+          <div>
+            <MyGameCard data={data} key={i} gameToRemove={gameToRemove} />
+          </div>
+        );
+      }
+    });
   return <div className="grid-cards-display">{displayMyGameCard2()}</div>;
 };
-
-//   if (!value){
-//     return (
-//       <div>
-//         <MyGameCard
-//           rating={JSON.parse(localStorage.getItem(localStorage.key(i))).rating}
-//           id={JSON.parse(localStorage.getItem(localStorage.key(i))).id}
-//           name={JSON.parse(localStorage.getItem(localStorage.key(i))).title}
-//           url={JSON.parse(localStorage.getItem(localStorage.key(i))).img}
-//           key={`my-game-${JSON.parse(localStorage.getItem(localStorage.key(i))).title}`}
-//           handleGameDelete={handleGameDelete}
-//         />
-//       </div>
-//     );
-// });
 
 ListMyGameCards.propTypes = {
   value: PropTypes.string.isRequired,
