@@ -45,7 +45,7 @@ class NewGameCard extends React.Component {
   getDataGame(isWhislist) {
     const { url: img, name: title, rating } = this.props;
 
-    const values = {
+    const value = {
       title,
       img,
       rating,
@@ -71,6 +71,7 @@ class NewGameCard extends React.Component {
           <div className="GameInfoTitle">
             <div className="NameWish">
               <h3 className="GameName">{name}</h3>
+              {/* Afficher une popup contenant les jeux de la wishlist */}
               <Modal show={show} handleClose={this.hideModal} />
               <button
                 type="button"
@@ -83,6 +84,7 @@ class NewGameCard extends React.Component {
               >
                 <img src="img/svg/start-white.svg" alt="icon star" />
               </button>
+              {/* Ajouter un jeu à la wishlist */}
               <button
                 value={isWishlist}
                 type="button"
