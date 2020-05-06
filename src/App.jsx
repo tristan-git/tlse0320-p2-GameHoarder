@@ -125,7 +125,6 @@ class App extends React.Component {
             </Switch>
           </section>
           <Footer />
-          <MobileNav />
         </Router>
       </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DisplayRating from './DisplayRating';
 
 class NewGameCard extends React.Component {
   constructor(props) {
@@ -26,14 +27,21 @@ class NewGameCard extends React.Component {
       <div className="Card">
         <div className="ImageCard" style={{ backgroundImage: `url(${url})` }} />
         <div className="GameInfo">
-          <div className="GameInfoTitle">
-            <h3 className="GameName">{name}</h3>
-            <div className="ButtonAddWishlist">
-              <img src="/img/svg/wishlist.svg" alt="icon whislist" />
+          <div>
+            {' '}
+            <div className="GameInfoTitle">
+              <h3 className="GameName">{name}</h3>
+              <div className="ButtonAddWishlist">
+                <img src="/img/svg/wishlist.svg" alt="icon whislist" />
+              </div>
             </div>
+            <p className="GameSupport">Game support</p>
           </div>
-          <p className="GameSupport">Game support</p>
-          <div className="GameRating">{rating / 10 / 2}</div>
+
+          <div className="ratingSuggestion">
+            <DisplayRating rating={rating} />
+          </div>
+
           <div className="ButtonAddLibrary" onClick={this.getDataGame}>
             <img
               src={addToLib ? '/img/svg/delete-white.svg' : '/img/svg/add.svg'}
