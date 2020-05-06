@@ -31,6 +31,7 @@ const ListMyGameCards = ({ value, listGamesLib, gameToRemove }) => {
         );
       }
     });
+
   return <div className="grid-cards-display">{displayMyGameCard2()}</div>;
 };
 
