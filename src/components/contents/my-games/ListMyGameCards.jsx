@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MyGameCard from './MyGameCard';
 
-const ListMyGameCards = ({ value }) => {
-  if (localStorage.length === 0) {
+const ListMyGameCards = ({ value, handleGameDelete, listGamesLib }) => {
+  if (listGamesLib.length === 0) {
     return (
       <div className="alert">
         Vous n&apos;avez pas encore de jeux dans votre bibliothèque,
@@ -13,31 +13,31 @@ const ListMyGameCards = ({ value }) => {
   }
 
   const displayMyGameCard2 = () =>
-    new Array(localStorage.length).fill().map((data, i) => {
-      const gamesNameLSt = JSON.parse(localStorage.getItem(localStorage.key(i))).title;
+    listGamesLib.map((data, i) => {
+      // const gamesNameLSt = JSON.parse(localStorage.getItem(localStorage.key(i))).title;
 
-      if (value && gamesNameLSt.toUpperCase().includes(value.toUpperCase())) {
-        return (
-          <div>
-            <MyGameCard
-              name={JSON.parse(localStorage.getItem(localStorage.key(i))).title}
-              url={JSON.parse(localStorage.getItem(localStorage.key(i))).img}
-              key={`my-game-${JSON.parse(localStorage.getItem(localStorage.key(i))).title}`}
-            />
-          </div>
-        );
-      }
-      if (!value)
-        return (
-          <div>
-            <MyGameCard
-              name={JSON.parse(localStorage.getItem(localStorage.key(i))).title}
-              url={JSON.parse(localStorage.getItem(localStorage.key(i))).img}
-              key={`my-game-${JSON.parse(localStorage.getItem(localStorage.key(i))).title}`}
-            />
-          </div>
-        );
+      // if (value && gamesNameLSt.toUpperCase().includes(value.toUpperCase())) {
+      return (
+        <div>
+          <MyGameCard data={data} key={i} handleGameDelete={handleGameDelete} />
+        </div>
+      );
     });
+
+  //   if (!value){
+  //     return (
+  //       <div>
+  //         <MyGameCard
+  //           rating={JSON.parse(localStorage.getItem(localStorage.key(i))).rating}
+  //           id={JSON.parse(localStorage.getItem(localStorage.key(i))).id}
+  //           name={JSON.parse(localStorage.getItem(localStorage.key(i))).title}
+  //           url={JSON.parse(localStorage.getItem(localStorage.key(i))).img}
+  //           key={`my-game-${JSON.parse(localStorage.getItem(localStorage.key(i))).title}`}
+  //           handleGameDelete={handleGameDelete}
+  //         />
+  //       </div>
+  //     );
+  // });
   return <div className="grid-cards-display">{displayMyGameCard2()}</div>;
 };
 

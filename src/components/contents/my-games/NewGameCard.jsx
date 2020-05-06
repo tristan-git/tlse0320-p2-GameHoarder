@@ -4,21 +4,22 @@ import PropTypes from 'prop-types';
 class NewGameCard extends React.Component {
   constructor(props) {
     super(props);
+
     this.getDataGame = this.getDataGame.bind(this);
   }
 
   getDataGame() {
-    const img = this.props.url;
-    const title = this.props.name;
-    const { rating } = this.props;
+    const { url: img, name: title, rating, handleGamesList, id, handleGameAdded } = this.props;
 
     const values = {
+      addingDate: new Date(),
       title,
       img,
-      rating
+      rating,
+      id
     };
 
-    localStorage.setItem(title, JSON.stringify(values));
+    handleGamesList(values);
   }
 
   render() {
