@@ -46,7 +46,6 @@ class NewGameCard extends React.Component {
     const { url: img, name: title, rating } = this.props;
 
     const values = {
-      addingDate: new Date(),
       title,
       img,
       rating,
@@ -73,6 +72,17 @@ class NewGameCard extends React.Component {
             <div className="NameWish">
               <h3 className="GameName">{name}</h3>
               <Modal show={show} handleClose={this.hideModal} />
+              <button
+                type="button"
+                onClick={this.showModal}
+                style={{
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer'
+                }}
+              >
+                <img src="img/svg/start-white.svg" alt="icon star" />
+              </button>
               <button
                 value={isWishlist}
                 type="button"

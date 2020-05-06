@@ -29,7 +29,7 @@ class HeaderSugg extends React.Component {
     return (
       <div className="HeaderSugg" style={{ backgroundImage: `url(${url})` }}>
         <div className="filter">
-          <img src="./img/logo.svg" alt="logo icon" />
+          <img src="./img/svg/logo.svg" alt="logo icon" />
           <div className="infoHeaderContainerSugg">
             <h1>Notre suggestion</h1>
             <h2>{name}</h2>
@@ -39,7 +39,7 @@ class HeaderSugg extends React.Component {
               onClick={this.AddGameToLibrary}
               style={{ color: 'black' }}
             >
-              <img src="./img/add.svg" alt="bouton plus" />
+              <img src="./img/svg/add.svg" alt="bouton plus" />
             </button>
           </div>
         </div>
