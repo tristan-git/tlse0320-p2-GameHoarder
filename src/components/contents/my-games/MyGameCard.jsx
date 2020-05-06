@@ -9,7 +9,6 @@ class MyGameCard extends React.Component {
       url: null,
       name: null
     };
-    this.getRemoveGame = this.getRemoveGame.bind(this);
   }
 
   componentDidMount() {
@@ -19,30 +18,13 @@ class MyGameCard extends React.Component {
     });
   }
 
-  getRemoveGame() {
-    const { url, name } = this.state;
-    console.log(this.props);
-    const { handleGameDelete, id, rating } = this.props.data;
-    const img = url;
-    const title = name;
-    const values = {
-      id,
-      title,
-      img,
-      rating
-    };
-    handleGameDelete(id);
-    localStorage.removeItem(id, JSON.stringify(values));
-  }
-
   render() {
-    console.log('my game card:' + this.props.data);
     const { url, name } = this.state;
     return (
       <section className="Card">
         <div className="header">
           <h3>{name}</h3>
-          <button onClick={this.getRemoveGame} className="close-btn" type="submit">
+          <button onClick={() => this.props.gameToRemove(name)} className="close-btn" type="submit">
             X
           </button>
         </div>

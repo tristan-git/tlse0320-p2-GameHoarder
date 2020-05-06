@@ -17,38 +17,66 @@ class App extends React.Component {
       mygameInputValue: null,
       newgameInputValue: null,
       idNewGameDelete: null,
+      prevListGamesLib: [],
       listGamesLib: []
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleGameDelete = this.handleGameDelete.bind(this);
+    this.gameToRemove = this.gameToRemove.bind(this);
     this.handleGamesList = this.handleGamesList.bind(this);
   }
 
   componentDidMount() {
     if (window.localStorage.getItem('gamesList')) {
-      const gamesList = window.localStorage.getItem('gamesList');
-      const gameListReverse = JSON.parse(gamesList).sort(
-        (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
-      );
-      this.setState({ listGamesLib: gameListReverse });
+      let gamesList = window.localStorage.getItem('gamesList');
+      gamesList = JSON.parse(gamesList);
+      this.setState({ listGamesLib: gamesList });
+      console.log(`componentDidMount${this.state.listGamesLib}`);
     }
   }
 
   componentDidUpdate() {
-    const { listGamesLib } = this.state;
-    const gameListReverse = listGamesLib.sort(
-      (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
-    );
-    window.localStorage.setItem('gamesList', JSON.stringify(gameListReverse));
+    console.log('compo did up');
+    const { listGamesLib, prevListGamesLib } = this.state;
+    window.localStorage.setItem('gamesList', JSON.stringify(listGamesLib));
+    const gamesList = window.localStorage.getItem('gamesList');
+    console.log(listGamesLib + JSON.parse(window.localStorage.getItem('gamesList')).length);
+    // if (prevListGamesLib.length !== listGamesLib.length) {
+    //   console.log(true)
+    //   this.setState({ prevListGamesLib: listGamesLib });
+    // }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log(`${{ ...prevState }} ${{ ...prevProps }}`);
+    if (prevState.listGamesLib !== this.state.listGamesLib) {
+      this.setState({ prevListGamesLib: prevState.listGamesLib });
+    }
   }
 
   handleGamesList(values) {
+    console.log(`handleGamesList before${this.state.listGamesLib}`);
     this.setState(prevState => {
       return {
         ...prevState,
-        listGamesLib: [values, ...prevState.listGamesLib]
+        listGamesLib: [...prevState.listGamesLib, values]
       };
     });
+    console.log(`handleGamesList after${this.state.listGamesLib}`);
+  }
+
+  gameToRemove(gameToRemove) {
+    const { listGamesLib } = this.state;
+    const newTab = listGamesLib;
+    let index = newTab.map(game => {
+      if (gameToRemove === game.title) {
+        return newTab.indexOf(game);
+      }
+    });
+    index = index.filter(el => el !== undefined);
+    if (index[0] > -1) {
+      newTab.splice(index[0], 1);
+      this.setState({ listGamesLib: newTab });
+    }
   }
 
   handleChange(event) {
@@ -57,22 +85,20 @@ class App extends React.Component {
     this.setState({ [inputSearchInputValue]: valueToChange });
   }
 
-  handleGameDelete(idGame) {
-    this.setState({ idNewGameDelete: idGame });
-  }
-
   render() {
     const { mygameInputValue, idNewGameAdded } = this.state;
     const { newgameInputValue } = this.state;
     const { handleChange } = this;
 
+    console.log('render');
+
     return (
       <div className="App">
-        <HeaderLib idNewGameAdded={idNewGameAdded} handleGameDelete={this.handleGameDelete} />
+        <HeaderLib idNewGameAdded={idNewGameAdded} gameToRemove={this.gameToRemove} />
         <section id="content">
           <MyGames
             value={mygameInputValue}
-            handleGameDelete={this.handleGameDelete}
+            gameToRemove={this.gameToRemove}
             handleChange={handleChange}
             listGamesLib={this.state.listGamesLib}
           />

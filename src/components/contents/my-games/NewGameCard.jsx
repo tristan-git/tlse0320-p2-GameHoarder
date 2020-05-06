@@ -9,7 +9,7 @@ class NewGameCard extends React.Component {
   }
 
   getDataGame() {
-    const { url: img, name: title, rating, handleGamesList, id, handleGameAdded } = this.props;
+    const { url: img, name: title, rating, handleGamesList, id } = this.props;
 
     const values = {
       addingDate: new Date(),
