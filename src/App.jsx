@@ -35,7 +35,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    let { listGamesLib } = this.state;
+    const { listGamesLib } = this.state;
     const listGamesLibReverse = listGamesLib.sort(
       (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
     );
