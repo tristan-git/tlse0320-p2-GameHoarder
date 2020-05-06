@@ -12,47 +12,13 @@ class NewGameCard extends React.Component {
     };
     this.getDataGame = this.getDataGame.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.addToWishlist = this.addToWishlist.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // getDataGame() {
-  //   const img = this.props.url;
-  //   const title = this.props.name;
-  //   const { rating } = this.props;
-  //   const isWishlist = this.state;
-
-  //   const values = {
-  //     title,
-  //     img,
-  //     rating,
-  //     isWishlist
-  //   };
-
-  //   if (isWishlist !== { isWishlist }) {
-  //     this.setState({
-  //       isWishlist: true
-  //     });
-  //     localStorage.setItem(title, JSON.stringify(values));
-  //     this.showModal();
-  //   } else {
-  //     this.setState({
-  //       isWishlist: false
-  //     });
-  //     localStorage.setItem(title, JSON.stringify(values));
-  //   }
-  // }
-
-  /*   componentDidUpdate(prevProps) {
-    // Utilisation classique (pensez bien à comparer les props) :
-    if (this.isWishlist !== prevProps.isWishlist) {
-      this.setState({
-        isWishlist: true
-      });
-    }
-  } */
-
   getDataGame() {
-    const { url: img, name: title, rating, handleGamesList, id, isWishlist } = this.props;
+    const { url: img, name: title, rating, handleGamesList, id } = this.props;
+    const { isWishlist } = this.state;
     const values = {
       addingDate: new Date(),
       title,
@@ -65,12 +31,23 @@ class NewGameCard extends React.Component {
     handleGamesList(values);
   }
 
+  addToWishlist() {
+    const { url: img, name: title, rating, isWishlist } = this.props;
+    const values = {
+      title,
+      img,
+      rating,
+      isWishlist
+    };
+    localStorage.setItem(title, JSON.stringify(values));
+  }
+
   handleClick() {
     this.setState(state => ({
       isWishlist: !state.isWishlist,
       show: !state.show
     }));
-    this.getDataGame();
+    this.addToWishlist();
   }
 
   hideModal() {
@@ -79,6 +56,7 @@ class NewGameCard extends React.Component {
 
   render() {
     const { rating, name, url, addToLib } = this.props;
+    const { show, isWishlist } = this.state;
     return (
       <div className="Card">
         <div className="ImageCard" style={{ backgroundImage: `url(${url})` }} />
@@ -113,18 +91,13 @@ class NewGameCard extends React.Component {
                   cursor: 'pointer'
                 }}
               >
-                <img src="/img/svg/add.svg" alt="icon library" />
+                <img
+                  src={addToLib ? '/img/svg/delete-white.svg' : '/img/svg/add.svg'}
+                  alt="icon add library"
+                />
               </button>
+              {addToLib ? 'Déjà dans votre bibliothèque.' : 'Ajouter à votre bibliothèque.'}
             </div>
-          </div>
-          <p className="GameSupport">Game support</p>
-          <div className="GameRating">{rating / 10 / 2}</div>
-          <div className="ButtonAddLibrary" onClick={this.getDataGame}>
-            <img
-              src={addToLib ? '/img/svg/delete-white.svg' : '/img/svg/add.svg'}
-              alt="icon add library"
-            />
-            {addToLib ? 'Déjà dans votre bibliothèque.' : 'Ajouter à votre bibliothèque.'}
           </div>
         </div>
       </div>
@@ -136,6 +109,10 @@ NewGameCard.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   rating: PropTypes.string.isRequired,
+  handleGamesList: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  addToLib: PropTypes.string.isRequired,
+  handleClick: PropTypes.string.isRequired,
   isWishlist: PropTypes.string.isRequired
 };
 
