@@ -66,18 +66,20 @@ class NewGameCard extends React.Component {
 
   handleClick() {
     this.setState(state => ({
-      isWishlist: !state.isWishlist
+      isWishlist: !state.isWishlist,
+      show: !state.show
     }));
     this.addGameToWishlist();
   }
 
   addGameToWishlist() {
-    const { url: img, name: title, rating } = this.props;
+    const { url: img, name: title, rating, isWishlist } = this.props;
 
     const values = {
       title,
       img,
-      rating
+      rating,
+      isWishlist
     };
     localStorage.setItem(title, JSON.stringify(values));
   }
@@ -102,18 +104,6 @@ class NewGameCard extends React.Component {
               <h3 className="GameName">{name}</h3>
               {/* Afficher une popup contenant les jeux de la wishlist */}
               <Modal show={show} handleClose={this.hideModal} />
-              <button
-                type="button"
-                onClick={this.showModal}
-                style={{
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  cursor: 'pointer'
-                }}
-              >
-                <img src="img/svg/start-white.svg" alt="icon star" />
-              </button>
-              {/* Ajouter un jeu à la wishlist */}
               <button
                 value={isWishlist}
                 type="button"
