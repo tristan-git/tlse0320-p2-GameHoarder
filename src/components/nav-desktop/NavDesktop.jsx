@@ -6,6 +6,9 @@ import './navDesktop.scss';
 function NavDesktop(props) {
   return (
     <div className="navDesktop">
+      <div className="logo">
+        <img src="./img/svg/logo-black.svg" alt="logo " />
+      </div>
       <ul>
         <NavLink to="/ajouter-un-jeu">
           <li>Ajouter un jeu</li>
