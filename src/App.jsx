@@ -46,7 +46,6 @@ class App extends React.Component {
       this.state.prevListGamesLib.length !== listGamesLibReverse.length ||
       this.state.prevListGamesLib === []
     ) {
-      console.log('setstate');
       this.setState(prevState => {
         return {
           ...prevState,
@@ -67,7 +66,6 @@ class App extends React.Component {
   }
 
   gameToRemove(gameToRemove) {
-    console.log('gametoremove');
     const { listGamesLib } = this.state;
     const newTab = listGamesLib;
     let index = newTab.map(game => {
