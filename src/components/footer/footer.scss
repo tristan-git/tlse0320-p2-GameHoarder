@@ -1,3 +1,14 @@
 #footer {
+  background-color: black;
   color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .social {
+    display: flex;
+    align-items: center;
+    div:nth-child(1) {
+      margin-right: 15px;
+    }
+  }
 }

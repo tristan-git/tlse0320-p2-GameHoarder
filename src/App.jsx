@@ -53,9 +53,10 @@ class App extends React.Component {
       (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
     );
     window.localStorage.setItem('gamesList', JSON.stringify(listGamesLibReverse));
-    window.localStorage.setItem('wishlist', JSON.stringify(listGamesLib));
-    if (this.state.prevListGamesLib.length !== listGamesLibReverse.length) {
-      console.log('setstate');
+    if (
+      this.state.prevListGamesLib.length !== listGamesLibReverse.length ||
+      this.state.prevListGamesLib === []
+    ) {
       this.setState(prevState => {
         return {
           ...prevState,
@@ -86,7 +87,6 @@ class App extends React.Component {
   }
 
   gameToRemove(gameToRemove) {
-    console.log('gametoremove');
     const { listGamesLib } = this.state;
     const newTab = listGamesLib;
     let index = newTab.map(game => {
@@ -143,7 +143,6 @@ class App extends React.Component {
             </Switch>
           </section>
           <Footer />
-          <MobileNav />
         </Router>
       </div>
     );
