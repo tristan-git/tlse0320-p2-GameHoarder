@@ -1,0 +1,11 @@
+.close-btn {
+  max-width: 100%;
+  position: relative;
+  z-index: 1;
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+}

@@ -1,0 +1,72 @@
+.my-games {
+  margin-bottom: 60px;
+
+  /////////////////////////
+  // Layout cards
+  /////////////////////////
+  .grid-cards-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .alert {
+    background-color: var(--alert-color);
+    padding: 30px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+    span {
+      text-decoration: underline;
+    }
+  }
+
+  .Card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 5px;
+    box-shadow: #0000001c 0px 0px 10px 3px;
+  }
+
+  .header,
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+  }
+
+  .header h3 {
+    font-size: 16px;
+    max-width: 250px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .image {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .statuts {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4px;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+  }
+
+  .starInput {
+    display: none;
+  }
+
+  .Stars {
+    display: flex;
+  }
+}
