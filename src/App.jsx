@@ -21,7 +21,10 @@ class App extends React.Component {
       newgameInputValue: null,
       idNewGameDelete: null,
       prevListGamesLib: [],
-      listGamesLib: []
+      listGamesLib: [],
+      whislist: [],
+      isWishlist: false,
+      show: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.gameToRemove = this.gameToRemove.bind(this);
@@ -35,6 +38,13 @@ class App extends React.Component {
       gamesList = gamesList.sort((a, b) => new Date(b.addingDate) - new Date(a.addingDate));
       this.setState({ listGamesLib: gamesList });
     }
+
+    if (window.localStorage.getItem('whislist')) {
+      let whislist = window.localStorage.getItem('whislist');
+      whislist = JSON.parse(whislist);
+      // whislist = gamesList.sort((a, b) => new Date(b.addingDate) - new Date(a.addingDate));
+      this.setState({ whislist });
+    }
   }
 
   componentDidUpdate() {
@@ -43,10 +53,8 @@ class App extends React.Component {
       (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
     );
     window.localStorage.setItem('gamesList', JSON.stringify(listGamesLibReverse));
-    if (
-      this.state.prevListGamesLib.length !== listGamesLibReverse.length ||
-      this.state.prevListGamesLib === []
-    ) {
+    window.localStorage.setItem('wishlist', JSON.stringify(listGamesLib));
+    if (this.state.prevListGamesLib.length !== listGamesLibReverse.length) {
       console.log('setstate');
       this.setState(prevState => {
         return {
@@ -65,6 +73,16 @@ class App extends React.Component {
         listGamesLib: [...prevState.listGamesLib, values]
       };
     });
+  }
+
+  handleClick(values) {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        wishlist: [...prevState.wishlist, values]
+      };
+    });
+    this.addToWishlist();
   }
 
   gameToRemove(gameToRemove) {

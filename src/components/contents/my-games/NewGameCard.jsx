@@ -13,7 +13,7 @@ class NewGameCard extends React.Component {
     this.getDataGame = this.getDataGame.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.addToWishlist = this.addToWishlist.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    /*     this.handleClick = this.handleClick.bind(this); */
   }
 
   getDataGame() {
@@ -39,15 +39,8 @@ class NewGameCard extends React.Component {
       rating,
       isWishlist
     };
-    localStorage.setItem(title, JSON.stringify(values));
-  }
-
-  handleClick() {
-    this.setState(state => ({
-      isWishlist: !state.isWishlist,
-      show: !state.show
-    }));
-    this.addToWishlist();
+    /* localStorage.setItem(title, JSON.stringify(values)); */
+    this.handleClick(values);
   }
 
   hideModal() {
