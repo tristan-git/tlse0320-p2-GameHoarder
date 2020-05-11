@@ -8,6 +8,7 @@ import MyGames from './components/contents/MyGames';
 import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';
 import MobileNav from './components/mobile-nav/MobileNav';
+import Swal from 'sweetalert2';
 import NavDesktop from './components/nav-desktop/NavDesktop';
 import DisplayWishlist from './components/contents/my-games/DisplayWishlist';
 
@@ -117,17 +118,36 @@ class App extends React.Component {
   }
 
   gameToRemove(gameToRemove) {
-    const { listGamesLib } = this.state;
-    const newTab = listGamesLib;
-    let index = newTab.map(game => {
-      if (gameToRemove === game.title) {
-        return newTab.indexOf(game);
+    Swal.fire({
+      title: 'Etes-vous sûr?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'var(--primary-color)',
+      cancelButtonColor: 'var(--alert-color)',
+      confirmButtonText: 'Oui, je supprime!',
+      cancelButtonText: 'Annuler'
+    }).then(result => {
+      if (result.value) {
+        Swal.fire({
+          title: 'Supprimé!',
+          text: 'Votre jeu a été supprimé.',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 900
+        });
+        const { listGamesLib } = this.state;
+        const newTab = listGamesLib;
+        let index = newTab.map(game => {
+          if (gameToRemove === game.title) {
+            return newTab.indexOf(game);
+          }
+          return undefined;
+        });
+        index = index.filter(el => el !== undefined);
+        newTab.splice(index[0], 1);
+        this.setState({ listGamesLib: newTab });
       }
-      return undefined;
     });
-    index = index.filter(el => el !== undefined);
-    newTab.splice(index[0], 1);
-    this.setState({ listGamesLib: newTab });
   }
 
   handleChange(event) {
@@ -149,10 +169,7 @@ class App extends React.Component {
 
             <Switch>
               <Route exact path="/">
-                <HeaderLib
-                  gameToRemove={this.gameToRemove}
-                  listGamesLib={this.state.listGamesLib}
-                />
+                <HeaderLib idNewGameAdded={idNewGameAdded} gameToRemove={this.gameToRemove} />
                 <MyGames
                   value={mygameInputValue}
                   gameToRemove={this.gameToRemove}
