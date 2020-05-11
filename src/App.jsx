@@ -23,12 +23,6 @@ class App extends React.Component {
     this.handleAllGames = this.handleAllGames.bind(this);
   }
 
-  // componentDidUpdate(){
-  //   if(this.state.games.length !== window.localStorage.getItem('allGames').length){
-  //     this.setState({allGames: [...window.localStorage.getItem('allGames')]})
-  //   }
-  // }
-
   handleAllGames(games) {
     this.setState({ allGames: [...games] });
   }
