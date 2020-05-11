@@ -21,14 +21,17 @@ DisplayWishlist.propTypes = {
   value: PropTypes.string.isRequired,
   addToWishlist: PropTypes.func.isRequired
 }; */
-
-export default function DisplayWishlist({ handleClose, show, children, wishlist }) {
+export default function DisplayWishlist({ handleClose, show, children, wishlist, listGamesLib }) {
   // console.log(wishlist)
 
   const displayWhislist = () =>
-    wishlist.map(game => <NewGameCard url={game.img} name={game.title} rating={game.rating} />);
+    listGamesLib
+      .filter(game => game.addToWish)
+      .map(game => <NewGameCard url={game.img} name={game.title} rating={game.rating} />);
 
   //
+
+  console.log(listGamesLib);
 
   return (
     <div className={show ? 'modal display-block' : 'modal display-none'}>

@@ -35,7 +35,7 @@ export default class HeaderLib extends React.Component {
     } else {
       this.setState({
         lastGameName: "Ajouter d'abord un jeu",
-        lastGameImg: "url('/img/20200410190035_1.jpg')",
+        lastGameImg: "url('/img/svg/20200410190035_1.jpg')",
         isGame: false
       });
     }

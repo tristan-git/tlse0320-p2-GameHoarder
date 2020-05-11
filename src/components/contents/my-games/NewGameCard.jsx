@@ -8,8 +8,7 @@ class NewGameCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false,
-      isWishlist: false
+      show: false
     };
     this.getDataGame = this.getDataGame.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -24,20 +23,24 @@ class NewGameCard extends React.Component {
       img,
       rating,
       id,
-      addToLib: true
+      addToLib: true,
+      addToWish: false
     };
     handleGamesList(values);
   }
 
   addToWishlist() {
-    const { url: img, name: title, rating, handleClick } = this.props;
+    const { url: img, name: title, rating, handleWishlistGame, id } = this.props;
     const values = {
+      addingDate: new Date(),
       title,
       img,
       rating,
-      isWishlist: true
+      id,
+      addToLib: false,
+      addToWish: true
     };
-    handleClick(values);
+    handleWishlistGame(values);
   }
 
   hideModal() {
@@ -45,8 +48,11 @@ class NewGameCard extends React.Component {
   }
 
   render() {
-    const { rating, name, url, addToLib } = this.props;
-    const { show, isWishlist } = this.state;
+    const { rating, name, url, addToLib, addToWish } = this.props;
+    const { show } = this.state;
+
+    console.log();
+
     return (
       <div className="Card">
         <div className="ImageCard" style={{ backgroundImage: `url(${url})` }} />
@@ -57,7 +63,6 @@ class NewGameCard extends React.Component {
               {/* Afficher une popup contenant les jeux de la wishlist */}
               <Modal show={show} handleClose={this.hideModal} />
               <button
-                value={isWishlist}
                 type="button"
                 onClick={this.addToWishlist}
                 style={{
@@ -71,21 +76,11 @@ class NewGameCard extends React.Component {
             </div>
             <p className="GameSupport">Game support</p>
             <div className="GameRating">{rating / 10 / 2}</div>
-            <div className="ButtonAddLibrary">
-              <button
-                type="button"
-                onClick={this.getDataGame}
-                style={{
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  cursor: 'pointer'
-                }}
-              >
-                <img
-                  src={addToLib ? '/img/svg/delete-white.svg' : '/img/svg/add.svg'}
-                  alt="icon add library"
-                />
-              </button>
+            <div className="ButtonAddLibrary" onClick={this.getDataGame}>
+              <img
+                src={addToLib ? '/img/svg/delete-white.svg' : '/img/svg/add.svg'}
+                alt="icon add library"
+              />
               {addToLib ? 'Déjà dans votre bibliothèque.' : 'Ajouter à votre bibliothèque.'}
             </div>
           </div>
@@ -103,7 +98,7 @@ NewGameCard.propTypes = {
   id: PropTypes.string.isRequired,
   show: PropTypes.string.isRequired,
   addToLib: PropTypes.string.isRequired,
-  handleClick: PropTypes.string.isRequired,
+  handleWishlistGame: PropTypes.string.isRequired,
   isWishlist: PropTypes.string.isRequired
 };
 

@@ -6,7 +6,7 @@ import Filters from './filter/Filters';
 import Title from './title/Title';
 import './newgames.scss';
 
-function NewGames({ value, handleChange, handleClick, handleGamesList }) {
+function NewGames({ value, handleChange, handleWishlistGame, handleGamesList }) {
   return (
     <div className="new-games">
       <div className="container-box">
@@ -14,7 +14,7 @@ function NewGames({ value, handleChange, handleClick, handleGamesList }) {
         <Filters value={value} handleChange={handleChange} location="newgameInputValue" />
         <ListNewGameCards
           value={value}
-          handleClick={handleClick}
+          handleWishlistGame={handleWishlistGame}
           handleGamesList={handleGamesList}
         />
       </div>
@@ -31,7 +31,7 @@ function NewGames({ value, handleChange, handleClick, handleGamesList }) {
 NewGames.propTypes = {
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  handleWishlistGame: PropTypes.func.isRequired,
   handleGamesList: PropTypes.func.isRequired
 };
 export default NewGames;

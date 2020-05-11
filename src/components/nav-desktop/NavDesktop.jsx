@@ -10,11 +10,11 @@ class NavDesktop extends React.Component {
     this.state = {
       show: false
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleWishlistGame = this.handleWishlistGame.bind(this);
     this.hideModal = this.hideModal.bind(this);
   }
 
-  handleClick() {
+  handleWishlistGame() {
     this.setState(state => ({
       show: !state.show
     }));
@@ -26,7 +26,7 @@ class NavDesktop extends React.Component {
 
   render() {
     const { show } = this.state;
-    const { wishlist } = this.props;
+    const { wishlist, listGamesLib } = this.props;
 
     return (
       <div className="navDesktop">
@@ -40,10 +40,15 @@ class NavDesktop extends React.Component {
           <NavLink to="/">
             <li>Ma bibliothèque</li>
           </NavLink>
-          <DisplayWishlist show={show} handleClose={this.hideModal} wishlist={wishlist} />
+          <DisplayWishlist
+            show={show}
+            handleClose={this.hideModal}
+            wishlist={wishlist}
+            listGamesLib={listGamesLib}
+          />
           <button
             type="button"
-            onClick={this.handleClick}
+            onClick={this.handleWishlistGame}
             style={{
               backgroundColor: 'transparent',
               border: 'none',

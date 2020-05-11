@@ -2,13 +2,13 @@ import React from 'react';
 import './App.scss';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import HeaderLib from './components/header/HeaderLib';
 import HeaderSugg from './components/header/HeaderSugg';
 import MyGames from './components/contents/MyGames';
 import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';
 import MobileNav from './components/mobile-nav/MobileNav';
-import Swal from 'sweetalert2';
 import NavDesktop from './components/nav-desktop/NavDesktop';
 import DisplayWishlist from './components/contents/my-games/DisplayWishlist';
 
@@ -24,13 +24,12 @@ class App extends React.Component {
       prevListGamesLib: [],
       listGamesLib: [],
       wishlist: [],
-      isWishlist: false,
       show: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.gameToRemove = this.gameToRemove.bind(this);
     this.handleGamesList = this.handleGamesList.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleWishlistGame = this.handleWishlistGame.bind(this);
   }
 
   componentDidMount() {
@@ -39,12 +38,6 @@ class App extends React.Component {
       gamesList = JSON.parse(gamesList);
       gamesList = gamesList.sort((a, b) => new Date(b.addingDate) - new Date(a.addingDate));
       this.setState({ listGamesLib: gamesList });
-    }
-
-    if (window.localStorage.getItem('whislist')) {
-      let whislist = window.localStorage.getItem('whislist');
-      whislist = JSON.parse(whislist);
-      this.setState({ wishlist: whislist });
     }
   }
 
@@ -66,14 +59,6 @@ class App extends React.Component {
         };
       });
     }
-
-    const { wishlist } = this.state;
-
-    window.localStorage.setItem('whislist', JSON.stringify(wishlist));
-
-    // if (prevState.wishlist.length !== wishlist.length ){
-
-    // }
   }
 
   handleGamesList(values) {
@@ -85,11 +70,10 @@ class App extends React.Component {
     });
   }
 
-  handleClick(values) {
-    const { wishlist } = this.state;
-
+  handleWishlistGame(values) {
+    const { listGamesLib } = this.state;
     this.setState({
-      wishlist: [...wishlist, values]
+      listGamesLib: [...listGamesLib, values]
     });
     // window.localStorage.setItem(title, JSON.stringify(values));
   }
@@ -142,7 +126,7 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <section id="content">
-            <NavDesktop wishlist={wishlist} />
+            <NavDesktop wishlist={wishlist} listGamesLib={this.state.listGamesLib} />
 
             <Switch>
               <Route exact path="/">
@@ -158,7 +142,7 @@ class App extends React.Component {
                 <HeaderSugg handleGameAdded={this.handleGameAdded} />
                 <NewGames
                   value={newgameInputValue}
-                  handleClick={this.handleClick}
+                  handleWishlistGame={this.handleWishlistGame}
                   handleGamesList={this.handleGamesList}
                   handleChange={handleChange}
                 />
