@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './MyGameCard';
-import DisplayRating from './DisplayRating';
+// import DisplayRating from './DisplayRating';
 import Modal from './Modal';
 
 class NewGameCard extends React.Component {
@@ -19,13 +19,11 @@ class NewGameCard extends React.Component {
 
   getDataGame() {
     const { url: img, name: title, rating, handleGamesList, id } = this.props;
-    const { isWishlist } = this.state;
     const values = {
       addingDate: new Date(),
       title,
       img,
       rating,
-      isWishlist,
       id,
       addToLib: true
     };
@@ -33,15 +31,15 @@ class NewGameCard extends React.Component {
   }
 
   addToWishlist() {
-    const { url: img, name: title, rating, isWishlist } = this.props;
+    const { url: img, name: title, rating, isWishlist, show, handleClick } = this.props;
     const values = {
       title,
       img,
       rating,
-      isWishlist
+      isWishlist,
+      show
     };
-    /* localStorage.setItem(title, JSON.stringify(values)); */
-    this.handleClick(values);
+    handleClick(values);
   }
 
   hideModal() {
@@ -63,7 +61,7 @@ class NewGameCard extends React.Component {
               <button
                 value={isWishlist}
                 type="button"
-                onClick={this.handleClick}
+                onClick={this.addToWishlist}
                 style={{
                   backgroundColor: 'transparent',
                   border: 'none',

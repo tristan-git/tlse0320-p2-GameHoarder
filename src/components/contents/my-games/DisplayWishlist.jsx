@@ -29,6 +29,13 @@ export default function DisplayWishlist({ handleClose, show, children }) {
         {children}
         <div className="modal-div">
           <h3>Ma Wishlist</h3>
+          <button
+            type="button"
+            onClick={handleClose}
+            style={{ width: '25%', margin: '0 auto', padding: '2px 0' }}
+          >
+            Close me
+          </button>
         </div>
       </section>
     </div>
