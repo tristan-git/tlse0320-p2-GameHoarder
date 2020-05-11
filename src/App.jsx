@@ -29,7 +29,7 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.gameToRemove = this.gameToRemove.bind(this);
     this.handleGamesList = this.handleGamesList.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    /* this.handleClick = this.handleClick.bind(this); */
   }
 
   componentDidMount() {
@@ -76,15 +76,19 @@ class App extends React.Component {
         listGamesLib: [...prevState.listGamesLib, values]
       };
     });
+    this.setState(state => ({
+      isWishlist: !state.isWishlist,
+      show: !state.show
+    }));
   }
 
-  handleClick(values, title) {
+  /*   handleClick(values, title) {
     this.setState({
       isWishlist: true,
       show: true
     });
     window.localStorage.setItem(title, JSON.stringify(values));
-  }
+  } */
 
   gameToRemove(gameToRemove) {
     const { listGamesLib } = this.state;
@@ -136,7 +140,7 @@ class App extends React.Component {
                 <HeaderSugg handleGameAdded={this.handleGameAdded} />
                 <NewGames
                   value={newgameInputValue}
-                  handleClick={this.handleClick}
+                  /* handleClick={this.handleClick} */
                   handleGamesList={this.handleGamesList}
                   handleChange={handleChange}
                 />

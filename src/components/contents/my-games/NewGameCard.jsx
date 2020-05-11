@@ -13,7 +13,7 @@ class NewGameCard extends React.Component {
     };
     this.getDataGame = this.getDataGame.bind(this);
     this.hideModal = this.hideModal.bind(this);
-    this.addToWishlist = this.addToWishlist.bind(this);
+    /* this.addToWishlist = this.addToWishlist.bind(this); */
     /*     this.handleClick = this.handleClick.bind(this); */
   }
 
@@ -30,7 +30,7 @@ class NewGameCard extends React.Component {
     handleGamesList(values);
   }
 
-  addToWishlist() {
+  /*   addToWishlist() {
     const { url: img, name: title, rating, isWishlist, show, handleClick } = this.props;
     const values = {
       title,
@@ -40,7 +40,7 @@ class NewGameCard extends React.Component {
       show
     };
     handleClick(values);
-  }
+  } */
 
   hideModal() {
     this.setState({ show: false });
@@ -105,7 +105,8 @@ NewGameCard.propTypes = {
   id: PropTypes.string.isRequired,
   addToLib: PropTypes.string.isRequired,
   handleClick: PropTypes.string.isRequired,
-  isWishlist: PropTypes.string.isRequired
+  isWishlist: PropTypes.string.isRequired,
+  show: PropTypes.string.isRequired
 };
 
 export default NewGameCard;
