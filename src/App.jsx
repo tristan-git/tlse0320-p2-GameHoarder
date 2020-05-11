@@ -53,6 +53,7 @@ class App extends React.Component {
       (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
     );
     window.localStorage.setItem('gamesList', JSON.stringify(listGamesLibReverse));
+    window.localStorage.setItem('wishlist', JSON.stringify(listGamesLib));
     if (
       this.state.prevListGamesLib.length !== listGamesLibReverse.length ||
       this.state.prevListGamesLib === []
@@ -80,7 +81,7 @@ class App extends React.Component {
     this.setState(prevState => {
       return {
         ...prevState,
-        wishlist: [...prevState.wishlist, values]
+        listGamesLib: [...prevState.listGamesLib, values]
       };
     });
     this.addToWishlist();
