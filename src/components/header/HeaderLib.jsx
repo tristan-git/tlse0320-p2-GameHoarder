@@ -1,6 +1,7 @@
 import React from 'react';
 import './header.scss';
 import Swal from 'sweetalert2';
+import DisplayRating from '../contents/my-games/DisplayRating';
 
 export default class HeaderLib extends React.Component {
   constructor(props) {
@@ -9,20 +10,22 @@ export default class HeaderLib extends React.Component {
       lastGameImg: null,
       lastGameName: null,
       lastGameRating: null,
-      isGame: true
+      isThereIsGame: true,
+      lastGameAdded: null
     };
-    this.RemoveGameFromHeader = this.RemoveGameFromHeader.bind(this);
+    this.removeGameFromHeader = this.removeGameFromHeader.bind(this);
   }
 
   componentDidMount() {
     this.handleLastGameAdded();
+    console.log(this.state.lastGameAdded);
   }
 
   handleLastGameAdded() {
+    const { id } = this.state;
     if (this.state.isGame && window.localStorage.length > 0) {
       const key = window.localStorage.key(0);
       const lastGameInfo = JSON.parse(window.localStorage.getItem(key));
-      console.log(lastGameInfo.rating);
       this.setState({
         isGame: true,
         lastGameName: lastGameInfo.title,
@@ -31,14 +34,14 @@ export default class HeaderLib extends React.Component {
       });
     } else {
       this.setState({
-        lastGameName: "Ajouter d'abord un jeux",
+        lastGameName: "Ajouter d'abord un jeu",
         lastGameImg: "url('/img/20200410190035_1.jpg')",
         isGame: false
       });
     }
   }
 
-  RemoveGameFromHeader() {
+  removeGameFromHeader() {
     Swal.fire({
       title: 'Etes-vous sûr?',
       icon: 'warning',
@@ -58,9 +61,6 @@ export default class HeaderLib extends React.Component {
         });
         localStorage.removeItem(this.state.lastGameName);
         this.handleLastGameAdded();
-        setTimeout(function reload() {
-          window.location.reload(true);
-        }, 1000);
       }
     });
   }
@@ -73,10 +73,41 @@ export default class HeaderLib extends React.Component {
           style={{ backgroundImage: `url(${this.state.lastGameImg})` }}
         >
           <div className="filter">
-            <img src="./img/logo.svg" alt="logo du site" />
-            <h1>{this.state.lastGameName}</h1>
+            <div className="gameSugg">
+              <div style={{ backgroundImage: `url(${this.state.lastGameImg})` }}></div>
+            </div>
+
+            <div className="wrapper">
+              <div className="infoHeaderContainer">
+                <h2>{this.state.lastGameName}</h2>
+              </div>
+
+              <div className="infoHeaderContainer">
+                <div className="ratingSuggestion">
+                  <DisplayRating rating={this.state.lastGameRating} />
+                </div>
+              </div>
+              <div className="infoHeaderContainer blue">
+                <div className="crossContainer" onClick={this.RemoveGameFromHeader}>
+                  <img src="./img/svg/delete-white.svg" alt="bouton plus" />
+                </div>
+              </div>
+
+              <div className="infoHeaderContainer blue">
+                <label htmlFor="gameStatusHeader">
+                  <select name="gameStatus" id="gameStatusHeader">
+                    <option value="0">statut</option>
+                    <option value="1">pas commencé</option>
+                    <option value="2">En cours</option>
+                    <option value="3">terminés</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            {/* <h1>{this.state.lastGameName}</h1>
             <div className="infoHeaderContainer">
-              <div className="crossContainer" onClick={this.RemoveGameFromHeader}>
+              <div className="crossContainer" onClick={this.removeGameFromHeader}>
                 <div className="crossLine"></div>
                 <div className="crossLine"></div>
               </div>
@@ -89,7 +120,7 @@ export default class HeaderLib extends React.Component {
                   <option value="3">terminés</option>
                 </select>
               </label>
-            </div>
+            </div> */}
           </div>
         </div>
       );
