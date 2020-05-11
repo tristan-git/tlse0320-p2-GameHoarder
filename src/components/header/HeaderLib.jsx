@@ -1,6 +1,7 @@
 import React from 'react';
 import './header.scss';
 import Swal from 'sweetalert2';
+import DisplayRating from '../contents/my-games/DisplayRating';
 
 export default class HeaderLib extends React.Component {
   constructor(props) {
@@ -72,8 +73,39 @@ export default class HeaderLib extends React.Component {
           style={{ backgroundImage: `url(${this.state.lastGameImg})` }}
         >
           <div className="filter">
-            <img src="./img/logo.svg" alt="logo du site" />
-            <h1>{this.state.lastGameName}</h1>
+            <div className="gameSugg">
+              <div style={{ backgroundImage: `url(${this.state.lastGameImg})` }}></div>
+            </div>
+
+            <div className="wrapper">
+              <div className="infoHeaderContainer">
+                <h2>{this.state.lastGameName}</h2>
+              </div>
+
+              <div className="infoHeaderContainer">
+                <div className="ratingSuggestion">
+                  <DisplayRating rating={this.state.lastGameRating} />
+                </div>
+              </div>
+              <div className="infoHeaderContainer blue">
+                <div className="crossContainer" onClick={this.RemoveGameFromHeader}>
+                  <img src="./img/svg/delete-white.svg" alt="bouton plus" />
+                </div>
+              </div>
+
+              <div className="infoHeaderContainer blue">
+                <label htmlFor="gameStatusHeader">
+                  <select name="gameStatus" id="gameStatusHeader">
+                    <option value="0">statut</option>
+                    <option value="1">pas commencé</option>
+                    <option value="2">En cours</option>
+                    <option value="3">terminés</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            {/* <h1>{this.state.lastGameName}</h1>
             <div className="infoHeaderContainer">
               <div className="crossContainer" onClick={this.removeGameFromHeader}>
                 <div className="crossLine"></div>
@@ -88,7 +120,7 @@ export default class HeaderLib extends React.Component {
                   <option value="3">terminés</option>
                 </select>
               </label>
-            </div>
+            </div> */}
           </div>
         </div>
       );
