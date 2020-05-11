@@ -17,7 +17,7 @@ function NewGames({ value, handleChange, handleGamesList }) {
       <div className="container-top-five">
         <div className="container-box">
           <Title title="Les jeux " span="du moment" />
-          <ListTopThreeGames />
+          <ListTopThreeGames handleGamesList={handleGamesList} />
         </div>
       </div>
     </div>
