@@ -121,7 +121,11 @@ class App extends React.Component {
 
             <Switch>
               <Route exact path="/">
-                <HeaderLib idNewGameAdded={idNewGameAdded} gameToRemove={this.gameToRemove} />
+                <HeaderLib
+                  gameToRemove={this.gameToRemove}
+                  listGamesLib={this.state.listGamesLib}
+                  gameToRemove={this.gameToRemove}
+                />
                 <MyGames
                   value={mygameInputValue}
                   gameToRemove={this.gameToRemove}
