@@ -10,20 +10,22 @@ export default class HeaderLib extends React.Component {
       lastGameImg: null,
       lastGameName: null,
       lastGameRating: null,
-      isGame: true
+      isThereIsGame: true,
+      lastGameAdded: null
     };
-    this.RemoveGameFromHeader = this.RemoveGameFromHeader.bind(this);
+    this.removeGameFromHeader = this.removeGameFromHeader.bind(this);
   }
 
   componentDidMount() {
     this.handleLastGameAdded();
+    console.log(this.state.lastGameAdded);
   }
 
   handleLastGameAdded() {
+    const { id } = this.state;
     if (this.state.isGame && window.localStorage.length > 0) {
       const key = window.localStorage.key(0);
       const lastGameInfo = JSON.parse(window.localStorage.getItem(key));
-      console.log(lastGameInfo.rating);
       this.setState({
         isGame: true,
         lastGameName: lastGameInfo.title,
@@ -32,14 +34,14 @@ export default class HeaderLib extends React.Component {
       });
     } else {
       this.setState({
-        lastGameName: "Ajouter d'abord un jeux",
+        lastGameName: "Ajouter d'abord un jeu",
         lastGameImg: "url('/img/20200410190035_1.jpg')",
         isGame: false
       });
     }
   }
 
-  RemoveGameFromHeader() {
+  removeGameFromHeader() {
     Swal.fire({
       title: 'Etes-vous sûr?',
       icon: 'warning',
@@ -59,9 +61,6 @@ export default class HeaderLib extends React.Component {
         });
         localStorage.removeItem(this.state.lastGameName);
         this.handleLastGameAdded();
-        setTimeout(function reload() {
-          window.location.reload(true);
-        }, 1000);
       }
     });
   }
@@ -108,7 +107,7 @@ export default class HeaderLib extends React.Component {
 
             {/* <h1>{this.state.lastGameName}</h1>
             <div className="infoHeaderContainer">
-              <div className="crossContainer" onClick={this.RemoveGameFromHeader}>
+              <div className="crossContainer" onClick={this.removeGameFromHeader}>
                 <div className="crossLine"></div>
                 <div className="crossLine"></div>
               </div>
