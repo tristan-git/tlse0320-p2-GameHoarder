@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MyGameCard from './MyGameCard';
 
-const ListMyGameCards = ({ value, handleGameDelete, listGamesLib }) => {
+const ListMyGameCards = ({ value, listGamesLib, gameToRemove }) => {
   if (listGamesLib.length === 0) {
     return (
       <div className="alert">
@@ -11,37 +11,32 @@ const ListMyGameCards = ({ value, handleGameDelete, listGamesLib }) => {
       </div>
     );
   }
-
   const displayMyGameCard2 = () =>
     listGamesLib.map((data, i) => {
-      // const gamesNameLSt = JSON.parse(localStorage.getItem(localStorage.key(i))).title;
+      const gamesNameLSt = data.title;
 
-      // if (value && gamesNameLSt.toUpperCase().includes(value.toUpperCase())) {
-      return (
-        <div>
-          <MyGameCard data={data} key={i} handleGameDelete={handleGameDelete} />
-        </div>
-      );
+      if (value && gamesNameLSt.toUpperCase().includes(value.toUpperCase())) {
+        return (
+          <div>
+            <MyGameCard data={data} key={i} gameToRemove={gameToRemove} />
+          </div>
+        );
+      }
+
+      if (!value) {
+        return (
+          <div>
+            <MyGameCard data={data} key={i} gameToRemove={gameToRemove} />
+          </div>
+        );
+      }
     });
 
-  //   if (!value){
-  //     return (
-  //       <div>
-  //         <MyGameCard
-  //           rating={JSON.parse(localStorage.getItem(localStorage.key(i))).rating}
-  //           id={JSON.parse(localStorage.getItem(localStorage.key(i))).id}
-  //           name={JSON.parse(localStorage.getItem(localStorage.key(i))).title}
-  //           url={JSON.parse(localStorage.getItem(localStorage.key(i))).img}
-  //           key={`my-game-${JSON.parse(localStorage.getItem(localStorage.key(i))).title}`}
-  //           handleGameDelete={handleGameDelete}
-  //         />
-  //       </div>
-  //     );
-  // });
   return <div className="grid-cards-display">{displayMyGameCard2()}</div>;
 };
 
 ListMyGameCards.propTypes = {
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
+  listGamesLib: PropTypes.array.isRequired
 };
 export default ListMyGameCards;
