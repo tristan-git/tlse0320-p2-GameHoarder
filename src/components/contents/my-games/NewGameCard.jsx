@@ -7,7 +7,7 @@ class NewGameCard extends React.Component {
     super(props);
     this.state = {
       show: false,
-      isWishlist: false
+      isWishList: false
     };
     this.getDataGame = this.getDataGame.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -29,7 +29,7 @@ class NewGameCard extends React.Component {
 
   handleClick() {
     this.setState(state => ({
-      isWishlist: !state.isWishlist,
+      isWishList: !state.isWishList,
       show: !state.show
     }));
     this.getDataGame();
@@ -41,7 +41,7 @@ class NewGameCard extends React.Component {
 
   render() {
     const { rating, name, url, addToLib } = this.props;
-    const { isWishlist, show } = this.state;
+    const { isWishList, show } = this.state;
     return (
       <div className="Card">
         <div className="ImageCard" style={{ backgroundImage: `url(${url})` }} />
@@ -50,7 +50,7 @@ class NewGameCard extends React.Component {
             <h3 className="GameName">{name}</h3>
             <Modal show={show} handleClose={this.hideModal} />
             <button
-              value={isWishlist}
+              value={isWishList}
               type="button"
               onClick={this.handleClick}
               style={{
@@ -59,7 +59,10 @@ class NewGameCard extends React.Component {
                 cursor: 'pointer'
               }}
             >
-              <img src="/img/svg/wishlist.svg" alt="icon wishlist" />
+              <img
+                src={isWishList ? '/img/redheart.svg' : '/img/wishlist.svg'}
+                alt="icon wishlist"
+              />
             </button>
           </div>
           <p className="GameSupport">Game support</p>
