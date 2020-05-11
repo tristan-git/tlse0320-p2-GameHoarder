@@ -48,10 +48,11 @@ class NewGameCard extends React.Component {
   }
 
   render() {
-    const { rating, name, url, addToLib, addToWish } = this.props;
+    const { rating, name, url, addToLib, listGamesLib } = this.props;
     const { show } = this.state;
 
-    console.log();
+    // console.log(listGamesLib.filter(game => game.title === name));
+    // console.log(listGamesLib.filter(game => console.log(game)))
 
     return (
       <div className="Card">
@@ -71,6 +72,8 @@ class NewGameCard extends React.Component {
                   cursor: 'pointer'
                 }}
               >
+                {/* <img src="/img/svg/wishlist.svg" alt="icon wishlist" /> */}
+
                 <img src="/img/svg/wishlist.svg" alt="icon wishlist" />
               </button>
             </div>
@@ -96,10 +99,9 @@ NewGameCard.propTypes = {
   rating: PropTypes.string.isRequired,
   handleGamesList: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  show: PropTypes.string.isRequired,
   addToLib: PropTypes.string.isRequired,
   handleWishlistGame: PropTypes.string.isRequired,
-  isWishlist: PropTypes.string.isRequired
+  listGamesLib: PropTypes.func.isRequired
 };
 
 export default NewGameCard;

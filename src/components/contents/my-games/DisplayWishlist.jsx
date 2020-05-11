@@ -31,8 +31,6 @@ export default function DisplayWishlist({ handleClose, show, children, wishlist,
 
   //
 
-  console.log(listGamesLib);
-
   return (
     <div className={show ? 'modal display-block' : 'modal display-none'}>
       <section className="modal-main">

@@ -13,7 +13,8 @@ import GetGames from './components/data/GetGames';
 import NavDesktop from './components/nav-desktop/NavDesktop';
 import DisplayWishlist from './components/contents/my-games/DisplayWishlist';
 
-axios.defaults.headers.common['user-key'] = 'e98a7b482e71cbb9d2b90309b365e3b4';
+/* axios.defaults.headers.common['user-key'] = 'e98a7b482e71cbb9d2b90309b365e3b4'; */
+axios.defaults.headers.common['user-key'] = '75f9926369d4142ff35731792bb25f29';
 
 class App extends React.Component {
   constructor(props) {
@@ -154,6 +155,7 @@ class App extends React.Component {
                   handleGamesList={this.handleGamesList}
                   handleChange={handleChange}
                   games={this.state.allGames}
+                  listGamesLib={this.state.listGamesLib}
                 />
               </Route>
             </Switch>

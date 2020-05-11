@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NewGameCard from './NewGameCard';
 
-const ListNewGameCards = ({ value, handleGamesList, games, handleWishlistGame }) => {
+const ListNewGameCards = ({ value, handleGamesList, games, handleWishlistGame, listGamesLib }) => {
   const displayNewGameCards = value =>
     games
       .filter(game => (value ? game.name.toUpperCase().includes(value.toUpperCase()) : game))
@@ -10,6 +10,7 @@ const ListNewGameCards = ({ value, handleGamesList, games, handleWishlistGame })
         <div>
           <NewGameCard
             {...game}
+            listGamesLib={listGamesLib}
             key={`new-game-${game.name}`}
             handleWishlistGame={handleWishlistGame}
             handleGamesList={handleGamesList}
@@ -22,8 +23,10 @@ const ListNewGameCards = ({ value, handleGamesList, games, handleWishlistGame })
 
 ListNewGameCards.propTypes = {
   value: PropTypes.string.isRequired,
+  games: PropTypes.string.isRequired,
   handleGamesList: PropTypes.func.isRequired,
-  handleWishlistGame: PropTypes.func.isRequired
+  handleWishlistGame: PropTypes.func.isRequired,
+  listGamesLib: PropTypes.func.isRequired
 };
 
 export default ListNewGameCards;
