@@ -20,13 +20,92 @@
 
   .modal-main {
     position: fixed;
-    background: #2929d0;
+    background: white;
     width: 30%;
-    height: 20vh;
+    height: auto;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
+    padding: 1rem;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .image {
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.Card {
+  display: flex;
+  padding: 10px;
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.ImageCard {
+  height: 100px;
+  min-width: 100px;
+  margin-right: 10px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.GameInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  .GameInfoTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.GameName {
+  width: 100%;
+  max-width: 140px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.NameWish {
+  display: flex;
+  justify-content: space-between;
+}
+
+.GameSupport {
+  width: 100%;
+}
+
+.GameRating {
+  width: 100%;
+}
+
+.ButtonAddLibrary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  img {
+    margin-right: 5px;
   }
 }
 
@@ -34,15 +113,9 @@
   display: flex;
   flex-direction: column;
   color: whitesmoke;
-  font-size: 20px;
+
   justify-content: center;
   margin: 2%;
-}
-
-.modal-div p {
-  margin: 4% auto;
-  width: 80%;
-  text-align: center;
 }
 
 .modal-button {

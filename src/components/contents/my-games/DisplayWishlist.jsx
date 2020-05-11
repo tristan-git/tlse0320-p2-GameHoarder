@@ -23,9 +23,12 @@ DisplayWishlist.propTypes = {
 }; */
 
 export default function DisplayWishlist({ handleClose, show, children, wishlist }) {
-  const displayWhislist = wishlist.map(game => console.log(game));
+  // console.log(wishlist)
 
-  // <NewGameCard game={game}/>
+  const displayWhislist = () =>
+    wishlist.map(game => <NewGameCard url={game.img} name={game.title} rating={game.rating} />);
+
+  //
 
   return (
     <div className={show ? 'modal display-block' : 'modal display-none'}>
@@ -40,6 +43,8 @@ export default function DisplayWishlist({ handleClose, show, children, wishlist 
           >
             Close me
           </button>
+
+          {displayWhislist()}
         </div>
       </section>
     </div>

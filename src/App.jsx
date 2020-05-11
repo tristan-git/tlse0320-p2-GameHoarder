@@ -49,23 +49,23 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // const { listGamesLib } = this.state;
-    // const listGamesLibReverse = listGamesLib.sort(
-    //   (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
-    // );
-    // window.localStorage.setItem('gamesList', JSON.stringify(listGamesLibReverse));
-    // if (
-    //   this.state.prevListGamesLib.length !== listGamesLibReverse.length ||
-    //   this.state.prevListGamesLib === []
-    // ) {
-    //   this.setState(prevState => {
-    //     return {
-    //       ...prevState,
-    //       listGamesLib: listGamesLibReverse,
-    //       prevListGamesLib: listGamesLibReverse
-    //     };
-    //   });
-    // }
+    const { listGamesLib } = this.state;
+    const listGamesLibReverse = listGamesLib.sort(
+      (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
+    );
+    window.localStorage.setItem('gamesList', JSON.stringify(listGamesLibReverse));
+    if (
+      this.state.prevListGamesLib.length !== listGamesLibReverse.length ||
+      this.state.prevListGamesLib === []
+    ) {
+      this.setState(prevState => {
+        return {
+          ...prevState,
+          listGamesLib: listGamesLibReverse,
+          prevListGamesLib: listGamesLibReverse
+        };
+      });
+    }
 
     const { wishlist } = this.state;
 
@@ -76,25 +76,6 @@ class App extends React.Component {
     // }
   }
 
-  // let { listGamesLib } = this.state;
-  // const listGamesLibReverse = listGamesLib.sort(
-  //   (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
-  // );
-  // window.localStorage.setItem('gamesList', JSON.stringify(listGamesLibReverse));
-  // if (
-  //   this.state.prevListGamesLib.length !== listGamesLibReverse.length ||
-  //   this.state.prevListGamesLib === []
-  // ) {
-  //   console.log('setstate');
-  //   this.setState(prevState => {
-  //     return {
-  //       ...prevState,
-  //       listGamesLib: listGamesLibReverse,
-  //       prevListGamesLib: listGamesLibReverse
-  //     };
-  //   });
-  // }
-
   handleGamesList(values) {
     this.setState(prevState => {
       return {
@@ -102,10 +83,6 @@ class App extends React.Component {
         listGamesLib: [...prevState.listGamesLib, values]
       };
     });
-    this.setState(state => ({
-      isWishlist: !state.isWishlist,
-      show: !state.show
-    }));
   }
 
   handleClick(values) {
@@ -157,7 +134,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { mygameInputValue, idNewGameAdded } = this.state;
+    const { mygameInputValue, idNewGameAdded, wishlist } = this.state;
     const { newgameInputValue } = this.state;
     const { handleChange } = this;
 
@@ -165,7 +142,7 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <section id="content">
-            <NavDesktop wishlist={this.state.wishlist} />
+            <NavDesktop wishlist={wishlist} />
 
             <Switch>
               <Route exact path="/">
