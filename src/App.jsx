@@ -130,7 +130,7 @@ class App extends React.Component {
                 />
               </Route>
               <Route exact path="/ajouter-un-jeu">
-                <HeaderSugg handleGameAdded={this.handleGameAdded} />
+                <HeaderSugg handleGamesList={this.handleGamesList} />
                 <NewGames
                   value={newgameInputValue}
                   handleGamesList={this.handleGamesList}

@@ -17,13 +17,14 @@ class HeaderSugg extends React.Component {
 
   AddGameToLibrary() {
     const values = {
+      addingDate: new Date(),
       id: this.state.id,
       title: this.state.name,
       img: this.state.url,
       rating: this.state.rating
     };
-    const { handleGameAdded } = this.props;
-    handleGameAdded(values.id);
+    const { handleGamesList } = this.props;
+    handleGamesList(values);
     localStorage.setItem(values.id, JSON.stringify(values));
   }
 
