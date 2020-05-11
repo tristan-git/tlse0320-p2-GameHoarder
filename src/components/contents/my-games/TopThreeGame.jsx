@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 function TopThreeGame(props) {
   const { name, url, rating } = props;
-  console.log(props);
 
   const setDatasGameLocalStorage = data => {
     console.log(data);
@@ -20,7 +19,7 @@ function TopThreeGame(props) {
   };
 
   return (
-    <div className="card" style={{ backgroundImage: `url('${url}')` }}>
+    <div className="card" style={{ backgroundImage: `url('${url[0]}')` }}>
       <div className="container">
         <div className="header">
           <div className="title-card">
