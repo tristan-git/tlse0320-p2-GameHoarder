@@ -8,6 +8,7 @@ import MyGames from './components/contents/MyGames';
 import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';
 import MobileNav from './components/mobile-nav/MobileNav';
+import GetGames from './components/data/GetGames';
 import Swal from 'sweetalert2';
 import NavDesktop from './components/nav-desktop/NavDesktop';
 
@@ -21,10 +22,12 @@ class App extends React.Component {
       newgameInputValue: null,
       idNewGameDelete: null,
       prevListGamesLib: [],
-      listGamesLib: []
+      listGamesLib: [],
+      allGames: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.gameToRemove = this.gameToRemove.bind(this);
+    this.handleAllGames = this.handleAllGames.bind(this);
     this.handleGamesList = this.handleGamesList.bind(this);
   }
 
@@ -100,6 +103,10 @@ class App extends React.Component {
     });
   }
 
+  handleAllGames(games) {
+    this.setState({ allGames: [...games] });
+  }
+
   handleChange(event) {
     const valueToChange = event.target.value;
     const inputSearchInputValue = event.target.name;
@@ -109,7 +116,7 @@ class App extends React.Component {
   render() {
     const { mygameInputValue, idNewGameAdded } = this.state;
     const { newgameInputValue } = this.state;
-    const { handleChange } = this;
+    const { handleChange, handleAllGames } = this;
 
     console.log('render');
 
@@ -130,11 +137,13 @@ class App extends React.Component {
                 />
               </Route>
               <Route exact path="/ajouter-un-jeu">
+                <GetGames games={this.state.allGames} handleAllGames={handleAllGames} />
                 <HeaderSugg handleGameAdded={this.handleGameAdded} />
                 <NewGames
                   value={newgameInputValue}
                   handleGamesList={this.handleGamesList}
                   handleChange={handleChange}
+                  games={this.state.allGames}
                 />
               </Route>
             </Switch>
