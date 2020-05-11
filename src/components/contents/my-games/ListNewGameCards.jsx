@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NewGameCard from './NewGameCard';
-import games from '../../data/games.json';
 
-const ListNewGameCards = ({ value, handleWishlistGame, handleGamesList }) => {
+const ListNewGameCards = ({ value, handleGamesList, games, handleWishlistGame }) => {
   const displayNewGameCards = value =>
     games
       .filter(game => (value ? game.name.toUpperCase().includes(value.toUpperCase()) : game))

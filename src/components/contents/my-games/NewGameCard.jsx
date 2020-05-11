@@ -55,7 +55,7 @@ class NewGameCard extends React.Component {
 
     return (
       <div className="Card">
-        <div className="ImageCard" style={{ backgroundImage: `url(${url})` }} />
+        <div className="ImageCard" style={{ backgroundImage: `url(${url[0]})` }} />
         <div className="GameInfo">
           <div className="GameInfoTitle">
             <div className="NameWish">

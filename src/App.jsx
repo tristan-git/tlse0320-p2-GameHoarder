@@ -9,6 +9,7 @@ import MyGames from './components/contents/MyGames';
 import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';
 import MobileNav from './components/mobile-nav/MobileNav';
+import GetGames from './components/data/GetGames';
 import NavDesktop from './components/nav-desktop/NavDesktop';
 import DisplayWishlist from './components/contents/my-games/DisplayWishlist';
 
@@ -24,10 +25,12 @@ class App extends React.Component {
       prevListGamesLib: [],
       listGamesLib: [],
       wishlist: [],
-      show: false
+      show: false,
+      allGames: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.gameToRemove = this.gameToRemove.bind(this);
+    this.handleAllGames = this.handleAllGames.bind(this);
     this.handleGamesList = this.handleGamesList.bind(this);
     this.handleWishlistGame = this.handleWishlistGame.bind(this);
   }
@@ -111,6 +114,10 @@ class App extends React.Component {
     });
   }
 
+  handleAllGames(games) {
+    this.setState({ allGames: [...games] });
+  }
+
   handleChange(event) {
     const valueToChange = event.target.value;
     const inputSearchInputValue = event.target.name;
@@ -120,7 +127,7 @@ class App extends React.Component {
   render() {
     const { mygameInputValue, idNewGameAdded, wishlist } = this.state;
     const { newgameInputValue } = this.state;
-    const { handleChange } = this;
+    const { handleChange, handleAllGames } = this;
 
     return (
       <div className="App">
@@ -139,12 +146,14 @@ class App extends React.Component {
                 />
               </Route>
               <Route exact path="/ajouter-un-jeu">
+                <GetGames games={this.state.allGames} handleAllGames={handleAllGames} />
                 <HeaderSugg handleGameAdded={this.handleGameAdded} />
                 <NewGames
                   value={newgameInputValue}
                   handleWishlistGame={this.handleWishlistGame}
                   handleGamesList={this.handleGamesList}
                   handleChange={handleChange}
+                  games={this.state.allGames}
                 />
               </Route>
             </Switch>

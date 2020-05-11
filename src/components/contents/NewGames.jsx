@@ -6,7 +6,7 @@ import Filters from './filter/Filters';
 import Title from './title/Title';
 import './newgames.scss';
 
-function NewGames({ value, handleChange, handleWishlistGame, handleGamesList }) {
+function NewGames({ value, handleChange, handleWishlistGame, games, handleGamesList }) {
   return (
     <div className="new-games">
       <div className="container-box">
@@ -14,6 +14,7 @@ function NewGames({ value, handleChange, handleWishlistGame, handleGamesList }) 
         <Filters value={value} handleChange={handleChange} location="newgameInputValue" />
         <ListNewGameCards
           value={value}
+          games={games}
           handleWishlistGame={handleWishlistGame}
           handleGamesList={handleGamesList}
         />
