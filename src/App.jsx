@@ -118,8 +118,6 @@ class App extends React.Component {
     const { newgameInputValue } = this.state;
     const { handleChange, handleAllGames } = this;
 
-    console.log('render');
-
     return (
       <div className="App">
         <Router>
