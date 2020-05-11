@@ -12,7 +12,7 @@ function MyGameCard(props) {
           X
         </button>
       </div>
-      <div className="image" style={{ backgroundImage: `url(${img})` }} />
+      <div className="image" style={{ backgroundImage: `url(${img[0]})` }} />
       <div className="footer">
         <select name="statuts" className="statuts">
           <option value="Statuts">STATUTS</option>
