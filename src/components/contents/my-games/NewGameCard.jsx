@@ -14,7 +14,6 @@ class NewGameCard extends React.Component {
     this.getDataGame = this.getDataGame.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.addToWishlist = this.addToWishlist.bind(this);
-    /*     this.handleClick = this.handleClick.bind(this); */
   }
 
   getDataGame() {
@@ -31,13 +30,12 @@ class NewGameCard extends React.Component {
   }
 
   addToWishlist() {
-    const { url: img, name: title, rating, isWishlist, show, handleClick } = this.props;
+    const { url: img, name: title, rating, handleClick } = this.props;
     const values = {
       title,
       img,
       rating,
-      isWishlist,
-      show
+      isWishlist: true
     };
     handleClick(values);
   }
@@ -103,6 +101,7 @@ NewGameCard.propTypes = {
   rating: PropTypes.string.isRequired,
   handleGamesList: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  show: PropTypes.string.isRequired,
   addToLib: PropTypes.string.isRequired,
   handleClick: PropTypes.string.isRequired,
   isWishlist: PropTypes.string.isRequired

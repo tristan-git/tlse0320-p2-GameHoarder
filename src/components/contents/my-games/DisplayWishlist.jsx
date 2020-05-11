@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './MyGameCard.scss';
-/* import NewGameCard from './NewGameCard';
-import games from '../../data/games.json';
+import NewGameCard from './NewGameCard';
+/* import games from '../../data/games.json';
 
 const DisplayWishlist = ({ value, addToWishlist }) => {
   const displayWishlist = value =>
@@ -22,7 +22,11 @@ DisplayWishlist.propTypes = {
   addToWishlist: PropTypes.func.isRequired
 }; */
 
-export default function DisplayWishlist({ handleClose, show, children }) {
+export default function DisplayWishlist({ handleClose, show, children, wishlist }) {
+  const displayWhislist = wishlist.map(game => console.log(game));
+
+  // <NewGameCard game={game}/>
+
   return (
     <div className={show ? 'modal display-block' : 'modal display-none'}>
       <section className="modal-main">
@@ -42,11 +46,8 @@ export default function DisplayWishlist({ handleClose, show, children }) {
   );
 }
 
-DisplayWishlist.propTypes = {
-  handleClose: PropTypes.string.isRequired,
-  show: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired
-};
-
-/* export default DisplayWishlist;
- */
+// DisplayWishlist.propTypes = {
+//   handleClose: PropTypes.string.isRequired,
+//   show: PropTypes.string.isRequired,
+//   children: PropTypes.string.isRequired
+// };

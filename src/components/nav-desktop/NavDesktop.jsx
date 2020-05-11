@@ -26,6 +26,14 @@ class NavDesktop extends React.Component {
 
   render() {
     const { show } = this.state;
+    const { wishlist, url: img, name: title } = this.props;
+
+    const newWhislist = [
+      { url: wishlist.img },
+      { name: wishlist.title },
+      { rating: wishlist.rating }
+    ];
+
     return (
       <div className="navDesktop">
         <div className="logo">
@@ -38,7 +46,7 @@ class NavDesktop extends React.Component {
           <NavLink to="/">
             <li>Ma bibliothèque</li>
           </NavLink>
-          <DisplayWishlist show={show} handleClose={this.hideModal} />
+          <DisplayWishlist show={show} handleClose={this.hideModal} wishlist={newWhislist} />
           <button
             type="button"
             onClick={this.handleClick}
@@ -64,6 +72,8 @@ class NavDesktop extends React.Component {
   }
 }
 
-NavDesktop.propTypes = {};
+NavDesktop.propTypes = {
+  /*   wishlist: propTypes.string.isRequired */
+};
 
 export default NavDesktop;

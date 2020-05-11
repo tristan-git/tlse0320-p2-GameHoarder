@@ -6,13 +6,13 @@ import Filters from './filter/Filters';
 import Title from './title/Title';
 import './newgames.scss';
 
-function NewGames({ value, handleChange }) {
+function NewGames({ value, handleChange, handleClick }) {
   return (
     <div className="new-games">
       <div className="container-box">
         <Title title="Ajouter des " span="jeux" />
         <Filters value={value} handleChange={handleChange} location="newgameInputValue" />
-        <ListNewGameCards value={value} />
+        <ListNewGameCards value={value} handleClick={handleClick} />
       </div>
       <div className="container-top-five">
         <div className="container-box">
@@ -26,6 +26,7 @@ function NewGames({ value, handleChange }) {
 
 NewGames.propTypes = {
   value: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired
 };
 export default NewGames;
