@@ -2,17 +2,17 @@ import React from 'react';
 import './App.scss';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { CommonLoading } from 'react-loadingg';
 import HeaderLib from './components/header/HeaderLib';
 import HeaderSugg from './components/header/HeaderSugg';
 import MyGames from './components/contents/MyGames';
 import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';
 import GetGames from './components/data/GetGames';
-import Swal from 'sweetalert2';
 import NavDesktop from './components/nav-desktop/NavDesktop';
-import { CommonLoading } from 'react-loadingg';
 
-axios.defaults.headers.common['user-key'] = 'e98a7b482e71cbb9d2b90309b365e3b4';
+axios.defaults.headers.common['user-key'] = '75f9926369d4142ff35731792bb25f29';
 
 class App extends React.Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    let { listGamesLib } = this.state;
+    const { listGamesLib } = this.state;
     const listGamesLibReverse = listGamesLib.sort(
       (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
     );
@@ -117,8 +117,12 @@ class App extends React.Component {
     const { newgameInputValue } = this.state;
     const { handleChange, handleAllGames } = this;
     let addGameContent;
-    if (this.state.allGames.length === 0) {
-      addGameContent = <CommonLoading color={'#1047f5'} />;
+    if (
+      this.state.allGames.length === 0 ||
+      this.state.allGames[0].url === undefined ||
+      this.state.allGames[0].platformsName === undefined
+    ) {
+      addGameContent = <CommonLoading color="#1047f5" />;
     } else {
       addGameContent = (
         <>
