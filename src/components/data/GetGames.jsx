@@ -6,7 +6,7 @@ export default class GetGames extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.games.length < 25) {
+    if (this.props.games.length < 25 && window.localStorage.getItem('allGames') === null) {
       axios({
         url: 'https://cors-anywhere.herokuapp.com/https://api-v3.igdb.com/games',
         method: 'POST',
@@ -47,6 +47,9 @@ export default class GetGames extends React.Component {
         .catch(err => {
           console.error(err);
         });
+    } else {
+      const games = JSON.parse(window.localStorage.getItem('allGames'));
+      this.props.handleAllGames(games);
     }
   }
 
