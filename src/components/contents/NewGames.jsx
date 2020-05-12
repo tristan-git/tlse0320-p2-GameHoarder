@@ -25,7 +25,7 @@ function NewGames({ value, handleChange, games, handleGamesList }) {
 }
 
 NewGames.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
   handleGamesList: PropTypes.func.isRequired
 };

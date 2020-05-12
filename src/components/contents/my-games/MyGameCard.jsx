@@ -26,7 +26,6 @@ function MyGameCard(props) {
 }
 
 MyGameCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired
+  data: PropTypes.object.isRequired
 };
 export default MyGameCard;

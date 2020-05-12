@@ -53,8 +53,8 @@ class NewGameCard extends React.Component {
 }
 NewGameCard.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired
+  url: PropTypes.array.isRequired,
+  rating: PropTypes.number.isRequired
 };
 
 export default NewGameCard;

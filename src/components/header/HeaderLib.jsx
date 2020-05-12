@@ -59,7 +59,6 @@ export default class HeaderLib extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     if (this.state.isThereIsGame) {
       return (
         <div

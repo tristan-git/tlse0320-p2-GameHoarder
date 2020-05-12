@@ -7,7 +7,6 @@ import HeaderSugg from './components/header/HeaderSugg';
 import MyGames from './components/contents/MyGames';
 import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';
-import MobileNav from './components/mobile-nav/MobileNav';
 import GetGames from './components/data/GetGames';
 import Swal from 'sweetalert2';
 import NavDesktop from './components/nav-desktop/NavDesktop';
@@ -161,7 +160,6 @@ class App extends React.Component {
             </Switch>
           </section>
           <Footer />
-          <MobileNav />
         </Router>
       </div>
     );
