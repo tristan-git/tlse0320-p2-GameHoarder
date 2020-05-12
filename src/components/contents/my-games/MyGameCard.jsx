@@ -9,10 +9,14 @@ function MyGameCard(props) {
       <div className="header">
         <h3>{title}</h3>
         <button onClick={() => props.gameToRemove(title)} className="close-btn" type="submit">
-          X
+          <img
+            src="./img/svg/delete-black.svg"
+            alt="delete"
+            style={{ backgroundColor: 'transparent' }}
+          />
         </button>
       </div>
-      <div className="image" style={{ backgroundImage: `url(${img})` }} />
+      <div className="image" style={{ backgroundImage: `url()` }} />
       <div className="footer">
         <select name="statuts" className="statuts">
           <option value="Statuts">STATUTS</option>

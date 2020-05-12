@@ -74,7 +74,7 @@ export default class HeaderLib extends React.Component {
         >
           <div className="filter">
             <div className="gameSugg">
-              <div style={{ backgroundImage: `url(${this.state.lastGameImg})` }}></div>
+              <div style={{ backgroundImage: `url(${this.state.lastGameImg})` }} />
             </div>
 
             <div className="wrapper">
@@ -124,16 +124,15 @@ export default class HeaderLib extends React.Component {
           </div>
         </div>
       );
-    } else {
-      return (
-        <div className="headerContainer" style={{ backgroundImage: `${this.state.lastGameImg}` }}>
-          <div className="filter">
-            <img src="./img/logo.svg" alt="logo du site" />
-            <h1>{this.state.lastGameName}</h1>
-          </div>
-        </div>
-      );
     }
+    return (
+      <div className="headerContainer" style={{ backgroundImage: `${this.state.lastGameImg}` }}>
+        <div className="filter">
+          <img src="./img/logo.svg" alt="logo du site" />
+          <h1>{this.state.lastGameName}</h1>
+        </div>
+      </div>
+    );
   }
 }
 
