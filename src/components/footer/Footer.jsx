@@ -12,11 +12,11 @@ const Footer = () => {
       <div className="social">
         <div>
           {' '}
-          <img src="./img/svg/social-1.svg" alt="bouton plus" />
+          <img src="./img/svg/social-1.svg" alt="bouton insta" />
         </div>
         <div>
           {' '}
-          <img src="./img/svg/social-2.svg" alt="bouton plus" />
+          <img src="./img/svg/social-2.svg" alt="bouton youtube" />
         </div>
       </div>
     </footer>

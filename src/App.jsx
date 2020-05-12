@@ -11,6 +11,7 @@ import Footer from './components/footer/Footer';
 import MobileNav from './components/mobile-nav/MobileNav';
 import GetGames from './components/data/GetGames';
 import NavDesktop from './components/nav-desktop/NavDesktop';
+import { CommonLoading } from 'react-loadingg';
 
 /* axios.defaults.headers.common['user-key'] = 'e98a7b482e71cbb9d2b90309b365e3b4'; */
 axios.defaults.headers.common['user-key'] = '75f9926369d4142ff35731792bb25f29';
@@ -121,6 +122,7 @@ class App extends React.Component {
   }
 
   handleAllGames(games) {
+    console.log(games);
     this.setState({ allGames: [...games] });
   }
 
@@ -134,6 +136,24 @@ class App extends React.Component {
     const { mygameInputValue, idNewGameAdded } = this.state;
     const { newgameInputValue } = this.state;
     const { handleChange, handleAllGames } = this;
+    let addGameContent;
+    if (this.state.allGames.length === 0) {
+      addGameContent = <CommonLoading color={'#1047f5'} />;
+    } else {
+      addGameContent = (
+        <>
+          <HeaderSugg games={this.state.allGames} handleGamesList={this.handleGamesList} />
+          <NewGames
+            value={newgameInputValue}
+            handleGamesList={this.handleGamesList}
+            handleChange={handleChange}
+            games={this.state.allGames}
+            handleWishlistGame={this.handleWishlistGame}
+            handleRemoveWishlistGame={this.handleRemoveWishlistGame}
+          />
+        </>
+      );
+    }
 
     return (
       <div className="App">
@@ -146,7 +166,11 @@ class App extends React.Component {
 
             <Switch>
               <Route exact path="/">
-                <HeaderLib idNewGameAdded={idNewGameAdded} gameToRemove={this.gameToRemove} />
+                <HeaderLib
+                  gameToRemove={this.gameToRemove}
+                  listGamesLib={this.state.listGamesLib}
+                  gameToRemove={this.gameToRemove}
+                />
                 <MyGames
                   value={mygameInputValue}
                   gameToRemove={this.gameToRemove}
@@ -156,16 +180,7 @@ class App extends React.Component {
               </Route>
               <Route exact path="/ajouter-un-jeu">
                 <GetGames games={this.state.allGames} handleAllGames={handleAllGames} />
-                <HeaderSugg handleGameAdded={this.handleGameAdded} />
-                <NewGames
-                  value={newgameInputValue}
-                  handleWishlistGame={this.handleWishlistGame}
-                  handleRemoveWishlistGame={this.handleRemoveWishlistGame}
-                  handleGamesList={this.handleGamesList}
-                  handleChange={handleChange}
-                  games={this.state.allGames}
-                  listGamesLib={this.state.listGamesLib}
-                />
+                {addGameContent}
               </Route>
             </Switch>
           </section>
