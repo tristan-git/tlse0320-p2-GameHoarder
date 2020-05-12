@@ -124,7 +124,10 @@ class App extends React.Component {
     } else {
       addGameContent = (
         <>
-          <HeaderSugg games={this.state.allGames} handleGamesList={this.handleGamesList} />
+          <HeaderSugg
+            games={this.state.allGames.sort((a, b) => b.rating - a.rating)}
+            handleGamesList={this.handleGamesList}
+          />
           <NewGames
             value={newgameInputValue}
             handleGamesList={this.handleGamesList}
