@@ -105,7 +105,6 @@ class App extends React.Component {
   }
 
   handleAllGames(games) {
-    console.log(games);
     this.setState({ allGames: [...games] });
   }
 
