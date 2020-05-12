@@ -25,7 +25,6 @@ class App extends React.Component {
       idNewGameDelete: null,
       prevListGamesLib: [],
       listGamesLib: [],
-      wishlist: [],
       show: false,
       allGames: []
     };
@@ -80,11 +79,23 @@ class App extends React.Component {
     this.setState({
       listGamesLib: [...listGamesLib, values]
     });
-    // window.localStorage.setItem(title, JSON.stringify(values));
   }
 
   handleRemoveWishlistGame(values) {
-    /* console.log(values); */
+    const { listGamesLib } = this.state;
+    const removeWish = listGamesLib;
+    let index = removeWish.map(game => {
+      if (values.title === game.title) {
+        return removeWish.indexOf(game);
+      }
+      return undefined;
+    });
+    index = index.filter(el => el !== undefined);
+    removeWish.splice(index[0], 1);
+    this.setState({
+      listGamesLib: removeWish
+    });
+    console.log(values.addToLib);
   }
 
   gameToRemove(gameToRemove) {
@@ -140,7 +151,6 @@ class App extends React.Component {
         <Router>
           <section id="content">
             <NavDesktop
-              wishlist={wishlist}
               listGamesLib={this.state.listGamesLib}
               handleRemoveWishlistGame={this.handleRemoveWishlistGame}
             />

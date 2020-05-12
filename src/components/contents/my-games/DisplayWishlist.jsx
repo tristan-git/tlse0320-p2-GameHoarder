@@ -25,7 +25,6 @@ export default function DisplayWishlist({
   handleClose,
   show,
   children,
-  wishlist,
   listGamesLib,
   handleRemoveWishlistGame
 }) {
