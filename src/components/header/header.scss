@@ -129,15 +129,12 @@
     margin-top: 257px;
 
     .crossContainerSugg {
-      background-color: #0f47f5;
+      background-color: var(--primary-color);
       border: none;
       padding: 10px;
       cursor: pointer;
-      .crossLineSugg {
-        width: 40px;
-        height: 5px;
-        position: relative;
-      }
+      height: 42px;
+      border-radius: 5px;
     }
 
     div {

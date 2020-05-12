@@ -1,6 +1,5 @@
 import React from 'react';
 import './header.scss';
-import Swal from 'sweetalert2';
 import DisplayRating from '../contents/my-games/DisplayRating';
 
 export default class HeaderLib extends React.Component {
@@ -18,16 +17,28 @@ export default class HeaderLib extends React.Component {
 
   componentDidMount() {
     this.handleLastGameAdded();
-    console.log(this.state.lastGameAdded);
+  }
+
+  componentDidUpdate() {
+    if (
+      this.props.listGamesLib &&
+      this.props.listGamesLib.length > 0 &&
+      this.state.lastGameName !== this.props.listGamesLib[0].title
+    ) {
+      this.handleLastGameAdded();
+    } else if (
+      this.props.listGamesLib.length === 0 &&
+      this.state.lastGameName !== "Ajouter d'abord un jeu"
+    ) {
+      this.handleLastGameAdded();
+    }
   }
 
   handleLastGameAdded() {
-    const { id } = this.state;
-    if (this.state.isGame && window.localStorage.length > 0) {
-      const key = window.localStorage.key(0);
-      const lastGameInfo = JSON.parse(window.localStorage.getItem(key));
+    if (this.props.listGamesLib && this.props.listGamesLib.length > 0) {
+      const lastGameInfo = this.props.listGamesLib[0];
       this.setState({
-        isGame: true,
+        isThereIsGame: true,
         lastGameName: lastGameInfo.title,
         lastGameRating: lastGameInfo.rating,
         lastGameImg: lastGameInfo.img
@@ -36,37 +47,20 @@ export default class HeaderLib extends React.Component {
       this.setState({
         lastGameName: "Ajouter d'abord un jeu",
         lastGameImg: "url('/img/20200410190035_1.jpg')",
-        isGame: false
+        isThereIsGame: false
       });
     }
   }
 
   removeGameFromHeader() {
-    Swal.fire({
-      title: 'Etes-vous sûr?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: 'var(--primary-color)',
-      cancelButtonColor: 'var(--alert-color)',
-      confirmButtonText: 'Oui, je supprime!',
-      cancelButtonText: 'Annuler'
-    }).then(result => {
-      if (result.value) {
-        Swal.fire({
-          title: 'Supprimé!',
-          text: 'Votre jeu a été supprimé.',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 900
-        });
-        localStorage.removeItem(this.state.lastGameName);
-        this.handleLastGameAdded();
-      }
-    });
+    const { gameToRemove } = this.props;
+    gameToRemove(this.state.lastGameName);
+    this.handleLastGameAdded();
   }
 
   render() {
-    if (this.state.isGame) {
+    console.log(this.props);
+    if (this.state.isThereIsGame) {
       return (
         <div
           className="headerContainer"
@@ -88,7 +82,7 @@ export default class HeaderLib extends React.Component {
                 </div>
               </div>
               <div className="infoHeaderContainer blue">
-                <div className="crossContainer" onClick={this.RemoveGameFromHeader}>
+                <div className="crossContainer" onClick={() => this.removeGameFromHeader()}>
                   <img src="./img/svg/delete-white.svg" alt="bouton plus" />
                 </div>
               </div>
