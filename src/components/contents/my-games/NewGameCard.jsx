@@ -21,7 +21,7 @@ class NewGameCard extends React.Component {
   }
 
   render() {
-    const { rating, name, url, addToLib } = this.props;
+    const { rating, name, url, addToLib, platformsName } = this.props;
     return (
       <div className="Card">
         <div className="ImageCard" style={{ backgroundImage: `url(${url[0]})` }} />
@@ -32,7 +32,12 @@ class NewGameCard extends React.Component {
               <img src="/img/svg/wishlist.svg" alt="icon whislist" />
             </div>
           </div>
-          <p className="GameSupport">Game support</p>
+          <p className="GameSupport">
+            {platformsName
+              .map(platform => platform + '/')
+              .join('')
+              .slice(0, -1)}
+          </p>
           <div className="GameRating">{rating / 10 / 2}</div>
           <div className="ButtonAddLibrary" onClick={this.getDataGame}>
             <img

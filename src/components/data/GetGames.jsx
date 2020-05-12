@@ -14,7 +14,7 @@ export default class GetGames extends React.Component {
           Accept: 'application/json'
         },
         data:
-          'fields id, category, cover, name, popularity, rating;\nwhere popularity >= 20 & cover!=null & rating != null & rating >= 75;\nlimit 25;'
+          'fields id, platforms, category, cover, name, popularity, rating;\nwhere popularity >= 20 & cover!=null & rating != null & rating >= 75;\nlimit 25;'
       })
         .then(response => response.data)
         .then(games =>
@@ -40,10 +40,39 @@ export default class GetGames extends React.Component {
                   }
                 }
               });
-              window.localStorage.setItem('allGames', JSON.stringify(games));
-              this.props.handleAllGames(games);
+              axios({
+                url: 'https://cors-anywhere.herokuapp.com/https://api-v3.igdb.com/platforms',
+                method: 'POST',
+                headers: {
+                  Accept: 'application/json'
+                },
+                data: `fields name;\nwhere ${games
+                  .map(game => game.platforms.map(platform => 'id=' + platform + ' | ').join(''))
+                  .join('')
+                  .slice(0, -2)};limit 50;`
+              })
+                .then(gamePlatform => gamePlatform.data)
+                .then(gamePlatform => {
+                  games.map(game => {
+                    game.platformsName = [];
+                    for (let i = 0; i < gamePlatform.length - 1; i++) {
+                      for (let x = 0; x < game.platforms.length; x++) {
+                        if (game.platforms[x] === gamePlatform[i].id) {
+                          if (gamePlatform[i].name === 'PC (Microsoft Windows)') {
+                            game.platformsName = [...game.platformsName, 'Windows'];
+                          } else {
+                            game.platformsName = [...game.platformsName, gamePlatform[i].name];
+                          }
+                        }
+                      }
+                    }
+                  });
+                  window.localStorage.setItem('allGames', JSON.stringify(games));
+                  this.props.handleAllGames(games);
+                });
             })
         )
+
         .catch(err => {
           console.error(err);
         });

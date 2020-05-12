@@ -51,7 +51,6 @@ class App extends React.Component {
       this.state.prevListGamesLib.length !== listGamesLibReverse.length ||
       this.state.prevListGamesLib === []
     ) {
-      console.log('setstate');
       this.setState(prevState => {
         return {
           ...prevState,
@@ -105,7 +104,6 @@ class App extends React.Component {
   }
 
   handleAllGames(games) {
-    console.log(games);
     this.setState({ allGames: [...games] });
   }
 

@@ -6,7 +6,7 @@ export default class HeaderLib extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lastGameImg: null,
+      lastGameImg: [],
       lastGameName: null,
       lastGameRating: null,
       isThereIsGame: true,
@@ -64,11 +64,11 @@ export default class HeaderLib extends React.Component {
       return (
         <div
           className="headerContainer"
-          style={{ backgroundImage: `url(${this.state.lastGameImg})` }}
+          style={{ backgroundImage: `url(${this.state.lastGameImg[0]})` }}
         >
           <div className="filter">
             <div className="gameSugg">
-              <div style={{ backgroundImage: `url(${this.state.lastGameImg})` }}></div>
+              <div style={{ backgroundImage: `url(${this.state.lastGameImg[0]})` }}></div>
             </div>
 
             <div className="wrapper">
@@ -98,23 +98,6 @@ export default class HeaderLib extends React.Component {
                 </label>
               </div>
             </div>
-
-            {/* <h1>{this.state.lastGameName}</h1>
-            <div className="infoHeaderContainer">
-              <div className="crossContainer" onClick={this.removeGameFromHeader}>
-                <div className="crossLine"></div>
-                <div className="crossLine"></div>
-              </div>
-              <p>{this.state.lastGameRating / 10 / 2}</p>
-              <label htmlFor="gameStatusHeader">
-                <select name="gameStatus" id="gameStatusHeader">
-                  <option value="0">statut</option>
-                  <option value="1">pas commencé</option>
-                  <option value="2">En cours</option>
-                  <option value="3">terminés</option>
-                </select>
-              </label>
-            </div> */}
           </div>
         </div>
       );
