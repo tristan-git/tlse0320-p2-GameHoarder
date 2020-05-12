@@ -9,3 +9,194 @@
   text-transform: uppercase;
   cursor: pointer;
 }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+
+  .modal-main {
+    position: fixed;
+    background: white;
+    width: 30%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    color: #000000;
+  }
+
+  .image {
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.Card {
+  display: flex;
+  padding: 10px;
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  .header {
+    color: black;
+  }
+}
+
+.ImageCard {
+  height: 100px;
+  min-width: 100px;
+  margin-right: 10px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.GameInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  .GameInfoTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.GameName {
+  width: 100%;
+  max-width: 140px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.NameWish {
+  display: flex;
+  justify-content: space-between;
+}
+
+.GameSupport {
+  width: 100%;
+}
+
+.GameRating {
+  width: 100%;
+}
+
+.ButtonAddLibrary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  img {
+    margin-right: 5px;
+  }
+}
+
+.modal-div {
+  display: flex;
+  flex-direction: column;
+  color: whitesmoke;
+
+  justify-content: center;
+  margin: 2%;
+}
+
+.modal-button {
+  width: 25%;
+  margin: 0 auto;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.ratingSuggestion {
+  display: flex;
+  div {
+    margin-right: 5px;
+  }
+}
+
+.GameSupport {
+  margin-top: -4px;
+}
+
+.container-top-five {
+  background: linear-gradient(270deg, #000000, #3e3e3e, #000000);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 13s ease infinite;
+  -moz-animation: AnimationName 13s ease infinite;
+  -o-animation: AnimationName 13s ease infinite;
+  animation: AnimationName 13s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes AnimationName {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-o-keyframes AnimationName {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes AnimationName {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
