@@ -25,8 +25,10 @@ class NavDesktop extends React.Component {
   }
 
   render() {
+    console.log(this.props.handleRemoveWishlistGame);
+
     const { show } = this.state;
-    const { wishlist, listGamesLib } = this.props;
+    const { wishlist, listGamesLib, handleRemoveWishlistGame } = this.props;
 
     return (
       <div className="navDesktop">
@@ -45,6 +47,7 @@ class NavDesktop extends React.Component {
             handleClose={this.hideModal}
             wishlist={wishlist}
             listGamesLib={listGamesLib}
+            handleRemoveWishlistGame={handleRemoveWishlistGame}
           />
           <button
             type="button"

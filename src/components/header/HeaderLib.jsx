@@ -18,7 +18,7 @@ export default class HeaderLib extends React.Component {
 
   componentDidMount() {
     this.handleLastGameAdded();
-    console.log(this.state.lastGameAdded);
+    /* console.log(this.state.lastGameAdded); */
   }
 
   handleLastGameAdded() {

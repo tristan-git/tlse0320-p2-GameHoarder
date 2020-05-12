@@ -12,7 +12,8 @@ function NewGames({
   handleWishlistGame,
   games,
   handleGamesList,
-  listGamesLib
+  listGamesLib,
+  handleRemoveWishlistGame
 }) {
   return (
     <div className="new-games">
@@ -25,6 +26,7 @@ function NewGames({
           handleWishlistGame={handleWishlistGame}
           handleGamesList={handleGamesList}
           listGamesLib={listGamesLib}
+          handleRemoveWishlistGame={handleRemoveWishlistGame}
         />
       </div>
       <div className="container-top-five">
@@ -43,6 +45,7 @@ NewGames.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleWishlistGame: PropTypes.func.isRequired,
   handleGamesList: PropTypes.func.isRequired,
-  listGamesLib: PropTypes.func.isRequired
+  listGamesLib: PropTypes.func.isRequired,
+  handleRemoveWishlistGame: PropTypes.func.isRequired
 };
 export default NewGames;

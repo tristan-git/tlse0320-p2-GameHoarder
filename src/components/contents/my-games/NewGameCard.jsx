@@ -13,6 +13,7 @@ class NewGameCard extends React.Component {
     this.getDataGame = this.getDataGame.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.addToWishlist = this.addToWishlist.bind(this);
+    this.removeToWishlist = this.removeToWishlist.bind(this);
   }
 
   getDataGame() {
@@ -47,8 +48,22 @@ class NewGameCard extends React.Component {
     this.setState({ show: false });
   }
 
+  removeToWishlist() {
+    const { url: img, name: title, rating, handleRemoveWishlistGame, id } = this.props;
+    const values = {
+      addingDate: new Date(),
+      title,
+      img,
+      rating,
+      id,
+      addToLib: false,
+      addToWish: false
+    };
+    handleRemoveWishlistGame(values);
+  }
+
   render() {
-    const { rating, name, url, addToLib, listGamesLib } = this.props;
+    const { rating, name, url, addToLib, listGamesLib, addToWish } = this.props;
     const { show } = this.state;
 
     // console.log(listGamesLib.filter(game => game.title === name));
@@ -65,7 +80,7 @@ class NewGameCard extends React.Component {
               <Modal show={show} handleClose={this.hideModal} />
               <button
                 type="button"
-                onClick={this.addToWishlist}
+                onClick={addToWish ? this.removeToWishlist : this.addToWishlist}
                 style={{
                   backgroundColor: 'transparent',
                   border: 'none',
@@ -101,7 +116,8 @@ NewGameCard.propTypes = {
   id: PropTypes.string.isRequired,
   addToLib: PropTypes.string.isRequired,
   handleWishlistGame: PropTypes.string.isRequired,
-  listGamesLib: PropTypes.func.isRequired
+  listGamesLib: PropTypes.func.isRequired,
+  handleRemoveWishlistGame: PropTypes.func.isRequired
 };
 
 export default NewGameCard;

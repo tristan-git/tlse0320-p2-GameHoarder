@@ -34,6 +34,7 @@ class App extends React.Component {
     this.handleAllGames = this.handleAllGames.bind(this);
     this.handleGamesList = this.handleGamesList.bind(this);
     this.handleWishlistGame = this.handleWishlistGame.bind(this);
+    this.handleRemoveWishlistGame = this.handleRemoveWishlistGame.bind(this);
   }
 
   componentDidMount() {
@@ -80,6 +81,10 @@ class App extends React.Component {
       listGamesLib: [...listGamesLib, values]
     });
     // window.localStorage.setItem(title, JSON.stringify(values));
+  }
+
+  handleRemoveWishlistGame(values) {
+    /* console.log(values); */
   }
 
   gameToRemove(gameToRemove) {
@@ -134,7 +139,11 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <section id="content">
-            <NavDesktop wishlist={wishlist} listGamesLib={this.state.listGamesLib} />
+            <NavDesktop
+              wishlist={wishlist}
+              listGamesLib={this.state.listGamesLib}
+              handleRemoveWishlistGame={this.handleRemoveWishlistGame}
+            />
 
             <Switch>
               <Route exact path="/">
@@ -152,6 +161,7 @@ class App extends React.Component {
                 <NewGames
                   value={newgameInputValue}
                   handleWishlistGame={this.handleWishlistGame}
+                  handleRemoveWishlistGame={this.handleRemoveWishlistGame}
                   handleGamesList={this.handleGamesList}
                   handleChange={handleChange}
                   games={this.state.allGames}
