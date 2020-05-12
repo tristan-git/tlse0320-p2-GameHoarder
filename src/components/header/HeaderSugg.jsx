@@ -1,16 +1,15 @@
 import React from 'react';
 import './header.scss';
-import games from '../data/games.json';
 import DisplayRating from '../contents/my-games/DisplayRating';
 
 class HeaderSugg extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      url: games[0].url,
-      name: games[0].name,
-      rating: games[0].rating,
-      id: games[0].id
+      url: this.props.games[0].url[0],
+      name: this.props.games[0].name,
+      rating: this.props.games[0].rating,
+      id: this.props.games[0].id
     };
     this.AddGameToLibrary = this.AddGameToLibrary.bind(this);
   }
@@ -20,12 +19,11 @@ class HeaderSugg extends React.Component {
       addingDate: new Date(),
       id: this.state.id,
       title: this.state.name,
-      img: this.state.url,
+      img: [this.state.url],
       rating: this.state.rating
     };
     const { handleGamesList } = this.props;
     handleGamesList(values);
-    localStorage.setItem(values.id, JSON.stringify(values));
   }
 
   render() {
