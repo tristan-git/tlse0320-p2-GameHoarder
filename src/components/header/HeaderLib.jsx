@@ -17,27 +17,22 @@ export default class HeaderLib extends React.Component {
 
   componentDidMount() {
     this.handleLastGameAdded();
-    /* console.log(this.state.lastGameAdded); */
   }
 
   componentDidUpdate() {
-    if (
-      this.props.listGamesLib &&
-      this.props.listGamesLib.length > 0 &&
-      this.state.lastGameName !== this.props.listGamesLib[0].title
-    ) {
+    const { listGamesLib } = this.props;
+    const { lastGameName } = this.state;
+    if (listGamesLib && listGamesLib.length > 0 && lastGameName !== listGamesLib[0].title) {
       this.handleLastGameAdded();
-    } else if (
-      this.props.listGamesLib.length === 0 &&
-      this.state.lastGameName !== "Ajouter d'abord un jeu"
-    ) {
+    } else if (listGamesLib.length === 0 && lastGameName !== "Ajouter d'abord un jeu") {
       this.handleLastGameAdded();
     }
   }
 
   handleLastGameAdded() {
-    if (this.props.listGamesLib && this.props.listGamesLib.length > 0) {
-      const lastGameInfo = this.props.listGamesLib[0];
+    const { listGamesLib } = this.props;
+    if (listGamesLib && listGamesLib.length > 0) {
+      const lastGameInfo = listGamesLib[0];
       this.setState({
         isThereIsGame: true,
         lastGameName: lastGameInfo.title,
@@ -55,31 +50,29 @@ export default class HeaderLib extends React.Component {
 
   removeGameFromHeader() {
     const { gameToRemove } = this.props;
-    gameToRemove(this.state.lastGameName);
+    const { lastGameName } = this.state;
+    gameToRemove(lastGameName);
     this.handleLastGameAdded();
   }
 
   render() {
-    console.log(this.props);
-    if (this.state.isThereIsGame) {
+    const { lastGameName, lastGameImg, lastGameRating, isThereIsGame } = this.state;
+    if (isThereIsGame) {
       return (
-        <div
-          className="headerContainer"
-          style={{ backgroundImage: `url(${this.state.lastGameImg})` }}
-        >
+        <div className="headerContainer" style={{ backgroundImage: `url(${lastGameImg})` }}>
           <div className="filter">
             <div className="gameSugg">
-              <div style={{ backgroundImage: `url(${this.state.lastGameImg})` }} />
+              <div style={{ backgroundImage: `url(${lastGameImg})` }} />
             </div>
 
             <div className="wrapper">
               <div className="infoHeaderContainer">
-                <h2>{this.state.lastGameName}</h2>
+                <h2>{lastGameName}</h2>
               </div>
 
               <div className="infoHeaderContainer">
                 <div className="ratingSuggestion">
-                  <DisplayRating rating={this.state.lastGameRating} />
+                  <DisplayRating rating={lastGameRating} />
                 </div>
               </div>
               <div className="infoHeaderContainer blue">
@@ -104,10 +97,10 @@ export default class HeaderLib extends React.Component {
       );
     }
     return (
-      <div className="headerContainer" style={{ backgroundImage: `${this.state.lastGameImg}` }}>
+      <div className="headerContainer" style={{ backgroundImage: `${lastGameImg}` }}>
         <div className="filter">
           <img src="./img/logo.svg" alt="logo du site" />
-          <h1>{this.state.lastGameName}</h1>
+          <h1>{lastGameName}</h1>
         </div>
       </div>
     );

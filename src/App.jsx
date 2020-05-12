@@ -3,15 +3,14 @@ import './App.scss';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { CommonLoading } from 'react-loadingg';
 import HeaderLib from './components/header/HeaderLib';
 import HeaderSugg from './components/header/HeaderSugg';
 import MyGames from './components/contents/MyGames';
 import NewGames from './components/contents/NewGames';
 import Footer from './components/footer/Footer';
-import MobileNav from './components/mobile-nav/MobileNav';
 import GetGames from './components/data/GetGames';
 import NavDesktop from './components/nav-desktop/NavDesktop';
-import { CommonLoading } from 'react-loadingg';
 
 /* axios.defaults.headers.common['user-key'] = 'e98a7b482e71cbb9d2b90309b365e3b4'; */
 axios.defaults.headers.common['user-key'] = '75f9926369d4142ff35731792bb25f29';
@@ -45,16 +44,13 @@ class App extends React.Component {
     }
   }
 
-  componentDidUpdate(prevState) {
-    const { listGamesLib } = this.state;
+  componentDidUpdate() {
+    const { listGamesLib, prevListGamesLib } = this.state;
     const listGamesLibReverse = listGamesLib.sort(
       (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
     );
     window.localStorage.setItem('gamesList', JSON.stringify(listGamesLibReverse));
-    if (
-      this.state.prevListGamesLib.length !== listGamesLibReverse.length ||
-      this.state.prevListGamesLib === []
-    ) {
+    if (prevListGamesLib.length !== listGamesLibReverse.length || prevListGamesLib === []) {
       this.setState(prevState => {
         return {
           ...prevState,
@@ -122,7 +118,6 @@ class App extends React.Component {
   }
 
   handleAllGames(games) {
-    console.log(games);
     this.setState({ allGames: [...games] });
   }
 
@@ -133,21 +128,21 @@ class App extends React.Component {
   }
 
   render() {
-    const { mygameInputValue, idNewGameAdded } = this.state;
+    const { mygameInputValue, idNewGameAdded, allGames, listGamesLib } = this.state;
     const { newgameInputValue } = this.state;
     const { handleChange, handleAllGames } = this;
     let addGameContent;
-    if (this.state.allGames.length === 0) {
-      addGameContent = <CommonLoading color={'#1047f5'} />;
+    if (allGames.length === 0) {
+      addGameContent = <CommonLoading color="#1047f5" />;
     } else {
       addGameContent = (
         <>
-          <HeaderSugg games={this.state.allGames} handleGamesList={this.handleGamesList} />
+          <HeaderSugg games={allGames} handleGamesList={this.handleGamesList} />
           <NewGames
             value={newgameInputValue}
             handleGamesList={this.handleGamesList}
             handleChange={handleChange}
-            games={this.state.allGames}
+            games={allGames}
             handleWishlistGame={this.handleWishlistGame}
             handleRemoveWishlistGame={this.handleRemoveWishlistGame}
           />
@@ -160,26 +155,22 @@ class App extends React.Component {
         <Router>
           <section id="content">
             <NavDesktop
-              listGamesLib={this.state.listGamesLib}
+              listGamesLib={listGamesLib}
               handleRemoveWishlistGame={this.handleRemoveWishlistGame}
             />
 
             <Switch>
               <Route exact path="/">
-                <HeaderLib
-                  gameToRemove={this.gameToRemove}
-                  listGamesLib={this.state.listGamesLib}
-                  gameToRemove={this.gameToRemove}
-                />
+                <HeaderLib gameToRemove={this.gameToRemove} listGamesLib={listGamesLib} />
                 <MyGames
                   value={mygameInputValue}
                   gameToRemove={this.gameToRemove}
                   handleChange={handleChange}
-                  listGamesLib={this.state.listGamesLib}
+                  listGamesLib={listGamesLib}
                 />
               </Route>
               <Route exact path="/ajouter-un-jeu">
-                <GetGames games={this.state.allGames} handleAllGames={handleAllGames} />
+                <GetGames games={allGames} handleAllGames={handleAllGames} />
                 {addGameContent}
               </Route>
             </Switch>

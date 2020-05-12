@@ -1,26 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './MyGameCard.scss';
 import NewGameCard from './NewGameCard';
-/* import games from '../../data/games.json';
 
-const DisplayWishlist = ({ value, addToWishlist }) => {
-  const displayWishlist = value =>
-    games
-      .filter(game => (value ? game.name.toUpperCase().includes(value.toUpperCase()) : game))
-      .map(game => (
-        <div>
-          <NewGameCard {...game} addToWishlist={addToWishlist} key={`new-game-${game.name}`} />
-        </div>
-      ));
-
-  return <div className="grid-cards-display">{displayWishlist(value)}</div>;
-};
-
-DisplayWishlist.propTypes = {
-  value: PropTypes.string.isRequired,
-  addToWishlist: PropTypes.func.isRequired
-}; */
 export default function DisplayWishlist({
   handleClose,
   show,
@@ -62,8 +44,10 @@ export default function DisplayWishlist({
   );
 }
 
-// DisplayWishlist.propTypes = {
-//   handleClose: PropTypes.string.isRequired,
-//   show: PropTypes.string.isRequired,
-//   children: PropTypes.string.isRequired
-// };
+DisplayWishlist.propTypes = {
+  handleClose: PropTypes.string.isRequired,
+  show: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
+  listGamesLib: PropTypes.string.isRequired,
+  handleRemoveWishlistGame: PropTypes.func.isRequired
+};

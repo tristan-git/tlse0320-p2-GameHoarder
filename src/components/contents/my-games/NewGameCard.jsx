@@ -63,11 +63,8 @@ class NewGameCard extends React.Component {
   }
 
   render() {
-    const { rating, name, url, addToLib, listGamesLib, addToWish } = this.props;
+    const { rating, name, url, addToLib, addToWish } = this.props;
     const { show } = this.state;
-
-    // console.log(listGamesLib.filter(game => game.title === name));
-    // console.log(listGamesLib.filter(game => console.log(game)))
 
     return (
       <div className="Card">
@@ -76,7 +73,6 @@ class NewGameCard extends React.Component {
           <div className="GameInfoTitle">
             <div className="NameWish">
               <h3 className="GameName">{name}</h3>
-              {/* Afficher une popup contenant les jeux de la wishlist */}
               <Modal show={show} handleClose={this.hideModal} />
               <button
                 type="button"
@@ -87,8 +83,6 @@ class NewGameCard extends React.Component {
                   cursor: 'pointer'
                 }}
               >
-                {/* <img src="/img/svg/wishlist.svg" alt="icon wishlist" /> */}
-
                 <img src="/img/svg/wishlist.svg" alt="icon wishlist" />
               </button>
             </div>
@@ -116,8 +110,8 @@ NewGameCard.propTypes = {
   id: PropTypes.string.isRequired,
   addToLib: PropTypes.string.isRequired,
   handleWishlistGame: PropTypes.string.isRequired,
-  listGamesLib: PropTypes.func.isRequired,
-  handleRemoveWishlistGame: PropTypes.func.isRequired
+  handleRemoveWishlistGame: PropTypes.func.isRequired,
+  addToWish: PropTypes.string.isRequired
 };
 
 export default NewGameCard;

@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import './navDesktop.scss';
 import DisplayWishlist from '../contents/my-games/DisplayWishlist';
@@ -25,8 +25,6 @@ class NavDesktop extends React.Component {
   }
 
   render() {
-    /* console.log(this.props.handleRemoveWishlistGame); */
-
     const { show } = this.state;
     const { listGamesLib, handleRemoveWishlistGame } = this.props;
 
@@ -74,7 +72,8 @@ class NavDesktop extends React.Component {
 }
 
 NavDesktop.propTypes = {
-  /*   wishlist: propTypes.string.isRequired */
+  listGamesLib: PropTypes.string.isRequired,
+  handleRemoveWishlistGame: PropTypes.func.isRequired
 };
 
 export default NavDesktop;
