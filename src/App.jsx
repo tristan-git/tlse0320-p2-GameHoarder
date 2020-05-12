@@ -11,7 +11,6 @@ import Footer from './components/footer/Footer';
 import MobileNav from './components/mobile-nav/MobileNav';
 import GetGames from './components/data/GetGames';
 import NavDesktop from './components/nav-desktop/NavDesktop';
-import DisplayWishlist from './components/contents/my-games/DisplayWishlist';
 
 /* axios.defaults.headers.common['user-key'] = 'e98a7b482e71cbb9d2b90309b365e3b4'; */
 axios.defaults.headers.common['user-key'] = '75f9926369d4142ff35731792bb25f29';
@@ -45,7 +44,7 @@ class App extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevState) {
     const { listGamesLib } = this.state;
     const listGamesLibReverse = listGamesLib.sort(
       (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
@@ -83,19 +82,9 @@ class App extends React.Component {
 
   handleRemoveWishlistGame(values) {
     const { listGamesLib } = this.state;
-    const removeWish = listGamesLib;
-    let index = removeWish.map(game => {
-      if (values.title === game.title) {
-        return removeWish.indexOf(game);
-      }
-      return undefined;
-    });
-    index = index.filter(el => el !== undefined);
-    removeWish.splice(index[0], 1);
-    this.setState({
-      listGamesLib: removeWish
-    });
-    console.log(values.addToLib);
+    let newlistGamesLib = listGamesLib;
+    newlistGamesLib = newlistGamesLib.filter(game => game.title !== values.title);
+    this.setState({ listGamesLib: newlistGamesLib });
   }
 
   gameToRemove(gameToRemove) {
@@ -142,7 +131,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { mygameInputValue, idNewGameAdded, wishlist } = this.state;
+    const { mygameInputValue, idNewGameAdded } = this.state;
     const { newgameInputValue } = this.state;
     const { handleChange, handleAllGames } = this;
 

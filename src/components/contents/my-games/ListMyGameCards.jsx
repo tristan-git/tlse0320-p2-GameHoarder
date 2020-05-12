@@ -13,7 +13,7 @@ const ListMyGameCards = ({ value, listGamesLib, gameToRemove }) => {
   }
   const displayMyGameCard2 = () =>
     listGamesLib
-      .filter(game => game.addToLib === true && game.addToWish === false)
+      .filter(game => game.addToLib)
       .map((data, i) => {
         const gamesNameLSt = data.title;
 
