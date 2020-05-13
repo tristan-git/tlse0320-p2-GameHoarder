@@ -11,7 +11,7 @@ export default function InfoCard({
   url,
   platformsName,
   genresName,
-  artworkUrl,
+  artworksUrl,
   summary
 }) {
   return (
@@ -19,25 +19,42 @@ export default function InfoCard({
       <section className="PopupInfo">
         {children}
         <div className="InfoCard">
-          <h2>{name}</h2>
-          <p>{rating}</p>
-          <div>
-            <div>{url}</div>
+          <button className="InfoButton" type="button" onClick={handleClose}>
+            <img src="/img/svg/close.svg" alt="icon close" />
+          </button>
+          <div className="Info">
             <div>
-              <p>{summary}</p>
-              <p>{platformsName}</p>
+              <h2 className="InfoTitle">{name}</h2>
+            </div>
+            <div className="InfoSupp">
+              <p>{rating}</p>
+              <p
+                style={{
+                  margin: '0 2%'
+                }}
+              >
+                {platformsName}
+              </p>
               <p>{genresName}</p>
             </div>
           </div>
-          <div>
-            <div>{artworkUrl}</div>
+          <div className="InfoMain">
+            <img src={url[0]} alt="cover of the game" className="InfoCover" />
+            <div className="InfoGame">
+              <p>{summary}</p>
+            </div>
+          </div>
+          <div className="Images">
+            {url.map(cover => (
+              <img src={cover} alt="cover of the game" className="CoverSupp" />
+            ))}
+            {artworksUrl.map(art => (
+              <img src={art} alt="artwork" className="Artworks" />
+            ))}
           </div>
         </div>
         <div />
       </section>
-      <button className="InfoButton" type="button" onClick={handleClose}>
-        Close Me
-      </button>
     </div>
   );
 }
@@ -51,6 +68,6 @@ InfoCard.propTypes = {
   url: PropTypes.string.isRequired,
   platformsName: PropTypes.array.isRequired,
   genresName: PropTypes.array.isRequired,
-  artworkUrl: PropTypes.array.isRequired,
+  artworksUrl: PropTypes.array.isRequired,
   summary: PropTypes.string.isRequired
 };

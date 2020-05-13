@@ -77,7 +77,7 @@ class NewGameCard extends React.Component {
       id,
       platformsName,
       genresName,
-      artworkUrl,
+      artworksUrl,
       summary,
       handleInfoGame
     } = this.props;
@@ -88,7 +88,7 @@ class NewGameCard extends React.Component {
       id,
       platformsName,
       genresName,
-      artworkUrl,
+      artworksUrl,
       summary
     };
     this.setState(state => ({
@@ -111,8 +111,7 @@ class NewGameCard extends React.Component {
       platformsName,
       genresName,
       summary,
-      artworkUrl,
-      listGamesLib
+      artworksUrl
     } = this.props;
     const { show } = this.state;
 
@@ -126,9 +125,8 @@ class NewGameCard extends React.Component {
           rating={rating}
           platformsName={platformsName}
           genresName={genresName}
-          artworkUrl={artworkUrl}
+          artworksUrl={artworksUrl}
           summary={summary}
-          listGamesLib={listGamesLib}
         />
         <div
           className="ImageCard"
@@ -139,7 +137,9 @@ class NewGameCard extends React.Component {
           <div className="GameInfoTitle">
             <div>
               <div className="NameWish">
-                <h3 className="GameName">{name}</h3>
+                <h3 className="GameName" onClick={this.showInfoGame}>
+                  {name}
+                </h3>
                 <button
                   type="button"
                   onClick={addToWish ? this.removeToWishlist : this.addToWishlist}
@@ -192,7 +192,7 @@ NewGameCard.propTypes = {
   addToWish: PropTypes.string.isRequired,
   games: PropTypes.array.isRequired,
   genresName: PropTypes.array.isRequired,
-  artworkUrl: PropTypes.array.isRequired,
+  artworksUrl: PropTypes.array.isRequired,
   summary: PropTypes.string.isRequired,
   handleInfoGame: PropTypes.func.isRequired
 };
