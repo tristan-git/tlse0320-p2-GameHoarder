@@ -37,7 +37,7 @@ export default class HeaderLib extends React.Component {
         isThereIsGame: true,
         lastGameName: lastGameInfo.title,
         lastGameRating: lastGameInfo.rating,
-        lastGameImg: [lastGameInfo.img]
+        lastGameImg: [...lastGameInfo.img]
       });
     } else {
       this.setState({
