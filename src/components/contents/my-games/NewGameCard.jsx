@@ -18,8 +18,6 @@ class NewGameCard extends React.Component {
     this.removeDataGame = this.removeDataGame.bind(this);
   }
 
-  componentDidMount() {}
-
   getDataGame() {
     const { url: img, name: title, rating, handleGamesList, id, platformsName } = this.props;
     const values = {
@@ -72,6 +70,16 @@ class NewGameCard extends React.Component {
     handleRemoveWishlistGame(values);
   }
 
+  showInfoGame() {
+    this.setState(state => ({
+      show: !state.show
+    }));
+  }
+
+  hideModal() {
+    this.setState({ show: false });
+  }
+
   removeDataGame() {
     const { url: img, name: title, rating, id, platformsName, handleremoveDataGame } = this.props;
     const values = {
@@ -87,16 +95,6 @@ class NewGameCard extends React.Component {
     handleremoveDataGame(values);
   }
 
-  showInfoGame() {
-    this.setState(state => ({
-      show: !state.show
-    }));
-  }
-
-  hideModal() {
-    this.setState({ show: false });
-  }
-
   render() {
     const {
       rating,
@@ -107,9 +105,9 @@ class NewGameCard extends React.Component {
       genresName,
       summary,
       artworksUrl,
-      listGamesLib
+      addToLib
     } = this.props;
-
+    
     const { show } = this.state;
 
     let isAddToLib;
@@ -121,6 +119,15 @@ class NewGameCard extends React.Component {
       isAddToLib = false;
     }
 
+    let isWish;
+    if (this.props.listGamesLib) {
+      const newAr = this.props.listGamesLib.filter(game => game.title === this.props.name);
+      isWish = newAr.length > 0 && newAr[0].addToWish;
+    }
+    if (this.props.listGamesLib === undefined) {
+      isWish = false;
+    }
+        
     return (
       <div className="Card">
         <InfoCard
@@ -134,6 +141,7 @@ class NewGameCard extends React.Component {
           artworksUrl={artworksUrl}
           summary={summary}
         />
+
         <div
           className="ImageCard"
           style={{ backgroundImage: `url(${url[0]})` }}
@@ -148,14 +156,17 @@ class NewGameCard extends React.Component {
                 </h3>
                 <button
                   type="button"
-                  onClick={addToWish ? this.removeToWishlist : this.addToWishlist}
+                  onClick={isWish || addToWish ? this.removeToWishlist : this.addToWishlist}
                   style={{
                     backgroundColor: 'transparent',
                     border: 'none',
                     cursor: 'pointer'
                   }}
                 >
-                  <img src="/img/svg/wishlist.svg" alt="icon wishlist" />
+                  <img
+                    src={isWish || addToWish ? '/img/svg/redheart.svg' : '/img/svg/wishlist.svg'}
+                    alt="icon wishlist"
+                  />
                 </button>
               </div>
 
@@ -198,6 +209,7 @@ NewGameCard.propTypes = {
   id: PropTypes.string.isRequired,
   handleWishlistGame: PropTypes.string.isRequired,
   handleRemoveWishlistGame: PropTypes.func.isRequired,
+  handleremoveDataGame: PropTypes.func.isRequired,
   addToWish: PropTypes.string.isRequired,
   listGamesLib: PropTypes.array.isRequired,
   genresName: PropTypes.array.isRequired,
