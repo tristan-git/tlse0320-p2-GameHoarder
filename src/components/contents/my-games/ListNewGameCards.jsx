@@ -9,8 +9,8 @@ const ListNewGameCards = ({
   handleWishlistGame,
   listGamesLib,
   handleRemoveWishlistGame,
-  handleInfoGame
-  handleremoveDataGame,
+  handleInfoGame,
+  handleremoveDataGame
 }) => {
   const displayNewGameCards = value =>
     games

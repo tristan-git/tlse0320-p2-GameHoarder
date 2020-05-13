@@ -14,7 +14,7 @@ function NewGames({
   handleGamesList,
   listGamesLib,
   handleRemoveWishlistGame,
-  handleInfoGame
+  handleInfoGame,
   handleremoveDataGame,
   listGamesList
 }) {
