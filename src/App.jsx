@@ -203,6 +203,7 @@ class App extends React.Component {
             <NavDesktop
               listGamesLib={listGamesLib}
               handleRemoveWishlistGame={this.handleRemoveWishlistGame}
+              handleWishlistGame={this.handleWishlistGame}
             />
 
             <Switch>
