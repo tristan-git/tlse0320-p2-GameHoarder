@@ -24,8 +24,6 @@ export default function DisplayWishlist({
         />
       ));
 
-  console.log(listGamesLib.length);
-
   return (
     <div className={show ? 'modal display-block' : 'modal display-none'}>
       <section className="modal-main">
@@ -43,7 +41,7 @@ export default function DisplayWishlist({
 
           {displayWhislist()}
 
-          {listGamesLib.length <= 0 ? (
+          {listGamesLib.filter(game => game.addToWish === true).length <= 0 ? (
             <div className="alert">Vous n&apos;avez pas encore de jeux dans votre wishlist</div>
           ) : null}
         </div>
