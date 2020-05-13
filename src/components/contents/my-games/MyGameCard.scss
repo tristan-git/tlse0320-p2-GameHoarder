@@ -2,12 +2,13 @@
   max-width: 100%;
   position: relative;
   z-index: 1;
-  background-color: var(--primary-color);
   border: none;
   color: #fff;
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
+  transform: scale(0.7);
+  padding: 0;
 }
 
 .modal {
@@ -46,7 +47,6 @@
 
 .Card {
   display: flex;
-  padding: 10px;
   color: white;
   background-color: var(--primary-color);
   border-radius: 5px;

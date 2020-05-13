@@ -1,9 +1,10 @@
 import React from 'react';
 import './MyGameCard.scss';
+import DisplayRating from './DisplayRating';
 import PropTypes from 'prop-types';
 
 function MyGameCard(props) {
-  const { img, title } = props.data;
+  const { img, title, rating } = props.data;
   return (
     <section className="Card">
       <div className="header">
@@ -18,6 +19,10 @@ function MyGameCard(props) {
       </div>
       <div className="image" style={{ backgroundImage: `url(${img[0]})` }} />
       <div className="footer">
+        <div className="ratingSuggestion">
+          <DisplayRating rating={rating} />
+        </div>
+
         <select name="statuts" className="statuts">
           <option value="Statuts">STATUTS</option>
           <option value="Pas commencé">Pas commencé</option>
