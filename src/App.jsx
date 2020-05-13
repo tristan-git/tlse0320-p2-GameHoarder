@@ -127,7 +127,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { mygameInputValue, idNewGameAdded, allGames, listGamesLib } = this.state;
+    const { mygameInputValue, allGames, listGamesLib } = this.state;
     const { newgameInputValue } = this.state;
     const { handleChange, handleAllGames } = this;
     let addGameContent;

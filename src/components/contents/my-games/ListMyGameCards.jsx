@@ -41,8 +41,8 @@ const ListMyGameCards = ({ value, listGamesLib, gameToRemove }) => {
 };
 
 ListMyGameCards.propTypes = {
-  value: PropTypes.string,
-  listGamesLib: PropTypes.array.isRequired,
-  gameToRemove: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
+  listGamesLib: PropTypes.string.isRequired,
+  gameToRemove: PropTypes.func.isRequired
 };
 export default ListMyGameCards;

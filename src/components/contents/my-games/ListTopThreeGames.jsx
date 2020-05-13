@@ -1,7 +1,7 @@
 import React from 'react';
 import TopThreeGame from './TopThreeGame';
 
-function ListTopThreeGames({ handleGamesList, games }) {
+function ListTopThreeGames({ handleGamesList, games, handleWishlistGame }) {
   let ascendingGameRating = [...games];
   ascendingGameRating = ascendingGameRating.sort(function sort(a, b) {
     return b.popularity - a.popularity;
@@ -13,9 +13,11 @@ function ListTopThreeGames({ handleGamesList, games }) {
       <TopThreeGame
         name={game.name}
         handleGamesList={handleGamesList}
+        handleWishlistGame={handleWishlistGame}
         rating={game.rating}
         url={game.url}
         key={`top-${game.name}`}
+        platformsName={game.platformsName}
       />
     ));
 
