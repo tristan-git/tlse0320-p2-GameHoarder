@@ -63,6 +63,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .GameInfo {
@@ -89,6 +90,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .NameWish {
@@ -239,5 +241,91 @@
     100% {
       background-position: 0% 50%;
     }
+  }
+}
+
+.PopupInfo {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: scroll;
+  background: white;
+  color: rgb(3, 3, 3);
+  width: 80%;
+  height: 55%;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.InfoCard {
+  margin: 0 auto;
+  width: 90%;
+  height: 90%;
+}
+
+.InfoTitle {
+  font-size: 30px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.InfoMain {
+  font-size: 16px;
+  width: 100%;
+  height: 80%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.InfoCover {
+  width: 350px;
+  height: 300px;
+  margin: 0;
+}
+
+.InfoGame {
+  margin: 0 6%;
+}
+
+.Info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.InfoSupp {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  margin: 2% auto;
+  font-size: 14px;
+}
+
+.InfoButton {
+  position: absolute;
+  right: 2%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: start;
+  justify-content: flex-end;
+}
+
+.Images {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+  .CoverSupp,
+  .Artworks {
+    width: 150px;
+    height: 200px;
   }
 }

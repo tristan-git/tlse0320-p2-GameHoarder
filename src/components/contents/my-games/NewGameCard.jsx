@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MyGameCard';
 import DisplayRating from './DisplayRating';
-import Modal from './Modal';
+import InfoCard from './InfoCard';
 
 class NewGameCard extends React.Component {
   constructor(props) {
@@ -14,7 +14,8 @@ class NewGameCard extends React.Component {
     this.hideModal = this.hideModal.bind(this);
     this.addToWishlist = this.addToWishlist.bind(this);
     this.removeToWishlist = this.removeToWishlist.bind(this);
-    this.removeDataGame = this.removeDataGame.bind(this);
+    this.showInfoGame = this.showInfoGame.bind(this);
+    this.removeDataGame = this.removeDataGame.bind(this);  
   }
 
   componentDidMount() {}
@@ -49,10 +50,6 @@ class NewGameCard extends React.Component {
     handleWishlistGame(values);
   }
 
-  hideModal() {
-    this.setState({ show: false });
-  }
-
   removeToWishlist() {
     const {
       url: img,
@@ -75,20 +72,52 @@ class NewGameCard extends React.Component {
     handleRemoveWishlistGame(values);
   }
 
-  removeDataGame() {
-    const { url: img, name: title, rating, id, platformsName, handleremoveDataGame } = this.props;
-    const values = {
-      addingDate: new Date(),
-      title,
-      img,
+  showInfoGame() {
+    const {
+      url: img,
+      name: title,
       rating,
       id,
       platformsName,
-      addToLib: false,
-      addToWish: false
+      genresName,
+      artworksUrl,
+      summary,
+      handleInfoGame
+    } = this.props;
+    const values = {
+      img,
+      title,
+      rating,
+      id,
+      platformsName,
+      genresName,
+      artworksUrl,
+      summary
     };
-    handleremoveDataGame(values);
+    this.setState(state => ({
+      show: !state.show
+    }));
+    handleInfoGame(values);
   }
+
+  hideModal() {
+    this.setState({ show: false });
+  }
+        
+  removeDataGame() {
+  const { url: img, name: title, rating, id, platformsName, handleremoveDataGame } = this.props;
+  const values = {
+    addingDate: new Date(),
+    title,
+    img,
+    rating,
+    id,
+    platformsName,
+    addToLib: false,
+    addToWish: false
+  };
+  handleremoveDataGame(values);
+}
 
   render() {
     let isAddToLib;
@@ -100,18 +129,34 @@ class NewGameCard extends React.Component {
       isAddToLib = false;
     }
 
-    const { rating, name, url, addToWish, platformsName } = this.props;
+    const { rating, name, url, addToWish, platformsName, genresName, summary,artworksUrl, addToLib } = this.props;
     const { show } = this.state;
 
     return (
       <div className="Card">
-        <div className="ImageCard" style={{ backgroundImage: `url(${url[0]})` }} />
+        <InfoCard
+          show={show}
+          handleClose={this.hideModal}
+          name={name}
+          url={url}
+          rating={rating}
+          platformsName={platformsName}
+          genresName={genresName}
+          artworksUrl={artworksUrl}
+          summary={summary}
+        />
+        <div
+          className="ImageCard"
+          style={{ backgroundImage: `url(${url[0]})` }}
+          onClick={this.showInfoGame}
+        />
         <div className="GameInfo">
           <div className="GameInfoTitle">
             <div>
               <div className="NameWish">
-                <h3 className="GameName">{name}</h3>
-                <Modal show={show} handleClose={this.hideModal} />
+                <h3 className="GameName" onClick={this.showInfoGame}>
+                  {name}
+                </h3>
                 <button
                   type="button"
                   onClick={addToWish ? this.removeToWishlist : this.addToWishlist}
@@ -167,7 +212,12 @@ NewGameCard.propTypes = {
   addToLib: PropTypes.string.isRequired,
   handleWishlistGame: PropTypes.string.isRequired,
   handleRemoveWishlistGame: PropTypes.func.isRequired,
-  addToWish: PropTypes.string.isRequired
+  addToWish: PropTypes.string.isRequired,
+  games: PropTypes.array.isRequired,
+  genresName: PropTypes.array.isRequired,
+  artworksUrl: PropTypes.array.isRequired,
+  summary: PropTypes.string.isRequired,
+  handleInfoGame: PropTypes.func.isRequired
 };
 
 export default NewGameCard;
