@@ -48,9 +48,6 @@ export default function InfoCard({
             {url.map(cover => (
               <img src={cover} alt="cover of the game" className="CoverSupp" />
             ))}
-            {artworksUrl.map(art => (
-              <img src={art} alt="artwork" className="Artworks" />
-            ))}
           </div>
         </div>
         <div />
