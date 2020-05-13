@@ -6,13 +6,18 @@ import Filters from './filter/Filters';
 import Title from './title/Title';
 import './newgames.scss';
 
-function NewGames({ value, handleChange, games, handleGamesList }) {
+function NewGames({ value, handleChange, games, handleGamesList, listGamesList }) {
   return (
     <div className="new-games">
       <div className="container-box">
         <Title title="Ajouter des " span="jeux" />
         <Filters value={value} handleChange={handleChange} location="newgameInputValue" />
-        <ListNewGameCards games={games} value={value} handleGamesList={handleGamesList} />
+        <ListNewGameCards
+          games={games}
+          value={value}
+          handleGamesList={handleGamesList}
+          listGamesLib={listGamesList}
+        />
       </div>
       <div className="container-top-five">
         <div className="container-box">

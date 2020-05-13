@@ -2,13 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NewGameCard from './NewGameCard';
 
-const ListNewGameCards = ({ value, handleGamesList, games }) => {
+const ListNewGameCards = ({ value, handleGamesList, games, listGamesLib }) => {
   const displayNewGameCards = value =>
     games
       .filter(game => (value ? game.name.toUpperCase().includes(value.toUpperCase()) : game))
       .map(game => (
         <div>
-          <NewGameCard {...game} handleGamesList={handleGamesList} key={`new-game-${game.name}`} />
+          <NewGameCard
+            {...game}
+            handleGamesList={handleGamesList}
+            listGamesLib={listGamesLib}
+            key={`new-game-${game.name}`}
+          />
         </div>
       ));
 

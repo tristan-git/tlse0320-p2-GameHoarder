@@ -131,6 +131,7 @@ class App extends React.Component {
             handleGamesList={this.handleGamesList}
             handleChange={handleChange}
             games={this.state.allGames}
+            listGamesList={this.state.listGamesLib}
           />
         </>
       );

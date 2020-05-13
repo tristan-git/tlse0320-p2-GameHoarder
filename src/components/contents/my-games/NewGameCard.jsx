@@ -21,7 +21,9 @@ class NewGameCard extends React.Component {
   }
 
   render() {
-    const { rating, name, url, addToLib } = this.props;
+    const newAr = this.props.listGamesLib.filter(game => game.title === this.props.name);
+    const isAddToLib = newAr.length > 0 && newAr[0].addToLib;
+    const { rating, name, url } = this.props;
     return (
       <div className="Card">
         <div className="ImageCard" style={{ backgroundImage: `url(${url[0]})` }} />
@@ -34,12 +36,13 @@ class NewGameCard extends React.Component {
           </div>
           <p className="GameSupport">Game support</p>
           <div className="GameRating">{rating / 10 / 2}</div>
-          <div className="ButtonAddLibrary" onClick={this.getDataGame}>
+          <div className="ButtonAddLibrary" onClick={isAddToLib ? null : this.getDataGame}>
             <img
-              src={addToLib ? '/img/svg/delete-white.svg' : '/img/svg/add.svg'}
-              alt="icon add library"
+              src="/img/svg/add.svg"
+              alt="icon add or delete library"
+              style={isAddToLib ? { transform: 'rotate(45deg)' } : { transform: 'rotate(0deg)' }}
             />
-            {addToLib ? 'Déjà dans votre bibliothèque.' : 'Ajouter à votre bibliothèque.'}
+            {isAddToLib ? 'Déjà dans votre bibliothèque.' : 'Ajouter à votre bibliothèque.'}
           </div>
         </div>
       </div>
@@ -49,7 +52,8 @@ class NewGameCard extends React.Component {
 NewGameCard.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired
+  rating: PropTypes.string.isRequired,
+  listGamesLib: PropTypes.object.isRequired
 };
 
 export default NewGameCard;
