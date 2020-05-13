@@ -140,7 +140,10 @@ class App extends React.Component {
     } else {
       addGameContent = (
         <>
-          <HeaderSugg games={allGames} handleGamesList={this.handleGamesList} />
+          <HeaderSugg
+            games={this.state.allGames.sort((a, b) => b.rating - a.rating)}
+            handleGamesList={this.handleGamesList}
+          />
           <NewGames
             value={newgameInputValue}
             handleGamesList={this.handleGamesList}
@@ -164,7 +167,10 @@ class App extends React.Component {
 
             <Switch>
               <Route exact path="/">
-                <HeaderLib gameToRemove={this.gameToRemove} listGamesLib={listGamesLib} />
+                <HeaderLib
+                  gameToRemove={this.gameToRemove}
+                  listGamesLib={listGamesLib.filter(el => el.addToLib)}
+                />
                 <MyGames
                   value={mygameInputValue}
                   gameToRemove={this.gameToRemove}
