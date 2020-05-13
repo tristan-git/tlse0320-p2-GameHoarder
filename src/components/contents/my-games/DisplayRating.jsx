@@ -5,7 +5,7 @@ function DisplayRating({ rating }) {
   const displayRating = () => {
     const starsHtml = svgPath => {
       return (
-        <div>
+        <div key={Math.random() * 1000}>
           <img src={`/img/svg/${svgPath}`} alt="icon stars" />
         </div>
       );
@@ -33,8 +33,7 @@ function DisplayRating({ rating }) {
     }
     return repeatStars(5);
   };
-
-  return <>{displayRating()}</>;
+  return displayRating();
 }
 
 DisplayRating.propTypes = {};

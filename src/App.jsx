@@ -131,7 +131,11 @@ class App extends React.Component {
     const { newgameInputValue } = this.state;
     const { handleChange, handleAllGames } = this;
     let addGameContent;
-    if (allGames.length === 0) {
+    if (
+      allGames.length === 0 ||
+      allGames[0].url === undefined ||
+      allGames[0].platformsName === undefined
+    ) {
       addGameContent = <CommonLoading color="#1047f5" />;
     } else {
       addGameContent = (

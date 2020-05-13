@@ -14,7 +14,7 @@ const ListNewGameCards = ({
     games
       .filter(game => (value ? game.name.toUpperCase().includes(value.toUpperCase()) : game))
       .map(game => (
-        <div>
+        <div key={game.id}>
           <NewGameCard
             {...game}
             listGamesLib={listGamesLib}
@@ -30,7 +30,7 @@ const ListNewGameCards = ({
 };
 
 ListNewGameCards.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   games: PropTypes.string.isRequired,
   handleGamesList: PropTypes.func.isRequired,
   handleWishlistGame: PropTypes.func.isRequired,

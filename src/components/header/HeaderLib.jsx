@@ -6,7 +6,7 @@ export default class HeaderLib extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lastGameImg: null,
+      lastGameImg: [],
       lastGameName: null,
       lastGameRating: null,
       isThereIsGame: true,
@@ -96,6 +96,7 @@ export default class HeaderLib extends React.Component {
         </div>
       );
     }
+
     return (
       <div className="headerContainer" style={{ backgroundImage: `${lastGameImg}` }}>
         <div className="filter">

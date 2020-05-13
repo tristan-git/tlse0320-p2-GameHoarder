@@ -19,16 +19,16 @@ const ListMyGameCards = ({ value, listGamesLib, gameToRemove }) => {
 
         if (value && gamesNameLSt.toUpperCase().includes(value.toUpperCase())) {
           return (
-            <div>
-              <MyGameCard data={data} key={i} gameToRemove={gameToRemove} />
+            <div key={i}>
+              <MyGameCard data={data} gameToRemove={gameToRemove} />
             </div>
           );
         }
 
         if (!value) {
           return (
-            <div>
-              <MyGameCard data={data} key={i} gameToRemove={gameToRemove} />
+            <div key={i}>
+              <MyGameCard data={data} gameToRemove={gameToRemove} />
             </div>
           );
         }
@@ -38,8 +38,8 @@ const ListMyGameCards = ({ value, listGamesLib, gameToRemove }) => {
 };
 
 ListMyGameCards.propTypes = {
-  value: PropTypes.string.isRequired,
-  listGamesLib: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  listGamesLib: PropTypes.array.isRequired,
   gameToRemove: PropTypes.string.isRequired
 };
 export default ListMyGameCards;
