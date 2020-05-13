@@ -164,7 +164,10 @@ class App extends React.Component {
 
             <Switch>
               <Route exact path="/">
-                <HeaderLib gameToRemove={this.gameToRemove} listGamesLib={listGamesLib} />
+                <HeaderLib
+                  gameToRemove={this.gameToRemove}
+                  listGamesLib={listGamesLib.filter(el => el.addToLib)}
+                />
                 <MyGames
                   value={mygameInputValue}
                   gameToRemove={this.gameToRemove}

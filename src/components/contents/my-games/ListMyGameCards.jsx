@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MyGameCard from './MyGameCard';
 
 const ListMyGameCards = ({ value, listGamesLib, gameToRemove }) => {
-  if (listGamesLib.length === 0) {
+  if (listGamesLib.filter(el => el.addToLib).length === 0) {
     return (
       <div className="alert">
         Vous n&apos;avez pas encore de jeux dans votre bibliothèque,

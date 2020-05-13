@@ -17,13 +17,14 @@ class NewGameCard extends React.Component {
   }
 
   getDataGame() {
-    const { url: img, name: title, rating, handleGamesList, id } = this.props;
+    const { url: img, name: title, rating, handleGamesList, id, platformsName } = this.props;
     const values = {
       addingDate: new Date(),
       title,
       img,
       rating,
       id,
+      platformsName,
       addToLib: true,
       addToWish: false
     };
@@ -31,7 +32,15 @@ class NewGameCard extends React.Component {
   }
 
   addToWishlist() {
-    const { url: img, name: title, rating, handleWishlistGame, id, platformsName } = this.props;
+    const {
+      url: img,
+      name: title,
+      rating,
+      handleGamesList,
+      handleWishlistGame,
+      id,
+      platformsName
+    } = this.props;
     const values = {
       addingDate: new Date(),
       title,
