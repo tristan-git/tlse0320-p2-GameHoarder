@@ -28,6 +28,8 @@ class NavDesktop extends React.Component {
     const { show } = this.state;
     const { listGamesLib, handleRemoveWishlistGame } = this.props;
 
+    console.log(listGamesLib.filter(game => game.addToWish === true).length);
+
     return (
       <div className="navDesktop">
         <div className="logo">
@@ -47,6 +49,7 @@ class NavDesktop extends React.Component {
             handleRemoveWishlistGame={handleRemoveWishlistGame}
           />
           <button
+            className="btnOpenWishlist"
             type="button"
             onClick={this.handleWishlistGame}
             style={{
@@ -55,15 +58,19 @@ class NavDesktop extends React.Component {
               cursor: 'pointer'
             }}
           >
-            <li>
-              <img
-                src="./img/svg/navWishlist.svg"
-                alt="icon wishlist"
-                style={{
-                  width: '30px'
-                }}
-              />
-            </li>
+            <img
+              src="./img/svg/navWishlist.svg"
+              alt="icon wishlist"
+              style={{
+                width: '30px'
+              }}
+            />
+
+            {listGamesLib.filter(game => game.addToWish === true).length > 0 ? (
+              <div className="countWislist">
+                {listGamesLib.filter(game => game.addToWish === true).length}
+              </div>
+            ) : null}
           </button>
         </ul>
       </div>
