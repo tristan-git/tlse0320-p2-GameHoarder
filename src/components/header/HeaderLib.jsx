@@ -37,13 +37,13 @@ export default class HeaderLib extends React.Component {
         isThereIsGame: true,
         lastGameName: lastGameInfo.title,
         lastGameRating: lastGameInfo.rating,
-        lastGameImg: lastGameInfo.img
+        lastGameImg: [...lastGameInfo.img]
       });
     } else {
       this.setState({
         lastGameName: "Ajouter d'abord un jeu",
-        lastGameImg: "url('/img/svg/20200410190035_1.jpg')",
-        isGame: false
+        lastGameImg: '/img/20200410190035_1.jpg',
+        isThereIsGame: false
       });
     }
   }
@@ -59,10 +59,10 @@ export default class HeaderLib extends React.Component {
     const { lastGameName, lastGameImg, lastGameRating, isThereIsGame } = this.state;
     if (isThereIsGame) {
       return (
-        <div className="headerContainer" style={{ backgroundImage: `url(${lastGameImg})` }}>
+        <div className="headerContainer" style={{ backgroundImage: `url(${lastGameImg[0]})` }}>
           <div className="filter">
             <div className="gameSugg">
-              <div style={{ backgroundImage: `url(${lastGameImg})` }} />
+              <div style={{ backgroundImage: `url(${lastGameImg[0]})` }} />
             </div>
 
             <div className="wrapper">
@@ -98,9 +98,9 @@ export default class HeaderLib extends React.Component {
     }
 
     return (
-      <div className="headerContainer" style={{ backgroundImage: `${lastGameImg}` }}>
+      <div className="headerContainer" style={{ backgroundImage: `url(${lastGameImg})` }}>
         <div className="filter">
-          <img src="./img/logo.svg" alt="logo du site" />
+          <img src="./img/svg/logo.svg" alt="logo du site" />
           <h1>{lastGameName}</h1>
         </div>
       </div>
