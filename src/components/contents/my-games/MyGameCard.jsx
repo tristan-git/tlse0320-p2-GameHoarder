@@ -30,8 +30,9 @@ function MyGameCard(props) {
 }
 
 MyGameCard.propTypes = {
+  data: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.array.isRequired,
   gameToRemove: PropTypes.func.isRequired
 };
 export default MyGameCard;

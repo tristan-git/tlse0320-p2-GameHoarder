@@ -45,7 +45,7 @@ function TopThreeGame(props) {
 
 TopThreeGame.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.array.isRequired,
   rating: PropTypes.number.isRequired
 };
 

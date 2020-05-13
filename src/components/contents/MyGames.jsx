@@ -16,7 +16,7 @@ const MyGames = ({ value, handleChange, gameToRemove, listGamesLib }) => {
 };
 
 MyGames.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
   listGamesLib: PropTypes.func.isRequired,
   gameToRemove: PropTypes.func.isRequired
