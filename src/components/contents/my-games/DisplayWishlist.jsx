@@ -19,6 +19,7 @@ export default function DisplayWishlist({
           url={game.img}
           name={game.title}
           rating={game.rating}
+          platformsName={game.platformsName}
           addToWish={game.addToWish}
           handleRemoveWishlistGame={handleRemoveWishlistGame}
         />

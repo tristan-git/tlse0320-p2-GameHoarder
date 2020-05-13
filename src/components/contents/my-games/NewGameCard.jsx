@@ -32,13 +32,14 @@ class NewGameCard extends React.Component {
   }
 
   addToWishlist() {
-    const { url: img, name: title, rating, handleWishlistGame, id } = this.props;
+    const { url: img, name: title, rating, handleWishlistGame, id, platformsName } = this.props;
     const values = {
       addingDate: new Date(),
       title,
       img,
       rating,
       id,
+      platformsName,
       addToLib: false,
       addToWish: true
     };
@@ -50,13 +51,21 @@ class NewGameCard extends React.Component {
   }
 
   removeToWishlist() {
-    const { url: img, name: title, rating, handleRemoveWishlistGame, id } = this.props;
+    const {
+      url: img,
+      name: title,
+      rating,
+      handleRemoveWishlistGame,
+      id,
+      platformsName
+    } = this.props;
     const values = {
       addingDate: new Date(),
       title,
       img,
       rating,
       id,
+      platformsName,
       addToLib: false,
       addToWish: false
     };
@@ -64,7 +73,7 @@ class NewGameCard extends React.Component {
   }
 
   render() {
-    const { rating, name, url, addToLib, addToWish } = this.props;
+    const { rating, name, url, addToLib, addToWish, platformsName } = this.props;
     const { show } = this.state;
 
     return (
@@ -88,12 +97,19 @@ class NewGameCard extends React.Component {
                   <img src="/img/svg/wishlist.svg" alt="icon wishlist" />
                 </button>
               </div>
-              <p className="GameSupport">Game support</p>
+
+              <p className="GameSupport">
+                {platformsName
+                  .map(platform => platform + '/')
+                  .join('')
+                  .slice(0, -1)}
+              </p>
             </div>
 
             <div className="ratingSuggestion">
               <DisplayRating rating={rating} />
             </div>
+
             <div className="ButtonAddLibrary" onClick={this.getDataGame}>
               <img
                 src={addToLib ? '/img/svg/delete-white.svg' : '/img/svg/add.svg'}
@@ -110,8 +126,9 @@ class NewGameCard extends React.Component {
 
 NewGameCard.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
+  url: PropTypes.array.isRequired,
+  platformsName: PropTypes.array.isRequired,
+  rating: PropTypes.number.isRequired,
   handleGamesList: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   addToLib: PropTypes.string.isRequired,
