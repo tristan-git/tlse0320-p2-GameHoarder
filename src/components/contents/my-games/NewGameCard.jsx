@@ -88,26 +88,6 @@ class NewGameCard extends React.Component {
   }
 
   showInfoGame() {
-    /*     const {
-      url: img,
-      name: title,
-      rating,
-      id,
-      platformsName,
-      genresName,
-      artworksUrl,
-      summary
-    } = this.props;
-    const values = {
-      img,
-      title,
-      rating,
-      id,
-      platformsName,
-      genresName,
-      artworksUrl,
-      summary
-    }; */
     this.setState(state => ({
       show: !state.show
     }));
