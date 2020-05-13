@@ -120,6 +120,40 @@
 
   justify-content: center;
   margin: 2%;
+
+  .Card {
+    padding: 10px;
+  }
+
+  .wrap {
+    display: flex;
+    align-items: start;
+    justify-content: flex-end;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: start;
+    justify-content: flex-end;
+  }
+
+  .WishlistImg {
+    width: 75px;
+    display: flex;
+    margin: auto;
+  }
+
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+  }
 }
 
 .modal-button {
