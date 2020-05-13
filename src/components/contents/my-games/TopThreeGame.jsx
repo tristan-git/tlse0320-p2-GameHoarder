@@ -1,22 +1,38 @@
 import React from 'react';
-import DisplayRating from './DisplayRating';
 import PropTypes from 'prop-types';
+import DisplayRating from './DisplayRating';
 
 function TopThreeGame(props) {
   const { name, url, rating } = props;
 
   const setDatasGameLocalStorage = data => {
-    const { url: img, name: title, rating, handleGamesList, id } = data;
+    const { url: img, name: title, rating, handleGamesList, platformsName, id } = data;
+    const values = {
+      addingDate: new Date(),
+      title,
+      img,
+      rating,
+      platformsName,
+      id,
+      addToLib: true,
+      addToWish: false
+    };
+    handleGamesList(values);
+  };
+
+  const addToWishlist = () => {
+    const { url: img, name: title, rating, handleWishlistGame, id, platformsName } = props;
     const values = {
       addingDate: new Date(),
       title,
       img,
       rating,
       id,
-      addToLib: true,
-      addToWish: false
+      platformsName,
+      addToLib: false,
+      addToWish: true
     };
-    handleGamesList(values);
+    handleWishlistGame(values);
   };
 
   return (
@@ -28,7 +44,9 @@ function TopThreeGame(props) {
           </div>
           <div className="group">
             <div className="wishlist">
-              <img src="/img/svg/wishlist.svg" alt="icon whislist" />
+              <button type="submit" onClick={() => addToWishlist()}>
+                <img src="/img/svg/wishlist.svg" alt="icon whislist" />
+              </button>
             </div>
             <button className="add" type="submit" onClick={() => setDatasGameLocalStorage(props)}>
               <img src="/img/svg/add.svg" alt="icon add" />
@@ -46,7 +64,9 @@ function TopThreeGame(props) {
 TopThreeGame.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.array.isRequired,
-  rating: PropTypes.number.isRequired
+  rating: PropTypes.number.isRequired,
+  handleWishlistGame: PropTypes.func.isRequired,
+  platformsName: PropTypes.array.isRequired
 };
 
 export default TopThreeGame;
