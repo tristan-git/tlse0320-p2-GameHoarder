@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import './MyGameCard.scss';
 import NewGameCard from './NewGameCard';
 
@@ -29,16 +30,21 @@ export default function DisplayWishlist({
       <section className="modal-main">
         {children}
         <div className="modal-div">
-          <h3>Ma Wishlist</h3>
-          <button
-            type="button"
-            onClick={handleClose}
-            style={{ width: '25%', margin: '0 auto', padding: '2px 0' }}
-          >
-            Close me
-          </button>
+          <div className="wrap">
+            <button type="button" onClick={handleClose}>
+              <img src="/img/svg/close.svg" alt="icon close" />
+            </button>
+          </div>
+
+          <img className="WishlistImg" src="/img/svg/wishlist.jpg" alt="wishlist" />
+
+          <h2>Ma Wishlist</h2>
 
           {displayWhislist()}
+
+          {listGamesLib.filter(game => game.addToWish === true).length <= 0 ? (
+            <div className="alert">Vous n&apos;avez pas encore de jeux dans votre wishlist</div>
+          ) : null}
         </div>
       </section>
     </div>

@@ -34,4 +34,26 @@
       font-size: 1.2rem;
     }
   }
+
+  .btnOpenWishlist img {
+    position: relative;
+    z-index: -1;
+  }
+
+  .countWislist {
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    padding: 7px;
+    color: white;
+    border-radius: 51%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+    right: -1px;
+    border: solid;
+    z-index: -1;
+  }
 }
