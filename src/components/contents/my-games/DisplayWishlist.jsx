@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import './MyGameCard.scss';
 import NewGameCard from './NewGameCard';
 
@@ -23,6 +24,8 @@ export default function DisplayWishlist({
         />
       ));
 
+  console.log(listGamesLib.length);
+
   return (
     <div className={show ? 'modal display-block' : 'modal display-none'}>
       <section className="modal-main">
@@ -39,6 +42,10 @@ export default function DisplayWishlist({
           <h2>Ma Wishlist</h2>
 
           {displayWhislist()}
+
+          {listGamesLib.length <= 0 ? (
+            <div className="alert">Vous n&apos;avez pas encore de jeux dans votre wishlist</div>
+          ) : null}
         </div>
       </section>
     </div>
