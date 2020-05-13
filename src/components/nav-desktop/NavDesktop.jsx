@@ -55,15 +55,13 @@ class NavDesktop extends React.Component {
               cursor: 'pointer'
             }}
           >
-            <li>
-              <img
-                src="./img/svg/navWishlist.svg"
-                alt="icon wishlist"
-                style={{
-                  width: '30px'
-                }}
-              />
-            </li>
+            <img
+              src="./img/svg/navWishlist.svg"
+              alt="icon wishlist"
+              style={{
+                width: '30px'
+              }}
+            />
           </button>
         </ul>
       </div>
