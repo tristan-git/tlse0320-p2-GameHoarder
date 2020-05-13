@@ -32,6 +32,7 @@ class App extends React.Component {
     this.handleGamesList = this.handleGamesList.bind(this);
     this.handleWishlistGame = this.handleWishlistGame.bind(this);
     this.handleRemoveWishlistGame = this.handleRemoveWishlistGame.bind(this);
+    this.handleremoveDataGame = this.handleremoveDataGame.bind(this);
   }
 
   componentDidMount() {
@@ -77,6 +78,13 @@ class App extends React.Component {
   }
 
   handleRemoveWishlistGame(values) {
+    const { listGamesLib } = this.state;
+    let newlistGamesLib = listGamesLib;
+    newlistGamesLib = newlistGamesLib.filter(game => game.title !== values.title);
+    this.setState({ listGamesLib: newlistGamesLib });
+  }
+
+  handleremoveDataGame(values) {
     const { listGamesLib } = this.state;
     let newlistGamesLib = listGamesLib;
     newlistGamesLib = newlistGamesLib.filter(game => game.title !== values.title);
@@ -152,6 +160,7 @@ class App extends React.Component {
             games={allGames}
             handleWishlistGame={this.handleWishlistGame}
             handleRemoveWishlistGame={this.handleRemoveWishlistGame}
+            handleremoveDataGame={this.handleremoveDataGame}
           />
         </>
       );

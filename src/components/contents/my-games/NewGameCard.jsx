@@ -14,6 +14,7 @@ class NewGameCard extends React.Component {
     this.hideModal = this.hideModal.bind(this);
     this.addToWishlist = this.addToWishlist.bind(this);
     this.removeToWishlist = this.removeToWishlist.bind(this);
+    this.removeDataGame = this.removeDataGame.bind(this);
   }
 
   getDataGame() {
@@ -29,6 +30,21 @@ class NewGameCard extends React.Component {
       addToWish: false
     };
     handleGamesList(values);
+  }
+
+  removeDataGame() {
+    const { url: img, name: title, rating, id, platformsName, handleremoveDataGame } = this.props;
+    const values = {
+      addingDate: new Date(),
+      title,
+      img,
+      rating,
+      id,
+      platformsName,
+      addToLib: false,
+      addToWish: false
+    };
+    handleremoveDataGame(values);
   }
 
   addToWishlist() {
@@ -80,17 +96,8 @@ class NewGameCard extends React.Component {
     handleRemoveWishlistGame(values);
   }
 
-  // checkListGamesLib() {
-  //   if (this.props.listGamesLib.length > 0) {
-  //     const newAr = this.props.listGamesLib.filter(game => game.title === this.props.name);
-  //     return const isAddToLib = newAr.length > 0 && newAr[0].addToLib;
-  //     ;
-  //   }
-  //   return false;
-  // }
-
   render() {
-    const newAr = this.props.listGamesLib.filter(game => game.title === this.props.name);
+    const newAr = this.props.listGamesList.filter(game => game.title === this.props.name);
     const isAddToLib = newAr.length > 0 && newAr[0].addToLib;
     const { rating, name, url, addToWish, platformsName } = this.props;
     const { show } = this.state;
@@ -123,14 +130,12 @@ class NewGameCard extends React.Component {
                   .slice(0, -1)}
               </p>
             </div>
-            <p className="GameSupport">
-              {platformsName
-                .map(platform => platform + '/')
-                .join('')
-                .slice(0, -1)}
-            </p>
+
             <div className="GameRating">{rating / 10 / 2}</div>
-            <div className="ButtonAddLibrary" onClick={isAddToLib ? null : this.getDataGame}>
+            <div
+              className="ButtonAddLibrary"
+              onClick={isAddToLib ? this.removeDataGame : this.getDataGame}
+            >
               <img
                 src="/img/svg/add.svg"
                 alt="icon add or delete library"
@@ -156,7 +161,8 @@ NewGameCard.propTypes = {
   handleWishlistGame: PropTypes.string.isRequired,
   handleRemoveWishlistGame: PropTypes.func.isRequired,
   addToWish: PropTypes.string.isRequired,
-  listGamesLib: PropTypes.object.isRequired
+  listGamesLib: PropTypes.object,
+  handleremoveDataGame: PropTypes.array
 };
 
 export default NewGameCard;
