@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MyGameCard';
 import DisplayRating from './DisplayRating';
-// import DisplayRating from './DisplayRating';
 import Modal from './Modal';
 
 class NewGameCard extends React.Component {

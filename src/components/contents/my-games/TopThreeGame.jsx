@@ -43,10 +43,8 @@ function TopThreeGame(props) {
             <h3>{name}</h3>
           </div>
           <div className="group">
-            <div className="wishlist">
-              <button type="submit" onClick={() => addToWishlist()}>
-                <img src="/img/svg/wishlist.svg" alt="icon whislist" />
-              </button>
+            <div className="wishlist" onClick={() => addToWishlist()}>
+              <img src="/img/svg/wishlist.svg" alt="icon whislist" />
             </div>
             <button className="add" type="submit" onClick={() => setDatasGameLocalStorage(props)}>
               <img src="/img/svg/add.svg" alt="icon add" />
