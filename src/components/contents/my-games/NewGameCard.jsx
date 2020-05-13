@@ -91,7 +91,7 @@ class NewGameCard extends React.Component {
   render() {
     const newAr = this.props.listGamesList.filter(game => game.title === this.props.name);
     const isAddToLib = newAr.length > 0 && newAr[0].addToLib;
-    const { rating, name, url, addToWish, platformsName } = this.props;
+    const { rating, name, url, addToLib, addToWish, platformsName } = this.props;
     const { show } = this.state;
     return (
       <div className="Card">
@@ -123,7 +123,9 @@ class NewGameCard extends React.Component {
               </p>
             </div>
 
-            <div className="GameRating">{rating / 10 / 2}</div>
+            <div className="ratingSuggestion">
+              <DisplayRating rating={rating} />
+            </div>
             <div
               className="ButtonAddLibrary"
               onClick={isAddToLib ? this.removeDataGame : this.getDataGame}
