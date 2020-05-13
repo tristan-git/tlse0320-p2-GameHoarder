@@ -15,7 +15,7 @@ export default class GetGames extends React.Component {
           Accept: 'application/json'
         },
         data:
-          'fields id, platforms, summary , category, cover, name, popularity, rating;\nwhere summary!=null & popularity >= 20 & cover!=null & rating != null & rating >= 75;\nlimit 25;'
+          'fields id, platforms, artworks, summary, genres, category, cover, name, popularity, rating;\nwhere summary!=null & popularity >= 20 & cover!=null & rating != null & rating >= 75;\nlimit 25;'
       })
         .then(res => res.data)
         .then(allGamesTab => {
@@ -62,7 +62,7 @@ export default class GetGames extends React.Component {
             .then(gamePlatform => {
               allGamesTab.map(game => {
                 game.platformsName = [];
-                for (let i = 0; i < gamePlatform.length - 1; i++) {
+                for (let i = 0; i < gamePlatform.length; i++) {
                   for (let x = 0; x < game.platforms.length; x++) {
                     if (game.platforms[x] === gamePlatform[i].id) {
                       if (gamePlatform[i].name === 'PC (Microsoft Windows)') {
@@ -70,6 +70,68 @@ export default class GetGames extends React.Component {
                       } else {
                         game.platformsName = [...game.platformsName, gamePlatform[i].name];
                       }
+                    }
+                  }
+                }
+              });
+              window.localStorage.setItem('allGames', JSON.stringify(allGamesTab));
+              this.props.handleAllGames(allGamesTab);
+            });
+          axios({
+            url: 'https://cors-anywhere.herokuapp.com/https://api-v3.igdb.com/genres',
+            method: 'POST',
+            headers: {
+              Accept: 'application/json'
+            },
+            data: `fields name;\nlimit 50;`
+          })
+            .then(gameGenre => gameGenre.data)
+            .then(gameGenre => {
+              allGamesTab.map(game => {
+                game.genresName = [];
+                for (let i = 0; i < gameGenre.length; i++) {
+                  for (let x = 0; x < game.genres.length; x++) {
+                    if (game.genres[x] === gameGenre[i].id) {
+                      game.genresName = [...game.genresName, gameGenre[i].name];
+                    }
+                  }
+                }
+              });
+              window.localStorage.setItem('allGames', JSON.stringify(allGamesTab));
+              this.props.handleAllGames(allGamesTab);
+            });
+          axios({
+            url: 'https://cors-anywhere.herokuapp.com/https://api-v3.igdb.com/artworks',
+            method: 'POST',
+            headers: {
+              Accept: 'application/json'
+            },
+            data: `fields url, id;\nwhere ${allGamesTab
+              .map(game =>
+                game.artworks
+                  ? game.artworks
+                      .slice(0, 3)
+                      .map(artwork => `id=${artwork} | `)
+                      .join('')
+                  : ''
+              )
+              .join('')
+              .slice(0, -2)};limit 50;`
+          })
+            .then(gameArtworks => gameArtworks.data)
+            .then(gameArtworks => {
+              console.log('artwork');
+              allGamesTab.map(game => {
+                game.artworksUrl = [];
+                for (let i = 0; i < gameArtworks.length; i++) {
+                  if (!game.artworks) {
+                    game.artworks = [];
+                  } else {
+                    game.artworks = game.artworks.slice(0, 3);
+                  }
+                  for (let x = 0; x < game.artworks.length; x++) {
+                    if (game.artworks[x] === gameArtworks[i].id) {
+                      game.artworksUrl = [...game.artworksUrl, gameArtworks[i].url];
                     }
                   }
                 }
