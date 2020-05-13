@@ -2,17 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NewGameCard from './NewGameCard';
 
-const ListNewGameCards = ({ value, handleGamesList, games, listGamesLib }) => {
+const ListNewGameCards = ({
+  value,
+  handleGamesList,
+  games,
+  handleWishlistGame,
+  listGamesLib,
+  handleRemoveWishlistGame
+}) => {
   const displayNewGameCards = value =>
     games
       .filter(game => (value ? game.name.toUpperCase().includes(value.toUpperCase()) : game))
       .map(game => (
-        <div>
+        <div key={game.id}>
           <NewGameCard
             {...game}
-            handleGamesList={handleGamesList}
             listGamesLib={listGamesLib}
             key={`new-game-${game.name}`}
+            handleWishlistGame={handleWishlistGame}
+            handleGamesList={handleGamesList}
+            handleRemoveWishlistGame={handleRemoveWishlistGame}
           />
         </div>
       ));
@@ -21,8 +30,12 @@ const ListNewGameCards = ({ value, handleGamesList, games, listGamesLib }) => {
 };
 
 ListNewGameCards.propTypes = {
-  value: PropTypes.string.isRequired,
-  handleGamesList: PropTypes.func.isRequired
+  value: PropTypes.string,
+  games: PropTypes.string.isRequired,
+  handleGamesList: PropTypes.func.isRequired,
+  handleWishlistGame: PropTypes.func.isRequired,
+  listGamesLib: PropTypes.func.isRequired,
+  handleRemoveWishlistGame: PropTypes.func.isRequired
 };
 
 export default ListNewGameCards;

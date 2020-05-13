@@ -12,31 +12,34 @@ const ListMyGameCards = ({ value, listGamesLib, gameToRemove }) => {
     );
   }
   const displayMyGameCard2 = () =>
-    listGamesLib.map((data, i) => {
-      const gamesNameLSt = data.title;
+    listGamesLib
+      .filter(game => game.addToLib)
+      .map((data, i) => {
+        const gamesNameLSt = data.title;
 
-      if (value && gamesNameLSt.toUpperCase().includes(value.toUpperCase())) {
-        return (
-          <div>
-            <MyGameCard data={data} key={i} gameToRemove={gameToRemove} />
-          </div>
-        );
-      }
+        if (value && gamesNameLSt.toUpperCase().includes(value.toUpperCase())) {
+          return (
+            <div key={i}>
+              <MyGameCard data={data} gameToRemove={gameToRemove} />
+            </div>
+          );
+        }
 
-      if (!value) {
-        return (
-          <div>
-            <MyGameCard data={data} key={i} gameToRemove={gameToRemove} />
-          </div>
-        );
-      }
-    });
+        if (!value) {
+          return (
+            <div key={i}>
+              <MyGameCard data={data} gameToRemove={gameToRemove} />
+            </div>
+          );
+        }
+      });
 
   return <div className="grid-cards-display">{displayMyGameCard2()}</div>;
 };
 
 ListMyGameCards.propTypes = {
-  value: PropTypes.string.isRequired,
-  listGamesLib: PropTypes.array.isRequired
+  value: PropTypes.string,
+  listGamesLib: PropTypes.array.isRequired,
+  gameToRemove: PropTypes.string.isRequired
 };
 export default ListMyGameCards;
