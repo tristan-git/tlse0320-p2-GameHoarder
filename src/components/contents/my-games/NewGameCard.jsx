@@ -15,7 +15,7 @@ class NewGameCard extends React.Component {
     this.addToWishlist = this.addToWishlist.bind(this);
     this.removeToWishlist = this.removeToWishlist.bind(this);
     this.showInfoGame = this.showInfoGame.bind(this);
-    this.removeDataGame = this.removeDataGame.bind(this);  
+    this.removeDataGame = this.removeDataGame.bind(this);
   }
 
   componentDidMount() {}
@@ -103,21 +103,21 @@ class NewGameCard extends React.Component {
   hideModal() {
     this.setState({ show: false });
   }
-        
+
   removeDataGame() {
-  const { url: img, name: title, rating, id, platformsName, handleremoveDataGame } = this.props;
-  const values = {
-    addingDate: new Date(),
-    title,
-    img,
-    rating,
-    id,
-    platformsName,
-    addToLib: false,
-    addToWish: false
-  };
-  handleremoveDataGame(values);
-}
+    const { url: img, name: title, rating, id, platformsName, handleremoveDataGame } = this.props;
+    const values = {
+      addingDate: new Date(),
+      title,
+      img,
+      rating,
+      id,
+      platformsName,
+      addToLib: false,
+      addToWish: false
+    };
+    handleremoveDataGame(values);
+  }
 
   render() {
     let isAddToLib;
@@ -129,7 +129,26 @@ class NewGameCard extends React.Component {
       isAddToLib = false;
     }
 
-    const { rating, name, url, addToWish, platformsName, genresName, summary,artworksUrl, addToLib } = this.props;
+    let isWish;
+    if (this.props.listGamesLib) {
+      const newAr = this.props.listGamesLib.filter(game => game.title === this.props.name);
+      isWish = newAr.length > 0 && newAr[0].addToWish;
+    }
+    if (this.props.listGamesLib === undefined) {
+      isWish = false;
+    }
+
+    const {
+      rating,
+      name,
+      url,
+      addToWish,
+      platformsName,
+      genresName,
+      summary,
+      artworksUrl,
+      addToLib
+    } = this.props;
     const { show } = this.state;
 
     return (
@@ -145,6 +164,7 @@ class NewGameCard extends React.Component {
           artworksUrl={artworksUrl}
           summary={summary}
         />
+
         <div
           className="ImageCard"
           style={{ backgroundImage: `url(${url[0]})` }}
@@ -159,14 +179,17 @@ class NewGameCard extends React.Component {
                 </h3>
                 <button
                   type="button"
-                  onClick={addToWish ? this.removeToWishlist : this.addToWishlist}
+                  onClick={isWish ? this.removeToWishlist : this.addToWishlist}
                   style={{
                     backgroundColor: 'transparent',
                     border: 'none',
                     cursor: 'pointer'
                   }}
                 >
-                  <img src="/img/svg/wishlist.svg" alt="icon wishlist" />
+                  <img
+                    src={isWish ? '/img/svg/redheart.svg' : '/img/svg/wishlist.svg'}
+                    alt="icon wishlist"
+                  />
                 </button>
               </div>
 
@@ -192,8 +215,6 @@ class NewGameCard extends React.Component {
                 style={isAddToLib ? { transform: 'rotate(45deg)' } : { transform: 'rotate(0deg)' }}
               />
               {isAddToLib ? 'Déjà dans votre bibliothèque.' : 'Ajouter à votre bibliothèque.'}
-
-              {console.log(isAddToLib)}
             </div>
           </div>
         </div>
