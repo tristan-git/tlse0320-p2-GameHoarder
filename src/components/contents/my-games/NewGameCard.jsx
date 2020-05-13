@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MyGameCard';
 import DisplayRating from './DisplayRating';
-import Modal from './Modal';
+// import Modal from './Modal';
+import InfoCard from './InfoCard';
 
 class NewGameCard extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class NewGameCard extends React.Component {
     this.hideModal = this.hideModal.bind(this);
     this.addToWishlist = this.addToWishlist.bind(this);
     this.removeToWishlist = this.removeToWishlist.bind(this);
+    this.showModal = this.showModal.bind(this);
   }
 
   getDataGame() {
@@ -44,6 +46,12 @@ class NewGameCard extends React.Component {
       addToWish: true
     };
     handleWishlistGame(values);
+  }
+
+  showModal() {
+    this.setState(state => ({
+      show: !state.show
+    }));
   }
 
   hideModal() {
@@ -78,13 +86,18 @@ class NewGameCard extends React.Component {
 
     return (
       <div className="Card">
-        <div className="ImageCard" style={{ backgroundImage: `url(${url[0]})` }} />
+        <InfoCard show={show} handleClose={this.hideModal} />
+        <div
+          className="ImageCard"
+          style={{ backgroundImage: `url(${url[0]})` }}
+          onClick={this.showModal}
+        />
         <div className="GameInfo">
           <div className="GameInfoTitle">
             <div>
               <div className="NameWish">
                 <h3 className="GameName">{name}</h3>
-                <Modal show={show} handleClose={this.hideModal} />
+                {/* <Modal show={show} handleClose={this.hideModal} /> */}
                 <button
                   type="button"
                   onClick={addToWish ? this.removeToWishlist : this.addToWishlist}
