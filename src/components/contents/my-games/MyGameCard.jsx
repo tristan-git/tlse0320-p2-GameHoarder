@@ -9,7 +9,11 @@ function MyGameCard(props) {
       <div className="header">
         <h3>{title}</h3>
         <button onClick={() => props.gameToRemove(title)} className="close-btn" type="submit">
-          X
+          <img
+            src="./img/svg/delete-black.svg"
+            alt="delete"
+            style={{ backgroundColor: 'transparent' }}
+          />
         </button>
       </div>
       <div className="image" style={{ backgroundImage: `url(${img[0]})` }} />
@@ -26,7 +30,9 @@ function MyGameCard(props) {
 }
 
 MyGameCard.propTypes = {
+  data: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.array.isRequired,
+  gameToRemove: PropTypes.func.isRequired
 };
 export default MyGameCard;

@@ -39,13 +39,14 @@
 
   .GameInfo {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     width: 100%;
     margin: 0;
     padding: 0;
     .GameInfoTitle {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       align-content: center;
       width: 100%;
@@ -62,8 +63,17 @@
     overflow: hidden;
   }
 
+  .NameWish {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .GameSupport {
     width: 100%;
+    max-width: 140px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .GameRating {

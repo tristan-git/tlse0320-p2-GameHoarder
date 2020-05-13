@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import './filter.scss';
 
 function Filters({ value, handleChange, location }) {
+  if (value === null) {
+    value = undefined;
+  }
   return (
     <div className="filter-container">
       <div className="input-filter">
@@ -13,7 +16,7 @@ function Filters({ value, handleChange, location }) {
 }
 
 Filters.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
   location: PropTypes.string.isRequired
 };
