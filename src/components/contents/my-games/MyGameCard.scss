@@ -241,3 +241,21 @@
     }
   }
 }
+
+.PopupInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: black;
+  color: whitesmoke;
+  width: 80%;
+  height: 70%;
+  margin: 10% auto;
+  border-radius: 5px;
+}
+
+.InfoCard {
+  margin: 0 auto;
+  width: 90%;
+  height: 90%;
+}

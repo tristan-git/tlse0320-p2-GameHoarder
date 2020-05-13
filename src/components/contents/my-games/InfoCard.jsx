@@ -5,9 +5,9 @@ import './MyGameCard.scss';
 export default function InfoCard({ handleClose, show, children }) {
   return (
     <div className={show ? 'modal display-block' : 'modal display-none'}>
-      <section className="InfoCard">
+      <section className="PopupInfo">
         {children}
-        <div className="modal-div">
+        <div className="InfoCard">
           <h2>Nom du jeu</h2>
           <p>rating</p>
           <div>
