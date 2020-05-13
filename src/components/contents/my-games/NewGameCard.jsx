@@ -48,15 +48,7 @@ class NewGameCard extends React.Component {
   }
 
   addToWishlist() {
-    const {
-      url: img,
-      name: title,
-      rating,
-      handleGamesList,
-      handleWishlistGame,
-      id,
-      platformsName
-    } = this.props;
+    const { url: img, name: title, rating, handleWishlistGame, id, platformsName } = this.props;
     const values = {
       addingDate: new Date(),
       title,
@@ -125,7 +117,7 @@ class NewGameCard extends React.Component {
 
               <p className="GameSupport">
                 {platformsName
-                  .map(platform => platform + '/')
+                  .map(platform => `${platform}/`)
                   .join('')
                   .slice(0, -1)}
               </p>

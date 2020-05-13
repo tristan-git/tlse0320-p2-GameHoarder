@@ -6,7 +6,7 @@ const Footer = () => {
     <footer id="footer">
       <div>
         {' '}
-        <img src="./img/logo.svg" alt="logo " />
+        <img src="./img/svg/logo.svg" alt="logo " />
       </div>
       <div>Game-Hoarder.com. Tous droits réservés © 2000 - 2020</div>
       <div className="social">

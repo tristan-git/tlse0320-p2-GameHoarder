@@ -33,6 +33,7 @@ class App extends React.Component {
     this.handleWishlistGame = this.handleWishlistGame.bind(this);
     this.handleRemoveWishlistGame = this.handleRemoveWishlistGame.bind(this);
     this.handleremoveDataGame = this.handleremoveDataGame.bind(this);
+    this.handleChangeStatue = this.handleChangeStatue.bind(this);
   }
 
   componentDidMount() {
@@ -44,13 +45,23 @@ class App extends React.Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     const { listGamesLib, prevListGamesLib } = this.state;
     const listGamesLibReverse = listGamesLib.sort(
       (a, b) => new Date(b.addingDate) - new Date(a.addingDate)
     );
     window.localStorage.setItem('gamesList', JSON.stringify(listGamesLibReverse));
     if (prevListGamesLib.length !== listGamesLibReverse.length || prevListGamesLib === []) {
+      this.setState(prevState => {
+        return {
+          ...prevState,
+          listGamesLib: listGamesLibReverse,
+          prevListGamesLib: listGamesLibReverse
+        };
+      });
+    }
+
+    if (prevState.listGamesLib !== listGamesLib) {
       this.setState(prevState => {
         return {
           ...prevState,
@@ -89,6 +100,13 @@ class App extends React.Component {
     let newlistGamesLib = listGamesLib;
     newlistGamesLib = newlistGamesLib.filter(game => game.title !== values.title);
     this.setState({ listGamesLib: newlistGamesLib });
+  }
+
+  handleChangeStatue(values) {
+    const { listGamesLib } = this.state;
+    let newlistGamesLib = listGamesLib;
+    newlistGamesLib = newlistGamesLib.filter(game => game.title !== values.title);
+    this.setState({ listGamesLib: [...newlistGamesLib, values] });
   }
 
   gameToRemove(gameToRemove) {
@@ -137,12 +155,14 @@ class App extends React.Component {
   render() {
     const { mygameInputValue, allGames, listGamesLib } = this.state;
     const { newgameInputValue } = this.state;
-    const { handleChange, handleAllGames } = this;
+    const { handleChange, handleAllGames, handleChangeStatue } = this;
     let addGameContent;
     if (
       allGames.length === 0 ||
       allGames[0].url === undefined ||
-      allGames[0].platformsName === undefined
+      allGames[0].platformsName === undefined ||
+      allGames[0].genres === undefined ||
+      allGames[0].artworksUrl === undefined
     ) {
       addGameContent = <CommonLoading color="#1047f5" />;
     } else {
@@ -186,6 +206,7 @@ class App extends React.Component {
                   gameToRemove={this.gameToRemove}
                   handleChange={handleChange}
                   listGamesLib={listGamesLib}
+                  handleChangeStatue={handleChangeStatue}
                 />
               </Route>
               <Route exact path="/ajouter-un-jeu">

@@ -36,7 +36,11 @@ function NewGames({
       <div className="container-top-five">
         <div className="container-box">
           <Title title="Les jeux " span="du moment" />
-          <ListTopThreeGames games={games} handleGamesList={handleGamesList} />
+          <ListTopThreeGames
+            games={games}
+            handleGamesList={handleGamesList}
+            handleWishlistGame={handleWishlistGame}
+          />
         </div>
       </div>
     </div>

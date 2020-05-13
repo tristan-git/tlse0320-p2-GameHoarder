@@ -28,8 +28,6 @@ class NavDesktop extends React.Component {
     const { show } = this.state;
     const { listGamesLib, handleRemoveWishlistGame } = this.props;
 
-    console.log(listGamesLib.filter(game => game.addToWish === true).length);
-
     return (
       <div className="navDesktop">
         <div className="logo">
