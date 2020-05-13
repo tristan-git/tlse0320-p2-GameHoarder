@@ -10,6 +10,7 @@ const ListNewGameCards = ({
   listGamesLib,
   handleRemoveWishlistGame,
   handleInfoGame
+  handleremoveDataGame,
 }) => {
   const displayNewGameCards = value =>
     games
@@ -24,6 +25,7 @@ const ListNewGameCards = ({
             handleGamesList={handleGamesList}
             handleRemoveWishlistGame={handleRemoveWishlistGame}
             handleInfoGame={handleInfoGame}
+            handleremoveDataGame={handleremoveDataGame}
           />
         </div>
       ));
@@ -38,7 +40,8 @@ ListNewGameCards.propTypes = {
   handleWishlistGame: PropTypes.func.isRequired,
   listGamesLib: PropTypes.func.isRequired,
   handleRemoveWishlistGame: PropTypes.func.isRequired,
-  handleInfoGame: PropTypes.func.isRequired
+  handleInfoGame: PropTypes.func.isRequired,
+  handleremoveDataGame: PropTypes.func.isRequired
 };
 
 export default ListNewGameCards;
