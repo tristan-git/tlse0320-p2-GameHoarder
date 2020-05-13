@@ -17,8 +17,10 @@
     text-align: center;
     font-size: 1rem;
     color: white;
-    span {
+    span a {
       text-decoration: underline;
+      color: white;
+      margin-left: 4px;
     }
   }
 
@@ -40,14 +42,14 @@
 
   .header h3 {
     font-size: 16px;
-    max-width: 250px;
+    max-width: 225px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
   }
 
   .image {
-    height: 250px;
+    height: 200px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

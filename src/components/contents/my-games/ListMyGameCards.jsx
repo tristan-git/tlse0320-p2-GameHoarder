@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import MyGameCard from './MyGameCard';
 
 const ListMyGameCards = ({ value, listGamesLib, gameToRemove }) => {
-  if (listGamesLib.length === 0) {
+  if (listGamesLib.filter(el => el.addToLib).length === 0) {
     return (
       <div className="alert">
         Vous n&apos;avez pas encore de jeux dans votre bibliothèque,
-        <span>vous pouvez en ajouter ici</span>
+        <span>
+          <NavLink to="/ajouter-un-jeu">vous pouvez en ajouter ici</NavLink>
+        </span>
       </div>
     );
   }

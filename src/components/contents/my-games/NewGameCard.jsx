@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './MyGameCard';
+import DisplayRating from './DisplayRating';
 import Modal from './Modal';
 
 class NewGameCard extends React.Component {
@@ -16,13 +17,14 @@ class NewGameCard extends React.Component {
   }
 
   getDataGame() {
-    const { url: img, name: title, rating, handleGamesList, id } = this.props;
+    const { url: img, name: title, rating, handleGamesList, id, platformsName } = this.props;
     const values = {
       addingDate: new Date(),
       title,
       img,
       rating,
       id,
+      platformsName,
       addToLib: true,
       addToWish: false
     };
@@ -30,7 +32,15 @@ class NewGameCard extends React.Component {
   }
 
   addToWishlist() {
-    const { url: img, name: title, rating, handleWishlistGame, id, platformsName } = this.props;
+    const {
+      url: img,
+      name: title,
+      rating,
+      handleGamesList,
+      handleWishlistGame,
+      id,
+      platformsName
+    } = this.props;
     const values = {
       addingDate: new Date(),
       title,
@@ -89,20 +99,29 @@ class NewGameCard extends React.Component {
         <div className="ImageCard" style={{ backgroundImage: `url(${url[0]})` }} />
         <div className="GameInfo">
           <div className="GameInfoTitle">
-            <div className="NameWish">
-              <h3 className="GameName">{name}</h3>
-              <Modal show={show} handleClose={this.hideModal} />
-              <button
-                type="button"
-                onClick={addToWish ? this.removeToWishlist : this.addToWishlist}
-                style={{
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  cursor: 'pointer'
-                }}
-              >
-                <img src="/img/svg/wishlist.svg" alt="icon wishlist" />
-              </button>
+            <div>
+              <div className="NameWish">
+                <h3 className="GameName">{name}</h3>
+                <Modal show={show} handleClose={this.hideModal} />
+                <button
+                  type="button"
+                  onClick={addToWish ? this.removeToWishlist : this.addToWishlist}
+                  style={{
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <img src="/img/svg/wishlist.svg" alt="icon wishlist" />
+                </button>
+              </div>
+
+              <p className="GameSupport">
+                {platformsName
+                  .map(platform => platform + '/')
+                  .join('')
+                  .slice(0, -1)}
+              </p>
             </div>
             <p className="GameSupport">
               {platformsName

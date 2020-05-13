@@ -6,7 +6,7 @@ class HeaderSugg extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      url: this.props.games[0].url[0],
+      url: this.props.games[0].url,
       name: this.props.games[0].name,
       rating: this.props.games[0].rating,
       id: this.props.games[0].id
@@ -15,12 +15,16 @@ class HeaderSugg extends React.Component {
   }
 
   AddGameToLibrary() {
+    const { id, name: title, url: img, rating, platformsName } = this.state;
     const values = {
       addingDate: new Date(),
-      id: this.state.id,
-      title: this.state.name,
-      img: [this.state.url],
-      rating: this.state.rating
+      id,
+      title,
+      img,
+      rating,
+      platformsName,
+      addToLib: true,
+      addToWish: false
     };
     const { handleGamesList } = this.props;
     handleGamesList(values);
