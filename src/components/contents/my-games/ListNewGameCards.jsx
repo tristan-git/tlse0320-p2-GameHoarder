@@ -8,7 +8,9 @@ const ListNewGameCards = ({
   games,
   handleWishlistGame,
   listGamesLib,
-  handleRemoveWishlistGame
+  handleRemoveWishlistGame,
+  handleremoveDataGame,
+  listGamesList
 }) => {
   const displayNewGameCards = value =>
     games
@@ -22,6 +24,7 @@ const ListNewGameCards = ({
             handleWishlistGame={handleWishlistGame}
             handleGamesList={handleGamesList}
             handleRemoveWishlistGame={handleRemoveWishlistGame}
+            handleremoveDataGame={handleremoveDataGame}
           />
         </div>
       ));
