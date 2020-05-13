@@ -15,7 +15,10 @@ class NewGameCard extends React.Component {
     this.addToWishlist = this.addToWishlist.bind(this);
     this.removeToWishlist = this.removeToWishlist.bind(this);
     this.showInfoGame = this.showInfoGame.bind(this);
+    this.removeDataGame = this.removeDataGame.bind(this);  
   }
+
+  componentDidMount() {}
 
   getDataGame() {
     const { url: img, name: title, rating, handleGamesList, id, platformsName } = this.props;
@@ -100,19 +103,33 @@ class NewGameCard extends React.Component {
   hideModal() {
     this.setState({ show: false });
   }
+        
+  removeDataGame() {
+  const { url: img, name: title, rating, id, platformsName, handleremoveDataGame } = this.props;
+  const values = {
+    addingDate: new Date(),
+    title,
+    img,
+    rating,
+    id,
+    platformsName,
+    addToLib: false,
+    addToWish: false
+  };
+  handleremoveDataGame(values);
+}
 
   render() {
-    const {
-      rating,
-      name,
-      url,
-      addToLib,
-      addToWish,
-      platformsName,
-      genresName,
-      summary,
-      artworksUrl
-    } = this.props;
+    let isAddToLib;
+    if (this.props.listGamesLib) {
+      const newAr = this.props.listGamesLib.filter(game => game.title === this.props.name);
+      isAddToLib = newAr.length > 0 && newAr[0].addToLib;
+    }
+    if (this.props.listGamesLib === undefined) {
+      isAddToLib = false;
+    }
+
+    const { rating, name, url, addToWish, platformsName, genresName, summary,artworksUrl, addToLib } = this.props;
     const { show } = this.state;
 
     return (
@@ -165,12 +182,18 @@ class NewGameCard extends React.Component {
               <DisplayRating rating={rating} />
             </div>
 
-            <div className="ButtonAddLibrary" onClick={this.getDataGame}>
+            <div
+              className="ButtonAddLibrary"
+              onClick={isAddToLib ? this.removeDataGame : this.getDataGame}
+            >
               <img
-                src={addToLib ? '/img/svg/delete-white.svg' : '/img/svg/add.svg'}
-                alt="icon add library"
+                src="/img/svg/add.svg"
+                alt="icon add or delete library"
+                style={isAddToLib ? { transform: 'rotate(45deg)' } : { transform: 'rotate(0deg)' }}
               />
-              {addToLib ? 'Déjà dans votre bibliothèque.' : 'Ajouter à votre bibliothèque.'}
+              {isAddToLib ? 'Déjà dans votre bibliothèque.' : 'Ajouter à votre bibliothèque.'}
+
+              {console.log(isAddToLib)}
             </div>
           </div>
         </div>

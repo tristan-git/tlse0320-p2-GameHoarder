@@ -14,7 +14,9 @@ function NewGames({
   handleGamesList,
   listGamesLib,
   handleRemoveWishlistGame,
-  handleInfoGame
+  handleInfoGame,
+  handleremoveDataGame,
+  listGamesList
 }) {
   return (
     <div className="new-games">
@@ -27,8 +29,10 @@ function NewGames({
           handleWishlistGame={handleWishlistGame}
           handleGamesList={handleGamesList}
           listGamesLib={listGamesLib}
+          listGamesList={listGamesList}
           handleRemoveWishlistGame={handleRemoveWishlistGame}
           handleInfoGame={handleInfoGame}
+          handleremoveDataGame={handleremoveDataGame}
         />
       </div>
       <div className="container-top-five">
