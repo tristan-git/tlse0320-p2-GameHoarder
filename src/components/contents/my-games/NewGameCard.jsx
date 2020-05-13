@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MyGameCard';
 import DisplayRating from './DisplayRating';
-// import Modal from './Modal';
 import InfoCard from './InfoCard';
 
 class NewGameCard extends React.Component {
@@ -15,7 +14,7 @@ class NewGameCard extends React.Component {
     this.hideModal = this.hideModal.bind(this);
     this.addToWishlist = this.addToWishlist.bind(this);
     this.removeToWishlist = this.removeToWishlist.bind(this);
-    this.showModal = this.showModal.bind(this);
+    this.showInfoGame = this.showInfoGame.bind(this);
   }
 
   getDataGame() {
@@ -48,16 +47,6 @@ class NewGameCard extends React.Component {
     handleWishlistGame(values);
   }
 
-  showModal() {
-    this.setState(state => ({
-      show: !state.show
-    }));
-  }
-
-  hideModal() {
-    this.setState({ show: false });
-  }
-
   removeToWishlist() {
     const {
       url: img,
@@ -80,24 +69,77 @@ class NewGameCard extends React.Component {
     handleRemoveWishlistGame(values);
   }
 
+  showInfoGame() {
+    const {
+      url: img,
+      name: title,
+      rating,
+      id,
+      platformsName,
+      genresName,
+      artworkUrl,
+      summary,
+      handleInfoGame
+    } = this.props;
+    const values = {
+      img,
+      title,
+      rating,
+      id,
+      platformsName,
+      genresName,
+      artworkUrl,
+      summary
+    };
+    this.setState(state => ({
+      show: !state.show
+    }));
+    handleInfoGame(values);
+  }
+
+  hideModal() {
+    this.setState({ show: false });
+  }
+
   render() {
-    const { rating, name, url, addToLib, addToWish, platformsName } = this.props;
+    const {
+      rating,
+      name,
+      url,
+      addToLib,
+      addToWish,
+      platformsName,
+      genresName,
+      summary,
+      artworkUrl,
+      listGamesLib
+    } = this.props;
     const { show } = this.state;
 
     return (
       <div className="Card">
-        <InfoCard show={show} handleClose={this.hideModal} />
+        <InfoCard
+          show={show}
+          handleClose={this.hideModal}
+          name={name}
+          url={url}
+          rating={rating}
+          platformsName={platformsName}
+          genresName={genresName}
+          artworkUrl={artworkUrl}
+          summary={summary}
+          listGamesLib={listGamesLib}
+        />
         <div
           className="ImageCard"
           style={{ backgroundImage: `url(${url[0]})` }}
-          onClick={this.showModal}
+          onClick={this.showInfoGame}
         />
         <div className="GameInfo">
           <div className="GameInfoTitle">
             <div>
               <div className="NameWish">
                 <h3 className="GameName">{name}</h3>
-                {/* <Modal show={show} handleClose={this.hideModal} /> */}
                 <button
                   type="button"
                   onClick={addToWish ? this.removeToWishlist : this.addToWishlist}
@@ -147,7 +189,12 @@ NewGameCard.propTypes = {
   addToLib: PropTypes.string.isRequired,
   handleWishlistGame: PropTypes.string.isRequired,
   handleRemoveWishlistGame: PropTypes.func.isRequired,
-  addToWish: PropTypes.string.isRequired
+  addToWish: PropTypes.string.isRequired,
+  games: PropTypes.array.isRequired,
+  genresName: PropTypes.array.isRequired,
+  artworkUrl: PropTypes.array.isRequired,
+  summary: PropTypes.string.isRequired,
+  handleInfoGame: PropTypes.func.isRequired
 };
 
 export default NewGameCard;
