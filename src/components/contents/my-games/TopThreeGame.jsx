@@ -6,14 +6,15 @@ function TopThreeGame(props) {
   const { name, url, rating } = props;
 
   const setDatasGameLocalStorage = data => {
-    console.log(data);
     const { url: img, name: title, rating, handleGamesList, id } = data;
     const values = {
       addingDate: new Date(),
       title,
       img,
       rating,
-      id
+      id,
+      addToLib: true,
+      addToWish: false
     };
     handleGamesList(values);
   };
