@@ -9,7 +9,8 @@ export default function DisplayWishlist({
   show,
   children,
   listGamesLib,
-  handleRemoveWishlistGame
+  handleRemoveWishlistGame,
+  handleWishlistGame
 }) {
   const displayWhislist = () =>
     listGamesLib
@@ -22,6 +23,7 @@ export default function DisplayWishlist({
           platformsName={game.platformsName}
           addToWish={game.addToWish}
           handleRemoveWishlistGame={handleRemoveWishlistGame}
+          handleWishlistGame={handleWishlistGame}
         />
       ));
 
@@ -56,5 +58,6 @@ DisplayWishlist.propTypes = {
   show: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
   listGamesLib: PropTypes.string.isRequired,
-  handleRemoveWishlistGame: PropTypes.func.isRequired
+  handleRemoveWishlistGame: PropTypes.func.isRequired,
+  handleWishlistGame: PropTypes.func.isRequired
 };

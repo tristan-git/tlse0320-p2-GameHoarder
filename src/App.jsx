@@ -145,20 +145,25 @@ class App extends React.Component {
   }
 
   render() {
-    const { mygameInputValue, idNewGameAdded, allGames, listGamesLib } = this.state;
+    const { mygameInputValue, allGames, listGamesLib } = this.state;
     const { newgameInputValue } = this.state;
     const { handleChange, handleAllGames, handleChangeStatue } = this;
     let addGameContent;
     if (
       allGames.length === 0 ||
       allGames[0].url === undefined ||
-      allGames[0].platformsName === undefined
+      allGames[0].platformsName === undefined ||
+      allGames[0].genres === undefined ||
+      allGames[0].artworksUrl === undefined
     ) {
       addGameContent = <CommonLoading color="#1047f5" />;
     } else {
       addGameContent = (
         <>
-          <HeaderSugg games={allGames} handleGamesList={this.handleGamesList} />
+          <HeaderSugg
+            games={this.state.allGames.sort((a, b) => b.rating - a.rating)}
+            handleGamesList={this.handleGamesList}
+          />
           <NewGames
             value={newgameInputValue}
             handleGamesList={this.handleGamesList}
@@ -182,7 +187,10 @@ class App extends React.Component {
 
             <Switch>
               <Route exact path="/">
-                <HeaderLib gameToRemove={this.gameToRemove} listGamesLib={listGamesLib} />
+                <HeaderLib
+                  gameToRemove={this.gameToRemove}
+                  listGamesLib={listGamesLib.filter(el => el.addToLib)}
+                />
                 <MyGames
                   value={mygameInputValue}
                   gameToRemove={this.gameToRemove}

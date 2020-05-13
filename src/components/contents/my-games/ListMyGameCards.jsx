@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import MyGameCard from './MyGameCard';
 
 const ListMyGameCards = ({ value, listGamesLib, gameToRemove, handleChangeStatue }) => {
-  if (listGamesLib.length === 0) {
+  if (listGamesLib.filter(el => el.addToLib).length === 0) {
     return (
       <div className="alert">
         Vous n&apos;avez pas encore de jeux dans votre bibliothèque,
@@ -51,8 +51,8 @@ const ListMyGameCards = ({ value, listGamesLib, gameToRemove, handleChangeStatue
 };
 
 ListMyGameCards.propTypes = {
-  value: PropTypes.string,
-  listGamesLib: PropTypes.array.isRequired,
-  gameToRemove: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
+  listGamesLib: PropTypes.string.isRequired,
+  gameToRemove: PropTypes.func.isRequired
 };
 export default ListMyGameCards;

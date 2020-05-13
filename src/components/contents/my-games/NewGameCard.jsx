@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MyGameCard';
 import DisplayRating from './DisplayRating';
-// import DisplayRating from './DisplayRating';
 import Modal from './Modal';
 
 class NewGameCard extends React.Component {
@@ -18,13 +17,14 @@ class NewGameCard extends React.Component {
   }
 
   getDataGame() {
-    const { url: img, name: title, rating, handleGamesList, id } = this.props;
+    const { url: img, name: title, rating, handleGamesList, id, platformsName } = this.props;
     const values = {
       addingDate: new Date(),
       title,
       img,
       rating,
       id,
+      platformsName,
       addToLib: true,
       addToWish: false
     };
@@ -100,7 +100,7 @@ class NewGameCard extends React.Component {
 
               <p className="GameSupport">
                 {platformsName
-                  .map(platform => platform + '/')
+                  .map(platform => `${platform}/`)
                   .join('')
                   .slice(0, -1)}
               </p>
