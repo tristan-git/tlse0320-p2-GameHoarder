@@ -47,6 +47,7 @@ class NavDesktop extends React.Component {
             handleRemoveWishlistGame={handleRemoveWishlistGame}
           />
           <button
+            className="btnOpenWishlist"
             type="button"
             onClick={this.handleWishlistGame}
             style={{
@@ -62,6 +63,10 @@ class NavDesktop extends React.Component {
                 width: '30px'
               }}
             />
+
+            {listGamesLib.length > 0 ? (
+              <div className="countWislist">{listGamesLib.length}</div>
+            ) : null}
           </button>
         </ul>
       </div>
