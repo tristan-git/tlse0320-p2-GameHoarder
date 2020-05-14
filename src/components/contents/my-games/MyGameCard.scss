@@ -2,10 +2,396 @@
   max-width: 100%;
   position: relative;
   z-index: 1;
-  background-color: var(--primary-color);
   border: none;
   color: #fff;
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
+  transform: scale(0.7);
+  padding: 0;
+  background-color: #fff;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+
+  .GameSupport {
+    width: 100%;
+    max-width: 140px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .modal-main {
+    position: fixed;
+    background: white;
+    width: 30%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    color: #000000;
+  }
+
+  .image {
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.Card {
+  display: flex;
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  .header {
+    color: black;
+  }
+}
+
+.ImageCard {
+  height: 100px;
+  min-width: 100px;
+  margin-right: 10px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.ImageCard::before {
+  content: 'Infos';
+  width: 100%;
+  font-size: 0;
+  position: absolute;
+  height: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+.ImageCard:hover::before {
+  height: 100%;
+  font-size: 1rem;
+}
+
+.GameInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  .GameInfoTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.GameName {
+  width: 100%;
+  max-width: 140px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.NameWish {
+  display: flex;
+  justify-content: space-between;
+}
+
+.GameSupport {
+  width: 100%;
+}
+
+.GameRating {
+  width: 100%;
+}
+
+.ButtonAddLibrary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  z-index: 0;
+  img {
+    margin-right: 5px;
+  }
+}
+
+.modal-div {
+  display: flex;
+  flex-direction: column;
+  color: whitesmoke;
+  justify-content: center;
+  margin: 2%;
+  .alert {
+    background-color: var(--alert-color);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .Card {
+    padding: 10px;
+  }
+
+  .wrap {
+    display: flex;
+    align-items: start;
+    justify-content: flex-end;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: start;
+    justify-content: flex-end;
+  }
+
+  .WishlistImg {
+    width: 75px;
+    display: flex;
+    margin: auto;
+  }
+
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+  }
+}
+
+.modal-button {
+  width: 25%;
+  margin: 0 auto;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.ratingSuggestion {
+  display: flex;
+  div {
+    margin-right: 5px;
+  }
+}
+
+.GameSupport {
+  margin-top: -4px;
+}
+
+.container-top-five {
+  background: linear-gradient(270deg, #000000, #3e3e3e, #000000);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 13s ease infinite;
+  -moz-animation: AnimationName 13s ease infinite;
+  -o-animation: AnimationName 13s ease infinite;
+  animation: AnimationName 13s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes AnimationName {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-o-keyframes AnimationName {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes AnimationName {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+.modalInfo {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+.PopupInfo {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: scroll;
+  background: white;
+  color: rgb(3, 3, 3);
+  width: 80%;
+  height: 55%;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  padding: 1rem;
+}
+.infoNote {
+  font-size: 1.4rem;
+  justify-content: flex-start;
+  width: 33%;
+}
+.infoPlatforms {
+  font-size: 1.4rem;
+  width: 33%;
+  text-align: center;
+}
+.infoGenre {
+  font-size: 1.4rem;
+  text-align: center;
+  width: 33%;
+}
+.InfoCard {
+  margin: 0 auto;
+  width: 90%;
+  height: 90%;
+  h2:first-child {
+    font-size: 2rem;
+  }
+  .artworkSection {
+    font-size: 1.5rem;
+    margin-top: 30px;
+  }
+}
+
+.InfoTitle {
+  font-size: 30px;
+  text-align: center;
+}
+
+.InfoMain {
+  font-size: 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  height: fit-content;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.InfoCover {
+  width: auto;
+  height: 300px;
+  margin: 0;
+}
+
+.InfoGame {
+  margin: 0 6%;
+}
+
+.Info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.InfoSupp {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 2% auto;
+  font-size: 14px;
+  margin: 35px 0;
+
+  justify-content: space-between;
+}
+
+.InfoButton {
+  position: absolute;
+  right: 2%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: start;
+  justify-content: flex-end;
+}
+
+.Images {
+  display: flex;
+  flex-wrap: wrap;
+
+  flex-direction: row;
+  align-items: center;
+  margin-top: 30px;
+  width: 100%;
+  .CoverSupp {
+    width: 400px;
+    margin: 10px;
+    height: auto;
+  }
 }

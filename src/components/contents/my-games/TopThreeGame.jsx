@@ -1,22 +1,106 @@
 import React from 'react';
-import DisplayRating from './DisplayRating';
 import PropTypes from 'prop-types';
+import DisplayRating from './DisplayRating';
 
 function TopThreeGame(props) {
-  const { name, url, rating } = props;
+  const {
+    name,
+    url,
+    rating,
+    id,
+    listGamesLib,
+    artworksUrl,
+    genresName,
+    handleRemoveWishlistGame,
+    handleWishlistGame,
+    handleremoveDataGame,
+    handleGamesList,
+    platformsName,
+    url: img,
+    name: title
+  } = props;
 
-  const setDatasGameLocalStorage = data => {
-    console.log(data);
-    const { url: img, name: title, rating, handleGamesList, id } = data;
+  const addToWishlist = () => {
+    const values = {
+      addingDate: new Date(),
+      title,
+      img,
+      artworksUrl,
+      genresName,
+      rating,
+      id,
+      platformsName,
+      addToLib: false,
+      addToWish: true
+    };
+    handleWishlistGame(values);
+  };
+
+  const removeToWishlist = () => {
+    const values = {
+      addingDate: new Date(),
+      title,
+      img,
+      artworksUrl,
+      genresName,
+      rating,
+      id,
+      platformsName,
+      addToLib: false,
+      addToWish: false
+    };
+    handleRemoveWishlistGame(values);
+  };
+
+  const removeDataGame = () => {
     const values = {
       addingDate: new Date(),
       title,
       img,
       rating,
-      id
+      artworksUrl,
+      genresName,
+      id,
+      platformsName,
+      addToLib: false,
+      addToWish: false
+    };
+    handleremoveDataGame(values);
+  };
+
+  const getDataGame = () => {
+    const values = {
+      addingDate: new Date(),
+      title,
+      img,
+      rating,
+      artworksUrl,
+      genresName,
+      id,
+      platformsName,
+      addToLib: true,
+      addToWish: false
     };
     handleGamesList(values);
   };
+
+  let isAddToLib;
+  if (listGamesLib) {
+    const newAr = listGamesLib.filter(game => game.title === props.name);
+    isAddToLib = newAr.length > 0 && newAr[0].addToLib;
+  }
+  if (listGamesLib === undefined) {
+    isAddToLib = false;
+  }
+
+  let isWish;
+  if (listGamesLib) {
+    const newAr = listGamesLib.filter(game => game.title === props.name);
+    isWish = newAr.length > 0 && newAr[0].addToWish;
+  }
+  if (listGamesLib === undefined) {
+    isWish = false;
+  }
 
   return (
     <div className="card" style={{ backgroundImage: `url('${url[0]}')` }}>
@@ -26,11 +110,26 @@ function TopThreeGame(props) {
             <h3>{name}</h3>
           </div>
           <div className="group">
-            <div className="wishlist">
-              <img src="/img/svg/wishlist.svg" alt="icon whislist" />
+            <div className="wishlist" onClick={isWish ? removeToWishlist : addToWishlist}>
+              <img
+                src={isWish ? '/img/svg/redheart.svg' : '/img/svg/wishlist.svg'}
+                alt="icon wishlist"
+              />
             </div>
-            <button className="add" type="submit" onClick={() => setDatasGameLocalStorage(props)}>
-              <img src="/img/svg/add.svg" alt="icon add" />
+            <button
+              className="add"
+              type="submit"
+              onClick={isAddToLib ? removeDataGame : getDataGame}
+            >
+              <img
+                src="/img/svg/add.svg"
+                alt="icon add"
+                style={
+                  isAddToLib
+                    ? { transform: 'rotate(45deg)', transition: 'all 0.4s ease' }
+                    : { transform: 'rotate(0deg)', transition: 'all 0.4s ease' }
+                }
+              />
             </button>
           </div>
         </div>
@@ -44,8 +143,15 @@ function TopThreeGame(props) {
 
 TopThreeGame.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired
+  url: PropTypes.arrayOf(PropTypes.string).isRequired,
+  id: PropTypes.arrayOf(PropTypes.string).isRequired,
+  rating: PropTypes.number.isRequired,
+  handleWishlistGame: PropTypes.func.isRequired,
+  platformsName: PropTypes.arrayOf(PropTypes.string).isRequired,
+  listGamesLib: PropTypes.arrayOf(PropTypes.string).isRequired,
+  handleRemoveWishlistGame: PropTypes.func.isRequired,
+  handleremoveDataGame: PropTypes.func.isRequired,
+  handleGamesList: PropTypes.func.isRequired
 };
 
 export default TopThreeGame;

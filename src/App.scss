@@ -164,8 +164,11 @@ body {
 }
 #footer {
   grid-area: footer;
-  background-color: #696969;
+
   padding: 60px;
+}
+button {
+  outline: none;
 }
 
 #mobile-nav {
