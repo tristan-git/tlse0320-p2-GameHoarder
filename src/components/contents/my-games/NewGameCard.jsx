@@ -18,8 +18,6 @@ class NewGameCard extends React.Component {
     this.removeDataGame = this.removeDataGame.bind(this);
   }
 
-  componentDidMount() {}
-
   getDataGame() {
     const { url: img, name: title, rating, handleGamesList, id, platformsName } = this.props;
     const values = {
