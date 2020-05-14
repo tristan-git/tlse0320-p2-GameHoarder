@@ -144,7 +144,7 @@ class NewGameCard extends React.Component {
         <div
           className="ImageCard"
           style={{ backgroundImage: `url(${url[0]})` }}
-          onClick={this.showInfoGame}
+          onClick={addToWish ? this.hideModal : this.showInfoGame}
         />
         <div className="GameInfo">
           <div className="GameInfoTitle">
