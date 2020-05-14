@@ -173,6 +173,8 @@ class App extends React.Component {
           <HeaderSugg
             games={allGames.sort((a, b) => b.rating - a.rating)}
             handleGamesList={this.handleGamesList}
+            handleremoveDataGame={this.handleremoveDataGame}
+            listGamesLib={listGamesLib}
           />
           <NewGames
             value={newgameInputValue}
@@ -205,6 +207,7 @@ class App extends React.Component {
                 <HeaderLib
                   gameToRemove={this.gameToRemove}
                   listGamesLib={listGamesLib.filter(el => el.addToLib)}
+                  handleChangeStatue={handleChangeStatue}
                 />
                 <MyGames
                   value={mygameInputValue}
