@@ -156,8 +156,6 @@ class App extends React.Component {
   }
 
   handleremoveDataGame(values) {
-    console.log(values);
-
     const { listGamesLib } = this.state;
     let newlistGamesLib = listGamesLib;
     newlistGamesLib = newlistGamesLib.filter(game => game.title !== values.title);
@@ -217,6 +215,7 @@ class App extends React.Component {
                 <HeaderLib
                   gameToRemove={this.gameToRemove}
                   listGamesLib={listGamesLib.filter(el => el.addToLib)}
+                  handleChangeStatue={handleChangeStatue}
                 />
                 <MyGames
                   value={mygameInputValue}
