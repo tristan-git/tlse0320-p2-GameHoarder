@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DisplayRating from './DisplayRating';
 
 function TopThreeGame(props) {
-  const { name, url, rating } = props;
+  const { name, url, rating, listGamesLib, handleRemoveWishlistGame, handleremoveDataGame } = props;
 
   const setDatasGameLocalStorage = data => {
     const { url: img, name: title, rating, handleGamesList, platformsName, id } = data;
@@ -35,6 +35,69 @@ function TopThreeGame(props) {
     handleWishlistGame(values);
   };
 
+  const removeToWishlist = () => {
+    const { url: img, name: title, rating, handleWishlistGame, id, platformsName } = props;
+    const values = {
+      addingDate: new Date(),
+      title,
+      img,
+      rating,
+      id,
+      platformsName,
+      addToLib: false,
+      addToWish: false
+    };
+    handleRemoveWishlistGame(values);
+  };
+
+  const removeDataGame = () => {
+    const { url: img, name: title, rating, id, platformsName, handleremoveDataGame } = props;
+    const values = {
+      addingDate: new Date(),
+      title,
+      img,
+      rating,
+      id,
+      platformsName,
+      addToLib: false,
+      addToWish: false
+    };
+    handleremoveDataGame(values);
+  };
+
+  const getDataGame = () => {
+    const { url: img, name: title, rating, handleGamesList, id, platformsName } = props;
+    const values = {
+      addingDate: new Date(),
+      title,
+      img,
+      rating,
+      id,
+      platformsName,
+      addToLib: true,
+      addToWish: false
+    };
+    handleGamesList(values);
+  };
+
+  let isAddToLib;
+  if (listGamesLib) {
+    const newAr = listGamesLib.filter(game => game.title === props.name);
+    isAddToLib = newAr.length > 0 && newAr[0].addToLib;
+  }
+  if (listGamesLib === undefined) {
+    isAddToLib = false;
+  }
+
+  let isWish;
+  if (listGamesLib) {
+    const newAr = listGamesLib.filter(game => game.title === props.name);
+    isWish = newAr.length > 0 && newAr[0].addToWish;
+  }
+  if (listGamesLib === undefined) {
+    isWish = false;
+  }
+
   return (
     <div className="card" style={{ backgroundImage: `url('${url[0]}')` }}>
       <div className="container">
@@ -43,11 +106,22 @@ function TopThreeGame(props) {
             <h3>{name}</h3>
           </div>
           <div className="group">
-            <div className="wishlist" onClick={() => addToWishlist()}>
-              <img src="/img/svg/wishlist.svg" alt="icon whislist" />
+            <div className="wishlist" onClick={isWish ? removeToWishlist : addToWishlist}>
+              <img
+                src={isWish ? '/img/svg/redheart.svg' : '/img/svg/wishlist.svg'}
+                alt="icon wishlist"
+              />
             </div>
-            <button className="add" type="submit" onClick={() => setDatasGameLocalStorage(props)}>
-              <img src="/img/svg/add.svg" alt="icon add" />
+            <button
+              className="add"
+              type="submit"
+              onClick={isAddToLib ? removeDataGame : getDataGame}
+            >
+              <img
+                src="/img/svg/add.svg"
+                alt="icon add"
+                style={isAddToLib ? { transform: 'rotate(45deg)' } : { transform: 'rotate(0deg)' }}
+              />
             </button>
           </div>
         </div>
