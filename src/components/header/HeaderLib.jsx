@@ -21,9 +21,7 @@ export default class HeaderLib extends React.Component {
     this.handleLastGameAdded();
   }
 
-  // handleChangeStatue={handleChangeStatue}
-
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     const { listGamesLib } = this.props;
     const { lastGameName } = this.state;
     if (listGamesLib && listGamesLib.length > 0 && lastGameName !== listGamesLib[0].title) {
