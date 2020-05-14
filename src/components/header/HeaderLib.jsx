@@ -1,5 +1,6 @@
 import React from 'react';
 import './header.scss';
+import PropTypes from 'prop-types';
 import DisplayRating from '../contents/my-games/DisplayRating';
 
 export default class HeaderLib extends React.Component {
@@ -10,16 +11,18 @@ export default class HeaderLib extends React.Component {
       lastGameName: null,
       lastGameRating: null,
       isThereIsGame: true,
-      lastGameAdded: null
+      lastGameAdded: null,
+      update: false
     };
     this.removeGameFromHeader = this.removeGameFromHeader.bind(this);
+    this.getSelectValue = this.getSelectValue.bind(this);
   }
 
   componentDidMount() {
     this.handleLastGameAdded();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     const { listGamesLib } = this.props;
     const { lastGameName } = this.state;
     if (listGamesLib && listGamesLib.length > 0 && lastGameName !== listGamesLib[0].title) {
@@ -55,8 +58,38 @@ export default class HeaderLib extends React.Component {
     this.handleLastGameAdded();
   }
 
+  getSelectValue(event) {
+    const valueToChange = event.target.value;
+
+    const { lastGameName } = this.state;
+    const { listGamesLib } = this.props;
+    const newTab = listGamesLib.filter(game => game.title === lastGameName);
+    this.setState({
+      update: true
+    });
+    const values = {
+      addingDate: newTab[0].addingDate,
+      title: newTab[0].title,
+      img: newTab[0].img,
+      rating: newTab[0].rating,
+      id: newTab[0].id,
+      addToLib: true,
+      addToWish: false,
+      platformsName: newTab[0].platformsName,
+      status: valueToChange
+    };
+
+    const { handleChangeStatue } = this.props;
+    handleChangeStatue(values);
+  }
+
   render() {
     const { lastGameName, lastGameImg, lastGameRating, isThereIsGame } = this.state;
+
+    const { listGamesLib } = this.props;
+
+    const test = listGamesLib.find(game => game.title === lastGameName);
+
     if (isThereIsGame) {
       return (
         <div className="headerContainer" style={{ backgroundImage: `url(${lastGameImg[0]})` }}>
@@ -83,11 +116,18 @@ export default class HeaderLib extends React.Component {
 
               <div className="infoHeaderContainer blue">
                 <label htmlFor="gameStatusHeader">
-                  <select name="gameStatus" id="gameStatusHeader">
-                    <option value="0">statut</option>
-                    <option value="1">pas commencé</option>
-                    <option value="2">En cours</option>
-                    <option value="3">terminés</option>
+                  <select
+                    name="statuts"
+                    className="statuts"
+                    onChange={this.getSelectValue}
+                    defaultValue={test ? test.status : 'Statuts'}
+                  >
+                    <option value="Statuts">STATUTS</option>
+                    <option value="Pas commencé">Pas commencé</option>
+                    <option select value="En cours">
+                      En cours
+                    </option>
+                    <option value="Terminé">Terminé</option>
                   </select>
                 </label>
               </div>
@@ -107,3 +147,8 @@ export default class HeaderLib extends React.Component {
     );
   }
 }
+
+HeaderLib.propTypes = {
+  listGamesLib: PropTypes.arrayOf(PropTypes.string).isRequired,
+  gameToRemove: PropTypes.func.isRequired
+};

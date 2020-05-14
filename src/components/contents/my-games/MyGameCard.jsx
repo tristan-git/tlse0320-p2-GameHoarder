@@ -12,13 +12,11 @@ class MyGameCard extends React.Component {
 
   getSelectValue(event) {
     const valueToChange = event.target.value;
-
-    const { img, title, rating, id, platformsName, addingDate } = this.props.data;
-
-    const { handleChangeStatue } = this.props;
+    const { data, handleChangeStatue } = this.props;
+    const { img, title, rating, id, platformsName, addingDate } = data;
 
     const values = {
-      addingDate: addingDate,
+      addingDate,
       title,
       img,
       rating,
@@ -74,8 +72,10 @@ class MyGameCard extends React.Component {
 }
 
 MyGameCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  gameToRemove: PropTypes.func.isRequired
+  title: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(PropTypes.string).isRequired,
+  gameToRemove: PropTypes.func.isRequired,
+  handleChangeStatue: PropTypes.func.isRequired
 };
 export default MyGameCard;

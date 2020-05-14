@@ -10,7 +10,8 @@ export default function DisplayWishlist({
   children,
   listGamesLib,
   handleRemoveWishlistGame,
-  handleWishlistGame
+  handleWishlistGame,
+  handleGamesList
 }) {
   const displayWhislist = () =>
     listGamesLib
@@ -26,6 +27,7 @@ export default function DisplayWishlist({
           addToWish={game.addToWish}
           handleRemoveWishlistGame={handleRemoveWishlistGame}
           handleWishlistGame={handleWishlistGame}
+          handleGamesList={handleGamesList}
         />
       ));
 
@@ -61,5 +63,6 @@ DisplayWishlist.propTypes = {
   children: PropTypes.string.isRequired,
   listGamesLib: PropTypes.string.isRequired,
   handleRemoveWishlistGame: PropTypes.func.isRequired,
-  handleWishlistGame: PropTypes.func.isRequired
+  handleWishlistGame: PropTypes.func.isRequired,
+  handleGamesList: PropTypes.func.isRequired
 };

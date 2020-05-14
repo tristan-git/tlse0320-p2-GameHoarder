@@ -32,7 +32,7 @@ const ListNewGameCards = ({
 };
 
 ListNewGameCards.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.string.isRequired,
   games: PropTypes.string.isRequired,
   handleGamesList: PropTypes.func.isRequired,
   handleWishlistGame: PropTypes.func.isRequired,

@@ -142,8 +142,7 @@ class NewGameCard extends React.Component {
       genresName,
       summary,
       artworksUrl,
-      listGamesLib,
-      addToLib
+      listGamesLib
     } = this.props;
     const { show } = this.state;
 
@@ -157,11 +156,11 @@ class NewGameCard extends React.Component {
     }
 
     let isWish;
-    if (this.props.listGamesLib) {
-      const newAr = this.props.listGamesLib.filter(game => game.title === this.props.name);
+    if (listGamesLib) {
+      const newAr = listGamesLib.filter(game => game.title === name);
       isWish = newAr.length > 0 && newAr[0].addToWish;
     }
-    if (this.props.listGamesLib === undefined) {
+    if (listGamesLib === undefined) {
       isWish = false;
     }
 
@@ -182,7 +181,7 @@ class NewGameCard extends React.Component {
         <div
           className="ImageCard"
           style={{ backgroundImage: `url(${url[0]})` }}
-          onClick={this.showInfoGame}
+          onClick={addToWish ? this.hideModal : this.showInfoGame}
         />
         <div className="GameInfo">
           <div className="GameInfoTitle">
@@ -243,8 +242,8 @@ class NewGameCard extends React.Component {
 
 NewGameCard.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.array.isRequired,
-  platformsName: PropTypes.array.isRequired,
+  url: PropTypes.arrayOf(PropTypes.string).isRequired,
+  platformsName: PropTypes.arrayOf(PropTypes.string).isRequired,
   rating: PropTypes.number.isRequired,
   handleGamesList: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
@@ -252,11 +251,10 @@ NewGameCard.propTypes = {
   handleRemoveWishlistGame: PropTypes.func.isRequired,
   handleremoveDataGame: PropTypes.func.isRequired,
   addToWish: PropTypes.string.isRequired,
-  listGamesLib: PropTypes.array.isRequired,
-  genresName: PropTypes.array.isRequired,
-  artworksUrl: PropTypes.array.isRequired,
-  summary: PropTypes.string.isRequired,
-  handleremoveDataGame: PropTypes.func.isRequired
+  listGamesLib: PropTypes.arrayOf(PropTypes.string).isRequired,
+  genresName: PropTypes.arrayOf(PropTypes.string).isRequired,
+  artworksUrl: PropTypes.arrayOf(PropTypes.string).isRequired,
+  summary: PropTypes.string.isRequired
 };
 
 export default NewGameCard;

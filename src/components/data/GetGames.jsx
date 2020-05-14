@@ -120,7 +120,6 @@ export default class GetGames extends React.Component {
           })
             .then(gameArtworks => gameArtworks.data)
             .then(gameArtworks => {
-              console.log('artwork');
               allGamesTab.map(game => {
                 game.artworksUrl = [];
                 for (let i = 0; i < gameArtworks.length; i++) {

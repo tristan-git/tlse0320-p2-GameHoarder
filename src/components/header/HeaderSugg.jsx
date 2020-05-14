@@ -1,5 +1,6 @@
 import React from 'react';
 import './header.scss';
+import PropTypes from 'prop-types';
 import DisplayRating from '../contents/my-games/DisplayRating';
 
 class HeaderSugg extends React.Component {
@@ -12,6 +13,7 @@ class HeaderSugg extends React.Component {
       id: this.props.games[0].id
     };
     this.AddGameToLibrary = this.AddGameToLibrary.bind(this);
+    this.removeDataGame = this.removeDataGame.bind(this);
   }
 
   AddGameToLibrary() {
@@ -30,8 +32,34 @@ class HeaderSugg extends React.Component {
     handleGamesList(values);
   }
 
+  removeDataGame() {
+    const { id, name: title, url: img, rating, platformsName } = this.state;
+    const values = {
+      addingDate: new Date(),
+      title,
+      img,
+      rating,
+      id,
+      platformsName,
+      addToLib: false,
+      addToWish: false
+    };
+
+    const { handleremoveDataGame } = this.props;
+    handleremoveDataGame(values);
+  }
+
   render() {
     const { url, name, rating } = this.state;
+
+    let isAddToLib;
+    if (this.props.listGamesLib) {
+      const newAr = this.props.listGamesLib.filter(game => game.title === name);
+      isAddToLib = newAr.length > 0 && newAr[0].addToLib;
+    }
+    if (this.props.listGamesLib === undefined) {
+      isAddToLib = false;
+    }
 
     return (
       <div className="HeaderSugg" style={{ backgroundImage: `url(${url})` }}>
@@ -41,10 +69,16 @@ class HeaderSugg extends React.Component {
               <button
                 className="crossContainerSugg"
                 type="button"
-                onClick={this.AddGameToLibrary}
+                onClick={isAddToLib ? this.removeDataGame : this.AddGameToLibrary}
                 style={{ color: 'black' }}
               >
-                <img src="./img/svg/add.svg" alt="bouton plus" />
+                <img
+                  src="./img/svg/add.svg"
+                  alt="bouton plus"
+                  style={
+                    isAddToLib ? { transform: 'rotate(45deg)' } : { transform: 'rotate(0deg)' }
+                  }
+                />
               </button>
             </div>
           </div>
@@ -64,5 +98,10 @@ class HeaderSugg extends React.Component {
     );
   }
 }
+
+HeaderSugg.propTypes = {
+  games: PropTypes.arrayOf(PropTypes.string).isRequired,
+  handleGamesList: PropTypes.func.isRequired
+};
 
 export default HeaderSugg;
