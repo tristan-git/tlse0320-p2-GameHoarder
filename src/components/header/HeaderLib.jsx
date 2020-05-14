@@ -1,5 +1,6 @@
 import React from 'react';
 import './header.scss';
+import PropTypes from 'prop-types';
 import DisplayRating from '../contents/my-games/DisplayRating';
 
 export default class HeaderLib extends React.Component {
@@ -9,8 +10,7 @@ export default class HeaderLib extends React.Component {
       lastGameImg: [],
       lastGameName: null,
       lastGameRating: null,
-      isThereIsGame: true,
-      lastGameAdded: null
+      isThereIsGame: true
     };
     this.removeGameFromHeader = this.removeGameFromHeader.bind(this);
   }
@@ -107,3 +107,8 @@ export default class HeaderLib extends React.Component {
     );
   }
 }
+
+HeaderLib.propTypes = {
+  listGamesLib: PropTypes.arrayOf(PropTypes.string).isRequired,
+  gameToRemove: PropTypes.func.isRequired
+};
