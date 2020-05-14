@@ -51,7 +51,7 @@ function NewGames({
 }
 
 NewGames.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.arrayOf(PropTypes.string).isRequired,
   games: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleWishlistGame: PropTypes.func.isRequired,

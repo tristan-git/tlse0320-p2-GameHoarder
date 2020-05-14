@@ -3,25 +3,22 @@ import PropTypes from 'prop-types';
 import DisplayRating from './DisplayRating';
 
 function TopThreeGame(props) {
-  const { name, url, rating, listGamesLib, handleRemoveWishlistGame, handleremoveDataGame } = props;
-
-  const setDatasGameLocalStorage = data => {
-    const { url: img, name: title, rating, handleGamesList, platformsName, id } = data;
-    const values = {
-      addingDate: new Date(),
-      title,
-      img,
-      rating,
-      platformsName,
-      id,
-      addToLib: true,
-      addToWish: false
-    };
-    handleGamesList(values);
-  };
+  const {
+    name,
+    url,
+    rating,
+    id,
+    listGamesLib,
+    handleRemoveWishlistGame,
+    handleWishlistGame,
+    handleremoveDataGame,
+    handleGamesList,
+    platformsName,
+    url: img,
+    name: title
+  } = props;
 
   const addToWishlist = () => {
-    const { url: img, name: title, rating, handleWishlistGame, id, platformsName } = props;
     const values = {
       addingDate: new Date(),
       title,
@@ -36,7 +33,6 @@ function TopThreeGame(props) {
   };
 
   const removeToWishlist = () => {
-    const { url: img, name: title, rating, handleWishlistGame, id, platformsName } = props;
     const values = {
       addingDate: new Date(),
       title,
@@ -51,7 +47,6 @@ function TopThreeGame(props) {
   };
 
   const removeDataGame = () => {
-    const { url: img, name: title, rating, id, platformsName, handleremoveDataGame } = props;
     const values = {
       addingDate: new Date(),
       title,
@@ -66,7 +61,6 @@ function TopThreeGame(props) {
   };
 
   const getDataGame = () => {
-    const { url: img, name: title, rating, handleGamesList, id, platformsName } = props;
     const values = {
       addingDate: new Date(),
       title,
@@ -135,10 +129,15 @@ function TopThreeGame(props) {
 
 TopThreeGame.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.array.isRequired,
+  url: PropTypes.arrayOf(PropTypes.string).isRequired,
+  id: PropTypes.arrayOf(PropTypes.string).isRequired,
   rating: PropTypes.number.isRequired,
   handleWishlistGame: PropTypes.func.isRequired,
-  platformsName: PropTypes.array.isRequired
+  platformsName: PropTypes.arrayOf(PropTypes.string).isRequired,
+  listGamesLib: PropTypes.arrayOf(PropTypes.string).isRequired,
+  handleRemoveWishlistGame: PropTypes.func.isRequired,
+  handleremoveDataGame: PropTypes.func.isRequired,
+  handleGamesList: PropTypes.func.isRequired
 };
 
 export default TopThreeGame;

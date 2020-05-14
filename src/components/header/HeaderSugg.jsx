@@ -1,5 +1,6 @@
 import React from 'react';
 import './header.scss';
+import PropTypes from 'prop-types';
 import DisplayRating from '../contents/my-games/DisplayRating';
 
 class HeaderSugg extends React.Component {
@@ -64,5 +65,10 @@ class HeaderSugg extends React.Component {
     );
   }
 }
+
+HeaderSugg.propTypes = {
+  games: PropTypes.arrayOf(PropTypes.string).isRequired,
+  handleGamesList: PropTypes.func.isRequired
+};
 
 export default HeaderSugg;

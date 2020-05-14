@@ -197,6 +197,7 @@ class App extends React.Component {
               listGamesLib={listGamesLib}
               handleRemoveWishlistGame={this.handleRemoveWishlistGame}
               handleWishlistGame={this.handleWishlistGame}
+              handleGamesList={this.handleGamesList}
             />
 
             <Switch>
