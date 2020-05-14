@@ -6,7 +6,8 @@ function ListTopThreeGames({
   games,
   handleWishlistGame,
   listGamesLib,
-  handleRemoveWishlistGame
+  handleRemoveWishlistGame,
+  handleremoveDataGame
 }) {
   let ascendingGameRating = [...games];
   ascendingGameRating = ascendingGameRating.sort(function sort(a, b) {
@@ -26,6 +27,7 @@ function ListTopThreeGames({
         platformsName={game.platformsName}
         listGamesLib={listGamesLib}
         handleRemoveWishlistGame={handleRemoveWishlistGame}
+        handleremoveDataGame={handleremoveDataGame}
       />
     ));
 
