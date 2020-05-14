@@ -11,7 +11,6 @@ export default function InfoCard({
   url,
   platformsName,
   genresName,
-  artworksUrl,
   summary
 }) {
   return (
@@ -65,6 +64,5 @@ InfoCard.propTypes = {
   url: PropTypes.string.isRequired,
   platformsName: PropTypes.array.isRequired,
   genresName: PropTypes.array.isRequired,
-  artworksUrl: PropTypes.array.isRequired,
   summary: PropTypes.string.isRequired
 };

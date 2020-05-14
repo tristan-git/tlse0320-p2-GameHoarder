@@ -18,8 +18,6 @@ class NewGameCard extends React.Component {
     this.removeDataGame = this.removeDataGame.bind(this);
   }
 
-  componentDidMount() {}
-
   getDataGame() {
     const { url: img, name: title, rating, handleGamesList, id, platformsName } = this.props;
     const values = {
@@ -73,31 +71,9 @@ class NewGameCard extends React.Component {
   }
 
   showInfoGame() {
-    const {
-      url: img,
-      name: title,
-      rating,
-      id,
-      platformsName,
-      genresName,
-      artworksUrl,
-      summary,
-      handleInfoGame
-    } = this.props;
-    const values = {
-      img,
-      title,
-      rating,
-      id,
-      platformsName,
-      genresName,
-      artworksUrl,
-      summary
-    };
     this.setState(state => ({
       show: !state.show
     }));
-    handleInfoGame(values);
   }
 
   hideModal() {
@@ -120,12 +96,26 @@ class NewGameCard extends React.Component {
   }
 
   render() {
+    const {
+      rating,
+      name,
+      url,
+      addToWish,
+      platformsName,
+      genresName,
+      summary,
+      artworksUrl,
+      listGamesLib,
+      addToLib
+    } = this.props;
+    const { show } = this.state;
+
     let isAddToLib;
-    if (this.props.listGamesLib) {
-      const newAr = this.props.listGamesLib.filter(game => game.title === this.props.name);
+    if (listGamesLib) {
+      const newAr = listGamesLib.filter(game => game.title === name);
       isAddToLib = newAr.length > 0 && newAr[0].addToLib;
     }
-    if (this.props.listGamesLib === undefined) {
+    if (listGamesLib === undefined) {
       isAddToLib = false;
     }
 
@@ -137,19 +127,6 @@ class NewGameCard extends React.Component {
     if (this.props.listGamesLib === undefined) {
       isWish = false;
     }
-
-    const {
-      rating,
-      name,
-      url,
-      addToWish,
-      platformsName,
-      genresName,
-      summary,
-      artworksUrl,
-      addToLib
-    } = this.props;
-    const { show } = this.state;
 
     return (
       <div className="Card">
@@ -230,16 +207,15 @@ NewGameCard.propTypes = {
   rating: PropTypes.number.isRequired,
   handleGamesList: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  addToLib: PropTypes.string.isRequired,
   handleWishlistGame: PropTypes.string.isRequired,
   handleRemoveWishlistGame: PropTypes.func.isRequired,
   handleremoveDataGame: PropTypes.func.isRequired,
   addToWish: PropTypes.string.isRequired,
-  games: PropTypes.array.isRequired,
+  listGamesLib: PropTypes.array.isRequired,
   genresName: PropTypes.array.isRequired,
   artworksUrl: PropTypes.array.isRequired,
   summary: PropTypes.string.isRequired,
-  handleInfoGame: PropTypes.func.isRequired
+  handleremoveDataGame: PropTypes.func.isRequired
 };
 
 export default NewGameCard;
