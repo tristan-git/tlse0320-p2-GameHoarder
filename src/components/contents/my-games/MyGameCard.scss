@@ -19,6 +19,14 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 
+  .GameSupport {
+    width: 100%;
+    max-width: 140px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
   .modal-main {
     position: fixed;
     background: white;
