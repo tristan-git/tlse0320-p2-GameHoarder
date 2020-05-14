@@ -74,13 +74,6 @@ class App extends React.Component {
   }
 
   handleGamesList(values) {
-    // this.setState(prevState => {
-    //   return {
-    //     ...prevState,
-    //     listGamesLib: [...prevState.listGamesLib, values]
-    //   };
-    // });
-
     const { listGamesLib } = this.state;
     let newlistGamesLib = listGamesLib;
     newlistGamesLib = newlistGamesLib.filter(game => game.title !== values.title);
