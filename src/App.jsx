@@ -32,6 +32,7 @@ class App extends React.Component {
     this.handleGamesList = this.handleGamesList.bind(this);
     this.handleWishlistGame = this.handleWishlistGame.bind(this);
     this.handleRemoveWishlistGame = this.handleRemoveWishlistGame.bind(this);
+    this.handleInfoGame = this.handleInfoGame.bind(this);
     this.handleChangeStatue = this.handleChangeStatue.bind(this);
     this.handleremoveDataGame = this.handleremoveDataGame.bind(this);
   }
@@ -95,6 +96,13 @@ class App extends React.Component {
     let newlistGamesLib = listGamesLib;
     newlistGamesLib = newlistGamesLib.filter(game => game.title !== values.title);
     this.setState({ listGamesLib: newlistGamesLib });
+  }
+
+  handleInfoGame(values) {
+    const { listGamesLib } = this.state;
+    this.setState({
+      listGamesLib: [...listGamesLib, values]
+    });
   }
 
   handleChangeStatue(values) {
@@ -171,7 +179,7 @@ class App extends React.Component {
       addGameContent = (
         <>
           <HeaderSugg
-            games={allGames.sort((a, b) => b.rating - a.rating)}
+            games={this.state.allGames.sort((a, b) => b.rating - a.rating)}
             handleGamesList={this.handleGamesList}
             handleremoveDataGame={this.handleremoveDataGame}
             listGamesLib={listGamesLib}
@@ -186,6 +194,7 @@ class App extends React.Component {
             handleWishlistGame={this.handleWishlistGame}
             handleRemoveWishlistGame={this.handleRemoveWishlistGame}
             handleremoveDataGame={this.handleremoveDataGame}
+            listGamesLib={listGamesLib}
           />
         </>
       );
@@ -212,6 +221,7 @@ class App extends React.Component {
                 <MyGames
                   value={mygameInputValue}
                   gameToRemove={this.gameToRemove}
+                  handleInfoGame={this.handleInfoGame}
                   handleChange={handleChange}
                   listGamesLib={listGamesLib}
                   handleChangeStatue={handleChangeStatue}

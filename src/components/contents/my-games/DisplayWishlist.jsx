@@ -20,7 +20,9 @@ export default function DisplayWishlist({
         <NewGameCard
           url={game.img}
           name={game.title}
+          genresName={game.genresName}
           rating={game.rating}
+          artworksUrl={game.artworksUrl}
           platformsName={game.platformsName}
           addToWish={game.addToWish}
           handleRemoveWishlistGame={handleRemoveWishlistGame}

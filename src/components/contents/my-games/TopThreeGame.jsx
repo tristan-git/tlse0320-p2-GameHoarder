@@ -9,6 +9,8 @@ function TopThreeGame(props) {
     rating,
     id,
     listGamesLib,
+    artworksUrl,
+    genresName,
     handleRemoveWishlistGame,
     handleWishlistGame,
     handleremoveDataGame,
@@ -23,6 +25,8 @@ function TopThreeGame(props) {
       addingDate: new Date(),
       title,
       img,
+      artworksUrl,
+      genresName,
       rating,
       id,
       platformsName,
@@ -37,6 +41,8 @@ function TopThreeGame(props) {
       addingDate: new Date(),
       title,
       img,
+      artworksUrl,
+      genresName,
       rating,
       id,
       platformsName,
@@ -52,6 +58,8 @@ function TopThreeGame(props) {
       title,
       img,
       rating,
+      artworksUrl,
+      genresName,
       id,
       platformsName,
       addToLib: false,
@@ -66,6 +74,8 @@ function TopThreeGame(props) {
       title,
       img,
       rating,
+      artworksUrl,
+      genresName,
       id,
       platformsName,
       addToLib: true,
@@ -114,7 +124,11 @@ function TopThreeGame(props) {
               <img
                 src="/img/svg/add.svg"
                 alt="icon add"
-                style={isAddToLib ? { transform: 'rotate(45deg)' } : { transform: 'rotate(0deg)' }}
+                style={
+                  isAddToLib
+                    ? { transform: 'rotate(45deg)', transition: 'all 0.4s ease' }
+                    : { transform: 'rotate(0deg)', transition: 'all 0.4s ease' }
+                }
               />
             </button>
           </div>

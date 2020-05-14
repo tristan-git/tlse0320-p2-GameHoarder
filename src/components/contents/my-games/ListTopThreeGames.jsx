@@ -24,6 +24,8 @@ function ListTopThreeGames({
         handleWishlistGame={handleWishlistGame}
         rating={game.rating}
         url={game.url}
+        artworksUrl={game.artworksUrl}
+        genresName={game.genresName}
         key={`top-${game.name}`}
         platformsName={game.platformsName}
         listGamesLib={listGamesLib}

@@ -9,12 +9,13 @@ export default function InfoCard({
   name,
   rating,
   url,
+  artworksUrl,
   platformsName,
   genresName,
   summary
 }) {
   return (
-    <div className={show ? 'modal display-block' : 'modal display-none'}>
+    <div className={show ? 'modalInfo display-flex' : 'modalInfo display-none'}>
       <section className="PopupInfo">
         {children}
         <div className="InfoCard">
@@ -26,15 +27,16 @@ export default function InfoCard({
               <h2 className="InfoTitle">{name}</h2>
             </div>
             <div className="InfoSupp">
-              <p>{rating}</p>
+              <p className="infoNote">{Math.round(rating)} / 100</p>
               <p
+                className="infoPlatforms"
                 style={{
                   margin: '0 2%'
                 }}
               >
-                {platformsName}
+                {platformsName.join(' / ')}
               </p>
-              <p>{genresName}</p>
+              <p className="infoGenre">{genresName.join(' / ')}</p>
             </div>
           </div>
           <div className="InfoMain">
@@ -43,9 +45,12 @@ export default function InfoCard({
               <p>{summary}</p>
             </div>
           </div>
+          {artworksUrl.length > 0 ? <h2 className="artworkSection">Artworks :</h2> : ''}
           <div className="Images">
-            {url.map(cover => (
-              <img src={cover} alt="cover of the game" className="CoverSupp" />
+            {artworksUrl.map(artwork => (
+              <div>
+                <img src={artwork} alt="artwork of the game" className="CoverSupp" />
+              </div>
             ))}
           </div>
         </div>

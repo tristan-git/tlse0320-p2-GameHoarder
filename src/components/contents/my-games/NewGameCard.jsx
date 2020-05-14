@@ -19,12 +19,23 @@ class NewGameCard extends React.Component {
   }
 
   getDataGame() {
-    const { url: img, name: title, rating, handleGamesList, id, platformsName } = this.props;
+    const {
+      url: img,
+      name: title,
+      rating,
+      handleGamesList,
+      id,
+      genresName,
+      platformsName,
+      artworksUrl
+    } = this.props;
     const values = {
       addingDate: new Date(),
       title,
       img,
+      genresName,
       rating,
+      artworksUrl,
       id,
       platformsName,
       addToLib: true,
@@ -34,13 +45,24 @@ class NewGameCard extends React.Component {
   }
 
   addToWishlist() {
-    const { url: img, name: title, rating, handleWishlistGame, id, platformsName } = this.props;
+    const {
+      url: img,
+      name: title,
+      rating,
+      handleWishlistGame,
+      id,
+      genresName,
+      platformsName,
+      artworksUrl
+    } = this.props;
     const values = {
       addingDate: new Date(),
       title,
       img,
+      genresName,
       rating,
       id,
+      artworksUrl,
       platformsName,
       addToLib: false,
       addToWish: true
@@ -53,16 +75,20 @@ class NewGameCard extends React.Component {
       url: img,
       name: title,
       rating,
+      genresName,
       handleRemoveWishlistGame,
       id,
+      artworksUrl,
       platformsName
     } = this.props;
     const values = {
       addingDate: new Date(),
       title,
       img,
+      artworksUrl,
       rating,
       id,
+      genresName,
       platformsName,
       addToLib: false,
       addToWish: false
@@ -81,11 +107,22 @@ class NewGameCard extends React.Component {
   }
 
   removeDataGame() {
-    const { url: img, name: title, rating, id, platformsName, handleremoveDataGame } = this.props;
+    const {
+      url: img,
+      name: title,
+      rating,
+      genresName,
+      id,
+      platformsName,
+      handleremoveDataGame,
+      artworksUrl
+    } = this.props;
     const values = {
       addingDate: new Date(),
       title,
       img,
+      genresName,
+      artworksUrl,
       rating,
       id,
       platformsName,
@@ -188,7 +225,11 @@ class NewGameCard extends React.Component {
               <img
                 src="/img/svg/add.svg"
                 alt="icon add or delete library"
-                style={isAddToLib ? { transform: 'rotate(45deg)' } : { transform: 'rotate(0deg)' }}
+                style={
+                  isAddToLib
+                    ? { transform: 'rotate(45deg)', transition: 'all 0.4s ease' }
+                    : { transform: 'rotate(0deg)', transition: 'all 0.4s ease' }
+                }
               />
               {isAddToLib ? 'Déjà dans votre bibliothèque.' : 'Ajouter à votre bibliothèque.'}
             </div>
