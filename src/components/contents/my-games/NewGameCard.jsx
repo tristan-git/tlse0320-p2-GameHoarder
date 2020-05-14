@@ -25,6 +25,7 @@ class NewGameCard extends React.Component {
       rating,
       handleGamesList,
       id,
+      genresName,
       platformsName,
       artworksUrl
     } = this.props;
@@ -32,6 +33,7 @@ class NewGameCard extends React.Component {
       addingDate: new Date(),
       title,
       img,
+      genresName,
       rating,
       artworksUrl,
       id,
@@ -49,6 +51,7 @@ class NewGameCard extends React.Component {
       rating,
       handleWishlistGame,
       id,
+      genresName,
       platformsName,
       artworksUrl
     } = this.props;
@@ -56,6 +59,7 @@ class NewGameCard extends React.Component {
       addingDate: new Date(),
       title,
       img,
+      genresName,
       rating,
       id,
       artworksUrl,
@@ -71,6 +75,7 @@ class NewGameCard extends React.Component {
       url: img,
       name: title,
       rating,
+      genresName,
       handleRemoveWishlistGame,
       id,
       artworksUrl,
@@ -83,6 +88,7 @@ class NewGameCard extends React.Component {
       artworksUrl,
       rating,
       id,
+      genresName,
       platformsName,
       addToLib: false,
       addToWish: false
@@ -105,6 +111,7 @@ class NewGameCard extends React.Component {
       url: img,
       name: title,
       rating,
+      genresName,
       id,
       platformsName,
       handleremoveDataGame,
@@ -114,6 +121,7 @@ class NewGameCard extends React.Component {
       addingDate: new Date(),
       title,
       img,
+      genresName,
       artworksUrl,
       rating,
       id,
