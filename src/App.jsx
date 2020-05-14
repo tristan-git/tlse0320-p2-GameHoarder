@@ -156,6 +156,8 @@ class App extends React.Component {
   }
 
   handleremoveDataGame(values) {
+    console.log(values);
+
     const { listGamesLib } = this.state;
     let newlistGamesLib = listGamesLib;
     newlistGamesLib = newlistGamesLib.filter(game => game.title !== values.title);
@@ -181,6 +183,8 @@ class App extends React.Component {
           <HeaderSugg
             games={this.state.allGames.sort((a, b) => b.rating - a.rating)}
             handleGamesList={this.handleGamesList}
+            handleremoveDataGame={this.handleremoveDataGame}
+            listGamesLib={listGamesLib}
           />
           <NewGames
             value={newgameInputValue}
