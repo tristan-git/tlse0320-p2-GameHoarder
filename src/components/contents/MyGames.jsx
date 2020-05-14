@@ -5,7 +5,14 @@ import Filters from './filter/Filters';
 import Title from './title/Title';
 import './mygames.scss';
 
-const MyGames = ({ value, handleChange, gameToRemove, listGamesLib, handleChangeStatue }) => {
+const MyGames = ({
+  value,
+  handleChange,
+  gameToRemove,
+  listGamesLib,
+  handleChangeStatue,
+  handleInfoGame
+}) => {
   return (
     <div className="my-games container-box">
       <Title title="Ma bibliothèque " span="de jeux" />

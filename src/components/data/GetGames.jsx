@@ -131,7 +131,10 @@ export default class GetGames extends React.Component {
                   }
                   for (let x = 0; x < game.artworks.length; x++) {
                     if (game.artworks[x] === gameArtworks[i].id) {
-                      game.artworksUrl = [...game.artworksUrl, gameArtworks[i].url];
+                      game.artworksUrl = [
+                        ...game.artworksUrl,
+                        gameArtworks[i].url.replace('t_thumb', 't_1080p')
+                      ];
                     }
                   }
                 }
