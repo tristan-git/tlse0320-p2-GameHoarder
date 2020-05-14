@@ -18,8 +18,6 @@ class NewGameCard extends React.Component {
     this.removeDataGame = this.removeDataGame.bind(this);
   }
 
-  componentDidMount() {}
-
   getDataGame() {
     const { url: img, name: title, rating, handleGamesList, id, platformsName } = this.props;
     const values = {
@@ -73,31 +71,9 @@ class NewGameCard extends React.Component {
   }
 
   showInfoGame() {
-    const {
-      url: img,
-      name: title,
-      rating,
-      id,
-      platformsName,
-      genresName,
-      artworksUrl,
-      summary,
-      handleInfoGame
-    } = this.props;
-    const values = {
-      img,
-      title,
-      rating,
-      id,
-      platformsName,
-      genresName,
-      artworksUrl,
-      summary
-    };
     this.setState(state => ({
       show: !state.show
     }));
-    handleInfoGame(values);
   }
 
   hideModal() {
@@ -120,24 +96,6 @@ class NewGameCard extends React.Component {
   }
 
   render() {
-    let isAddToLib;
-    if (this.props.listGamesLib) {
-      const newAr = this.props.listGamesLib.filter(game => game.title === this.props.name);
-      isAddToLib = newAr.length > 0 && newAr[0].addToLib;
-    }
-    if (this.props.listGamesLib === undefined) {
-      isAddToLib = false;
-    }
-
-    let isWish;
-    if (this.props.listGamesLib) {
-      const newAr = this.props.listGamesLib.filter(game => game.title === this.props.name);
-      isWish = newAr.length > 0 && newAr[0].addToWish;
-    }
-    if (this.props.listGamesLib === undefined) {
-      isWish = false;
-    }
-
     const {
       rating,
       name,
@@ -147,9 +105,27 @@ class NewGameCard extends React.Component {
       genresName,
       summary,
       artworksUrl,
-      addToLib
+      listGamesLib
     } = this.props;
     const { show } = this.state;
+
+    let isAddToLib;
+    if (listGamesLib) {
+      const newAr = listGamesLib.filter(game => game.title === name);
+      isAddToLib = newAr.length > 0 && newAr[0].addToLib;
+    }
+    if (listGamesLib === undefined) {
+      isAddToLib = false;
+    }
+
+    let isWish;
+    if (listGamesLib) {
+      const newAr = listGamesLib.filter(game => game.title === name);
+      isWish = newAr.length > 0 && newAr[0].addToWish;
+    }
+    if (listGamesLib === undefined) {
+      isWish = false;
+    }
 
     return (
       <div className="Card">
@@ -225,21 +201,19 @@ class NewGameCard extends React.Component {
 
 NewGameCard.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.array.isRequired,
-  platformsName: PropTypes.array.isRequired,
+  url: PropTypes.arrayOf(PropTypes.string).isRequired,
+  platformsName: PropTypes.arrayOf(PropTypes.string).isRequired,
   rating: PropTypes.number.isRequired,
   handleGamesList: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  addToLib: PropTypes.string.isRequired,
   handleWishlistGame: PropTypes.string.isRequired,
   handleRemoveWishlistGame: PropTypes.func.isRequired,
   handleremoveDataGame: PropTypes.func.isRequired,
   addToWish: PropTypes.string.isRequired,
-  games: PropTypes.array.isRequired,
-  genresName: PropTypes.array.isRequired,
-  artworksUrl: PropTypes.array.isRequired,
-  summary: PropTypes.string.isRequired,
-  handleInfoGame: PropTypes.func.isRequired
+  listGamesLib: PropTypes.arrayOf(PropTypes.string).isRequired,
+  genresName: PropTypes.arrayOf(PropTypes.string).isRequired,
+  artworksUrl: PropTypes.arrayOf(PropTypes.string).isRequired,
+  summary: PropTypes.string.isRequired
 };
 
 export default NewGameCard;

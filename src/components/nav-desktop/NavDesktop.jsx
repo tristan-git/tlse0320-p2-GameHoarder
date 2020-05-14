@@ -26,7 +26,12 @@ class NavDesktop extends React.Component {
 
   render() {
     const { show } = this.state;
-    const { listGamesLib, handleRemoveWishlistGame, handleWishlistGame } = this.props;
+    const {
+      listGamesLib,
+      handleRemoveWishlistGame,
+      handleWishlistGame,
+      handleGamesList
+    } = this.props;
 
     return (
       <div className="navDesktop">
@@ -46,6 +51,7 @@ class NavDesktop extends React.Component {
             listGamesLib={listGamesLib}
             handleRemoveWishlistGame={handleRemoveWishlistGame}
             handleWishlistGame={handleWishlistGame}
+            handleGamesList={handleGamesList}
           />
           <button
             className="btnOpenWishlist"
@@ -79,7 +85,9 @@ class NavDesktop extends React.Component {
 
 NavDesktop.propTypes = {
   listGamesLib: PropTypes.string.isRequired,
-  handleRemoveWishlistGame: PropTypes.func.isRequired
+  handleRemoveWishlistGame: PropTypes.func.isRequired,
+  handleGamesList: PropTypes.func.isRequired,
+  handleWishlistGame: PropTypes.func.isRequired
 };
 
 export default NavDesktop;
