@@ -62,7 +62,7 @@ InfoCard.propTypes = {
   name: PropTypes.string.isRequired,
   rating: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  platformsName: PropTypes.array.isRequired,
-  genresName: PropTypes.array.isRequired,
+  platformsName: PropTypes.arrayOf(PropTypes.string).isRequired,
+  genresName: PropTypes.arrayOf(PropTypes.string).isRequired,
   summary: PropTypes.string.isRequired
 };
