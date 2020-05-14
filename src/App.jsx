@@ -73,18 +73,20 @@ class App extends React.Component {
   }
 
   handleGamesList(values) {
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        listGamesLib: [...prevState.listGamesLib, values]
-      };
+    const { listGamesLib } = this.state;
+    let newlistGamesLib = listGamesLib;
+    newlistGamesLib = newlistGamesLib.filter(game => game.title !== values.title);
+    this.setState({
+      listGamesLib: [...newlistGamesLib, values]
     });
   }
 
   handleWishlistGame(values) {
     const { listGamesLib } = this.state;
+    let newlistGamesLib = listGamesLib;
+    newlistGamesLib = newlistGamesLib.filter(game => game.title !== values.title);
     this.setState({
-      listGamesLib: [...listGamesLib, values]
+      listGamesLib: [...newlistGamesLib, values]
     });
   }
 
@@ -194,6 +196,7 @@ class App extends React.Component {
             <NavDesktop
               listGamesLib={listGamesLib}
               handleRemoveWishlistGame={this.handleRemoveWishlistGame}
+              handleWishlistGame={this.handleWishlistGame}
             />
 
             <Switch>

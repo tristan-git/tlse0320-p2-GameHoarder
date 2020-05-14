@@ -11,7 +11,6 @@ export default function InfoCard({
   url,
   platformsName,
   genresName,
-  artworksUrl,
   summary
 }) {
   return (
@@ -48,9 +47,6 @@ export default function InfoCard({
             {url.map(cover => (
               <img src={cover} alt="cover of the game" className="CoverSupp" />
             ))}
-{/*             {artworksUrl.map(art => (
-              <img src={art} alt="artwork" className="Artworks" />
-            ))} */}
           </div>
         </div>
         <div />
@@ -68,6 +64,5 @@ InfoCard.propTypes = {
   url: PropTypes.string.isRequired,
   platformsName: PropTypes.array.isRequired,
   genresName: PropTypes.array.isRequired,
-  artworksUrl: PropTypes.array.isRequired,
   summary: PropTypes.string.isRequired
 };
