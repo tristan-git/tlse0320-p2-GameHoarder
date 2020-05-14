@@ -42,6 +42,8 @@ function NewGames({
             games={games}
             handleGamesList={handleGamesList}
             handleWishlistGame={handleWishlistGame}
+            listGamesLib={listGamesLib}
+            handleRemoveWishlistGame={handleRemoveWishlistGame}
           />
         </div>
       </div>
